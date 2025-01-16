@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux RMDIR Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>rmdir</code> Command</h1>
+    <p>The <code>rmdir</code> command in Linux is used to <strong>remove empty directories</strong>. Unlike <code>rm</code>, which can delete directories with content, <code>rmdir</code> only works on directories that are completely empty.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>rmdir [OPTIONS] DIRECTORY_NAME</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>rmdir</code>: Removes an empty directory.</li>
+        <li><code>rmdir -p</code>: Removes the specified directory and its parent directories if they are empty.</li>
+        <li><code>rmdir -v</code>: Displays a message for each removed directory.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Basic Usage:</h3>
+    <pre><code>$ rmdir my_directory</code></pre>
+    <p><strong>Explanation:</strong> Removes the directory named <code>my_directory</code> if it is empty.</p>
+
+    <h3>2. Removing Nested Directories with <code>-p</code> Option:</h3>
+    <pre><code>$ rmdir -p /home/zaid/projects/new_project</code></pre>
+    <p><strong>Explanation:</strong> Removes the directory <code>new_project</code> and its parent directories (e.g., <code>projects</code>) if they are all empty.</p>
+
+    <h3>3. Verbose Mode with <code>-v</code> Option:</h3>
+    <pre><code>$ rmdir -v test_directory
+rmdir: removing directory, 'test_directory'</code></pre>
+    <p><strong>Explanation:</strong> Displays a message confirming the removal of the directory.</p>
+
+    <h3>4. Combining Options:</h3>
+    <pre><code>$ rmdir -p -v /home/zaid/tmp/empty_dir
+rmdir: removing directory, '/home/zaid/tmp/empty_dir'
+rmdir: removing directory, '/home/zaid/tmp'</code></pre>
+    <p><strong>Explanation:</strong> Removes the directory and parent directories while showing verbose output.</p>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>Cleaning Up:</strong> Remove unused empty directories to keep the file system organized.</li>
+        <li><strong>Scripting:</strong> Automate the removal of empty directory structures.</li>
+        <li><strong>Debugging:</strong> Ensure specific directories are empty before running other commands.</li>
+    </ul>
+
+    <h2>Script Example:</h2>
+    <pre><code>#!/bin/bash
+# Remove an empty directory structure
+if [ -d "/home/zaid/old_project" ]; then
+    rmdir -p -v /home/zaid/old_project
+else
+    echo "Directory does not exist or is not empty."
+fi</code></pre>
+    <p><strong>Output:</strong></p>
+    <pre><code>rmdir: removing directory, '/home/zaid/old_project'
+rmdir: removing directory, '/home/zaid'</code></pre>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>rmdir</code>: Removes an empty directory.</li>
+        <li><code>rmdir -p</code>: Removes the specified directory and its parent directories if empty.</li>
+        <li><code>rmdir -v</code>: Displays messages for removed directories.</li>
+    </ul>
+</body>
+</html>
