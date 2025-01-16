@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux CP Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>cp</code> Command</h1>
+    <p>The <code>cp</code> command in Linux is used to <strong>copy files and directories</strong>. It can duplicate files from one location to another or create backups of files and directories.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>cp [OPTIONS] SOURCE DESTINATION</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>cp</code>: Copies a file or directory.</li>
+        <li><code>cp -r</code>: Copies directories and their contents recursively.</li>
+        <li><code>cp -i</code>: Prompts before overwriting an existing file.</li>
+        <li><code>cp -f</code>: Forces overwriting without confirmation.</li>
+        <li><code>cp -v</code>: Displays verbose output for each file copied.</li>
+        <li><code>cp -u</code>: Copies files only if the source is newer than the destination or if the destination file does not exist.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Copy a File:</h3>
+    <pre><code>$ cp file1.txt file2.txt</code></pre>
+    <p><strong>Explanation:</strong> Copies <code>file1.txt</code> to <code>file2.txt</code>.</p>
+
+    <h3>2. Copy a Directory Recursively:</h3>
+    <pre><code>$ cp -r source_dir target_dir</code></pre>
+    <p><strong>Explanation:</strong> Copies the directory <code>source_dir</code> and all its contents to <code>target_dir</code>.</p>
+
+    <h3>3. Prompt Before Overwriting:</h3>
+    <pre><code>$ cp -i oldfile.txt newfile.txt</code></pre>
+    <p><strong>Explanation:</strong> Asks for confirmation before overwriting <code>newfile.txt</code>.</p>
+
+    <h3>4. Verbose Mode:</h3>
+    <pre><code>$ cp -v data.txt backup.txt
+'copied data.txt to backup.txt'</code></pre>
+    <p><strong>Explanation:</strong> Displays a message confirming the copy operation.</p>
+
+    <h3>5. Force Overwriting:</h3>
+    <pre><code>$ cp -f important.txt archive/</code></pre>
+    <p><strong>Explanation:</strong> Overwrites <code>important.txt</code> in the <code>archive</code> directory without confirmation.</p>
+
+    <h3>6. Copy Only Newer Files:</h3>
+    <pre><code>$ cp -u document.txt /backup/</code></pre>
+    <p><strong>Explanation:</strong> Copies <code>document.txt</code> to <code>/backup/</code> only if it is newer or doesn't exist there.</p>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>File Backup:</strong> Create backups of important files and directories.</li>
+        <li><strong>File Management:</strong> Organize and copy files to specific locations.</li>
+        <li><strong>Scripting:</strong> Automate file copying in shell scripts.</li>
+    </ul>
+
+    <h2>Script Example:</h2>
+    <pre><code>#!/bin/bash
+# Backup all .txt files from documents to backup folder
+mkdir -p backup
+cp -v documents/*.txt backup/
+echo "Backup completed."</code></pre>
+    <p><strong>Output:</strong></p>
+    <pre><code>copied 'documents/file1.txt' to 'backup/file1.txt'
+copied 'documents/file2.txt' to 'backup/file2.txt'</code></pre>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>cp</code>: Copies files or directories.</li>
+        <li><code>cp -r</code>: Copies directories recursively.</li>
+        <li><code>cp -i</code>: Prompts before overwriting files.</li>
+        <li><code>cp -f</code>: Forces overwriting without confirmation.</li>
+        <li><code>cp -v</code>: Provides verbose output for each operation.</li>
+        <li><code>cp -u</code>: Copies only newer files.</li>
+    </ul>
+
+    <p><strong>Warning:</strong> Be cautious when using the <code>cp</code> command to avoid unintentional overwriting of files.</p>
+</body>
+</html>
