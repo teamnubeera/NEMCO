@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux MV Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>mv</code> Command</h1>
+    <p>The <code>mv</code> command in Linux is used to <strong>move</strong> or <strong>rename</strong> files and directories. It can transfer files from one location to another or rename them within the same directory.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>mv [OPTIONS] SOURCE DESTINATION</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>mv</code>: Moves or renames files and directories.</li>
+        <li><code>mv -i</code>: Prompts before overwriting an existing file.</li>
+        <li><code>mv -f</code>: Forces overwriting without confirmation.</li>
+        <li><code>mv -v</code>: Displays verbose output for each operation.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Move a File:</h3>
+    <pre><code>$ mv file1.txt /home/user/documents/</code></pre>
+    <p><strong>Explanation:</strong> Moves <code>file1.txt</code> to the <code>/home/user/documents/</code> directory.</p>
+
+    <h3>2. Rename a File:</h3>
+    <pre><code>$ mv oldname.txt newname.txt</code></pre>
+    <p><strong>Explanation:</strong> Renames <code>oldname.txt</code> to <code>newname.txt</code> within the same directory.</p>
+
+    <h3>3. Move a Directory:</h3>
+    <pre><code>$ mv dir1 /home/user/projects/</code></pre>
+    <p><strong>Explanation:</strong> Moves the directory <code>dir1</code> to <code>/home/user/projects/</code>.</p>
+
+    <h3>4. Prompt Before Overwriting:</h3>
+    <pre><code>$ mv -i file.txt /backup/</code></pre>
+    <p><strong>Explanation:</strong> Asks for confirmation before overwriting any existing file in the <code>/backup/</code> directory.</p>
+
+    <h3>5. Verbose Mode:</h3>
+    <pre><code>$ mv -v data.txt archive/
+'moved data.txt to archive/data.txt'</code></pre>
+    <p><strong>Explanation:</strong> Displays a message confirming the move operation.</p>
+
+    <h3>6. Force Overwriting:</h3>
+    <pre><code>$ mv -f temp.txt /tmp/</code></pre>
+    <p><strong>Explanation:</strong> Overwrites <code>temp.txt</code> in the <code>/tmp/</code> directory without confirmation.</p>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>File Management:</strong> Organize and relocate files and directories.</li>
+        <li><strong>Renaming:</strong> Change file or directory names easily.</li>
+        <li><strong>Scripting:</strong> Automate file movement and renaming in shell scripts.</li>
+    </ul>
+
+    <h2>Script Example:</h2>
+    <pre><code>#!/bin/bash
+# Move all .log files to the logs directory
+mkdir -p logs
+mv -v *.log logs/
+echo "Log files moved to the logs directory."</code></pre>
+    <p><strong>Output:</strong></p>
+    <pre><code>moved 'error.log' to 'logs/error.log'
+moved 'access.log' to 'logs/access.log'</code></pre>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>mv</code>: Moves or renames files and directories.</li>
+        <li><code>mv -i</code>: Prompts before overwriting files.</li>
+        <li><code>mv -f</code>: Forces overwriting without confirmation.</li>
+        <li><code>mv -v</code>: Provides verbose output for each operation.</li>
+    </ul>
+
+    <p><strong>Warning:</strong> Be cautious when using the <code>mv</code> command to avoid unintentional overwriting or data loss.</p>
+</body>
+</html>
