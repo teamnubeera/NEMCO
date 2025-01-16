@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux MKDIR Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>mkdir</code> Command</h1>
+    <p>The <code>mkdir</code> command in Linux is used to <strong>create new directories</strong>. It allows you to create single or multiple directories at once, with various options for permissions and intermediate paths.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>mkdir [OPTIONS] DIRECTORY_NAME</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>mkdir</code>: Creates a new directory.</li>
+        <li><code>mkdir -p</code>: Creates parent directories as needed.</li>
+        <li><code>mkdir -m</code>: Sets permissions for the new directory.</li>
+        <li><code>mkdir -v</code>: Displays a message for each created directory.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Basic Usage:</h3>
+    <pre><code>$ mkdir my_directory</code></pre>
+    <p><strong>Explanation:</strong> Creates a directory named <code>my_directory</code> in the current working directory.</p>
+
+    <h3>2. Creating Parent Directories with <code>-p</code> Option:</h3>
+    <pre><code>$ mkdir -p /home/zaid/projects/new_project</code></pre>
+    <p><strong>Explanation:</strong> Creates the directory <code>new_project</code> and any intermediate directories (e.g., <code>projects</code>) if they do not exist.</p>
+
+    <h3>3. Setting Permissions with <code>-m</code> Option:</h3>
+    <pre><code>$ mkdir -m 755 secure_directory</code></pre>
+    <p><strong>Explanation:</strong> Creates a directory named <code>secure_directory</code> with the specified permissions (<code>755</code>).</p>
+
+    <h3>4. Verbose Mode with <code>-v</code> Option:</h3>
+    <pre><code>$ mkdir -v test_directory
+mkdir: created directory 'test_directory'</code></pre>
+    <p><strong>Explanation:</strong> Displays a message confirming the creation of the directory.</p>
+
+    <h3>5. Combining Options:</h3>
+    <pre><code>$ mkdir -p -m 700 /home/zaid/secure_folder/private</code></pre>
+    <p><strong>Explanation:</strong> Creates the directory <code>private</code> and its parent directories, setting the permissions to <code>700</code>.</p>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>Organizing Files:</strong> Create directories to organize files and projects.</li>
+        <li><strong>Scripting:</strong> Use in scripts to set up folder structures dynamically.</li>
+        <li><strong>Setting Permissions:</strong> Create directories with specific permissions for secure data storage.</li>
+    </ul>
+
+    <h2>Script Example:</h2>
+    <pre><code>#!/bin/bash
+# Create a directory structure for a project
+mkdir -p /home/zaid/project/{docs,src,bin}
+echo "Project directories created successfully."</code></pre>
+    <p><strong>Output:</strong></p>
+    <pre><code>Project directories created successfully.</code></pre>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>mkdir</code>: Creates a new directory.</li>
+        <li><code>mkdir -p</code>: Creates parent directories as needed.</li>
+        <li><code>mkdir -m</code>: Sets permissions for the new directory.</li>
+        <li><code>mkdir -v</code>: Displays messages for created directories.</li>
+    </ul>
+</body>
+</html>
