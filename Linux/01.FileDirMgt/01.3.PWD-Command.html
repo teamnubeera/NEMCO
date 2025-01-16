@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux PWD Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>pwd</code> Command</h1>
+    <p>The <code>pwd</code> command in Linux is used to <strong>print the current working directory</strong>. This is the directory in which your shell or terminal session is currently located.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>pwd [OPTION]</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>pwd</code>: Displays the full path of the current directory.</li>
+        <li><code>pwd -L</code>: Displays the logical path, including symbolic links.</li>
+        <li><code>pwd -P</code>: Displays the physical path, resolving symbolic links.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Basic Usage:</h3>
+    <pre><code>$ pwd
+/home/zaid/Documents</code></pre>
+    <p><strong>Explanation:</strong> Displays the absolute path of the current working directory.</p>
+
+    <h3>2. Using <code>-L</code> Option (Logical Path):</h3>
+    <pre><code>$ pwd -L
+/home/zaid/shortcut</code></pre>
+    <p><strong>Explanation:</strong> Displays the logical path, including symbolic links.</p>
+
+    <h3>3. Using <code>-P</code> Option (Physical Path):</h3>
+    <pre><code>$ pwd -P
+/home/zaid/realpath</code></pre>
+    <p><strong>Explanation:</strong> Resolves symbolic links and shows the actual directory path.</p>
+
+    <h3>4. Symbolic Link Behavior:</h3>
+    <pre><code># Create a symbolic link
+$ ln -s /home/zaid/realpath /home/zaid/shortcut
+
+# Logical path
+$ cd /home/zaid/shortcut
+$ pwd -L
+/home/zaid/shortcut
+
+# Physical path
+$ pwd -P
+/home/zaid/realpath</code></pre>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>Navigation:</strong> Confirm the current directory after using <code>cd</code> commands.</li>
+        <li><strong>Scripting:</strong> Dynamically get the current directory for file management or logging.</li>
+        <li><strong>Troubleshooting:</strong> Identify the real path of directories, especially when symbolic links are involved.</li>
+    </ul>
+
+    <h2>Script Example:</h2>
+    <pre><code>#!/bin/bash
+# Print the current working directory and store it in a variable
+current_dir=$(pwd)
+
+echo "Current directory is: $current_dir"</code></pre>
+    <p><strong>Output:</strong></p>
+    <pre><code>Current directory is: /home/zaid/scripts</code></pre>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>pwd</code>: Displays the absolute path of the current directory.</li>
+        <li><code>pwd -L</code>: Displays the logical path, including symbolic links.</li>
+        <li><code>pwd -P</code>: Displays the physical path, resolving symbolic links.</li>
+    </ul>
+</body>
+</html>
