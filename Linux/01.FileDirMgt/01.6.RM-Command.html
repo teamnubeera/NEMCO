@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux RM Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>rm</code> Command</h1>
+    <p>The <code>rm</code> command in Linux is used to <strong>remove files or directories</strong>. It can delete both empty and non-empty directories, as well as individual files.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>rm [OPTIONS] FILE_OR_DIRECTORY</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>rm</code>: Removes files.</li>
+        <li><code>rm -r</code>: Removes directories and their contents recursively.</li>
+        <li><code>rm -f</code>: Forces removal without confirmation prompts.</li>
+        <li><code>rm -i</code>: Prompts for confirmation before each removal.</li>
+        <li><code>rm -v</code>: Displays a message for each file or directory removed.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Remove a File:</h3>
+    <pre><code>$ rm myfile.txt</code></pre>
+    <p><strong>Explanation:</strong> Deletes the file named <code>myfile.txt</code>.</p>
+
+    <h3>2. Remove a Directory Recursively:</h3>
+    <pre><code>$ rm -r my_directory</code></pre>
+    <p><strong>Explanation:</strong> Deletes the directory <code>my_directory</code> and all its contents.</p>
+
+    <h3>3. Force Remove Without Confirmation:</h3>
+    <pre><code>$ rm -f important_file.txt</code></pre>
+    <p><strong>Explanation:</strong> Deletes <code>important_file.txt</code> without asking for confirmation, even if it is write-protected.</p>
+
+    <h3>4. Verbose Mode:</h3>
+    <pre><code>$ rm -v sample.txt
+removed 'sample.txt'</code></pre>
+    <p><strong>Explanation:</strong> Displays a message confirming the removal of <code>sample.txt</code>.</p>
+
+    <h3>5. Combining Options:</h3>
+    <pre><code>$ rm -rfv /home/zaid/temp_folder
+removed '/home/zaid/temp_folder/file1.txt'
+removed '/home/zaid/temp_folder'</code></pre>
+    <p><strong>Explanation:</strong> Removes the directory <code>temp_folder</code> and its contents forcefully, displaying verbose output.</p>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>Clearing Space:</strong> Remove unwanted files and directories to free up disk space.</li>
+        <li><strong>Scripting:</strong> Automate file removal in scripts.</li>
+        <li><strong>Cleaning Up:</strong> Delete temporary files and directories.</li>
+    </ul>
+
+    <h2>Script Example:</h2>
+    <pre><code>#!/bin/bash
+# Remove log files older than 7 days
+find /var/log -type f -name "*.log" -mtime +7 -exec rm -v {} \;
+echo "Old log files removed."</code></pre>
+    <p><strong>Output:</strong></p>
+    <pre><code>removed '/var/log/system.log'
+removed '/var/log/application.log'</code></pre>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>rm</code>: Deletes files or directories.</li>
+        <li><code>rm -r</code>: Removes directories and their contents recursively.</li>
+        <li><code>rm -f</code>: Forces removal without confirmation.</li>
+        <li><code>rm -i</code>: Prompts for confirmation before deletion.</li>
+        <li><code>rm -v</code>: Displays messages for removed files or directories.</li>
+    </ul>
+
+    <p><strong>Warning:</strong> The <code>rm</code> command is powerful and should be used with caution to avoid unintentional data loss.</p>
+</body>
+</html>
