@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux lscpu Command Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            font-size: 14px;
+        }
+        .example {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding the Linux <code>lscpu</code> Command</h1>
+
+    <p>The <code>lscpu</code> command in Linux is used to display detailed information about the CPU architecture of the system, including the number of CPUs, cores, threads, CPU model, and other related details. This command helps you to easily gather CPU information in a human-readable format.</p>
+
+    <h2>Basic Syntax</h2>
+    <pre><code>lscpu [OPTION]...</code></pre>
+    <ul>
+        <li><strong>OPTION</strong>: A specific option that can be used to format the output or filter specific details.</li>
+    </ul>
+
+    <h2>Common Output Example</h2>
+    <p>Here’s an example of the typical output from the <code>lscpu</code> command:</p>
+    <pre><code>Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+Byte Order:          Little Endian
+CPU(s):              4
+On-line CPU(s) list: 0-3
+Thread(s) per core:  2
+Core(s) per socket:  2
+Socket(s):           1
+NUMA node(s):        1
+Vendor ID:           GenuineIntel
+CPU family:          6
+Model:               142
+Model name:          Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+Stepping:            10
+CPU MHz:             1600.000
+CPU max MHz:         3400.0000
+CPU min MHz:         400.0000
+BogoMIPS:            3584.00
+Virtualization:      VT-x
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            256K
+L3 cache:            6144K
+NUMA node0 CPU(s):   0-3
+</code></pre>
+    <ul>
+        <li><strong>Architecture:</strong> The architecture of the CPU (e.g., x86_64).</li>
+        <li><strong>CPU(s):</strong> The total number of CPUs available.</li>
+        <li><strong>Thread(s) per core:</strong> The number of threads per CPU core (e.g., 2 threads per core).</li>
+        <li><strong>Core(s) per socket:</strong> The number of CPU cores per physical CPU socket.</li>
+        <li><strong>Socket(s):</strong> The number of CPU sockets on the system (e.g., 1 socket).</li>
+        <li><strong>Vendor ID:</strong> The manufacturer of the CPU (e.g., GenuineIntel).</li>
+        <li><strong>Model name:</strong> The full name of the CPU (e.g., Intel Core i5-8250U).</li>
+        <li><strong>CPU MHz:</strong> The current speed of the CPU (in MHz).</li>
+        <li><strong>L1, L2, L3 cache:</strong> The sizes of the CPU caches (Level 1, 2, and 3 cache).</li>
+        <li><strong>NUMA node(s):</strong> The number of NUMA (Non-Uniform Memory Access) nodes.</li>
+    </ul>
+
+    <h2>Commonly Used Options with <code>lscpu</code></h2>
+
+    <ul>
+        <li><code>-e, --extended</code> (extended output): Display additional information in a tabular format.
+            <pre><code>lscpu -e</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>CPU NODE   CPU  SOCKET  CORE  L1d L1i L2  L3
+  0   0       0     0      1   32K  32K  256K 6144K
+  1   0       1     0      1   32K  32K  256K 6144K
+  2   0       2     1      2   32K  32K  256K 6144K
+  3   0       3     1      2   32K  32K  256K 6144K</code></pre>
+        </div>
+
+        <li><code>-p, --parse</code> (parseable output): Show the output in a parseable format (suitable for scripts).
+            <pre><code>lscpu -p</code></pre>
+        </li>
+        <div class="example">
+            <pre><code># Logical CPU information in a comma-separated format
+0,0,0,1
+1,0,0,1
+2,0,1,2
+3,0,1,2</code></pre>
+        </div>
+
+        <li><code>-c, --cpu</code> (CPU information): Show only the CPU-related information in the output.
+            <pre><code>lscpu -c</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>CPU(s):              4
+Thread(s) per core:  2
+Core(s) per socket:  2
+Socket(s):           1
+NUMA node(s):        1</code></pre>
+        </div>
+
+        <li><code>-h, --help</code> (help): Display the help message and available options for <code>lscpu</code>.
+            <pre><code>lscpu -h</code></pre>
+        </li>
+
+        <li><code>-v, --version</code> (version): Display the version of the <code>lscpu</code> command.
+            <pre><code>lscpu -v</code></pre>
+        </li>
+    </ul>
+
+    <h2>Example of <code>lscpu</code> Output Explained</h2>
+    <pre><code>Architecture:        x86_64
+CPU op-mode(s):      32-bit, 64-bit
+CPU(s):              4
+On-line CPU(s) list: 0-3
+Thread(s) per core:  2
+Core(s) per socket:  2
+Socket(s):           1
+Model name:          Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            256K
+L3 cache:            6144K</code></pre>
+    <ul>
+        <li><strong>Architecture:</strong> x86_64 (64-bit architecture).</li>
+        <li><strong>CPU(s):</strong> 4 logical CPUs (indicating 4 threads).</li>
+        <li><strong>Thread(s) per core:</strong> 2 threads per CPU core (indicating Hyper-Threading).</li>
+        <li><strong>Core(s) per socket:</strong> 2 cores per CPU socket.</li>
+        <li><strong>Socket(s):</strong> 1 physical CPU socket.</li>
+        <li><strong>Model name:</strong> Intel Core i5-8250U CPU at 1.60GHz.</li>
+        <li><strong>L1d cache:</strong> 32KB Level 1 data cache per core.</li>
+        <li><strong>L1i cache:</strong> 32KB Level 1 instruction cache per core.</li>
+        <li><strong>L2 cache:</strong> 256KB Level 2 cache per core.</li>
+        <li><strong>L3 cache:</strong> 6MB Level 3 cache shared across all cores.</li>
+    </ul>
+
+    <h2>Additional Notes</h2>
+    <ul>
+        <li><code>lscpu</code> is helpful for understanding the structure of your system’s CPU, including cores, threads, and cache hierarchy.</li>
+        <li>This command does not require root privileges and works on most Linux distributions.</li>
+        <li><code>lscpu</code> is a quick way to get an overview of your CPU architecture, which can be useful for system performance tuning or troubleshooting hardware-related issues.</li>
+    </ul>
+
+</body>
+</html>
