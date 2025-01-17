@@ -3,10 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Page</title>
+    <title>Interactive File Viewer (less)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #file-container {
+            width: 100%;
+            height: 80vh;
+            overflow-y: scroll;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-family: "Courier New", Courier, monospace;
+            white-space: pre-wrap; /* To preserve formatting */
+        }
+        .nav-buttons {
+            text-align: center;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, welcome to my website!</h1>
-    <p>This is a simple HTML page.</p>
+
+    <div id="file-container"></div>
+    
+    <div class="nav-buttons">
+        <button id="scroll-up">Scroll Up</button>
+        <button id="scroll-down">Scroll Down</button>
+    </div>
+
+    <script>
+        // Example file content (replace this with actual file content)
+        const fileContent = `This is an example file content.
+It simulates the behavior of the 'less' command.
+You can scroll through this content to navigate.
+Scroll up and down to view more lines of text.
+This is a large file simulation with a lot of content...
+...
+
+Continue scrolling down to load more content, just like the less command.`;
+
+        const fileContainer = document.getElementById('file-container');
+        fileContainer.textContent = fileContent;
+
+        // Scroll up functionality
+        document.getElementById('scroll-up').addEventListener('click', () => {
+            fileContainer.scrollTop -= 100; // Scrolls up by 100px
+        });
+
+        // Scroll down functionality
+        document.getElementById('scroll-down').addEventListener('click', () => {
+            fileContainer.scrollTop += 100; // Scrolls down by 100px
+        });
+    </script>
+
 </body>
 </html>
