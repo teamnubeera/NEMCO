@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Two Files with cmp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        pre {
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 14px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Compare Two Files with the cmp Command</h1>
+        <p>The <code>cmp</code> command in Linux is used to compare two files byte by byte. It is useful for detecting the first difference between two files. If the files are identical, no output is displayed. If they differ, it shows the location of the first differing byte.</p>
+        
+        <h2>Syntax:</h2>
+        <pre><code>cmp [options] file1 file2</code></pre>
+        
+        <h2>Example:</h2>
+        <pre><code>cmp file1.txt file2.txt</code></pre>
+
+        <p>If the files are identical, there is no output. If they are different, the command will output something like this:</p>
+        <pre><code>file1.txt file2.txt differ: byte 5, line 1</code></pre>
+        
+        <p>The output shows the byte number and the line where the difference is found. You can use various options to control the behavior of <code>cmp</code>, such as:</p>
+        <ul>
+            <li><code>-b</code>: Print byte numbers in decimal.</li>
+            <li><code>-l</code>: Print all differing bytes.</li>
+            <li><code>-s</code>: Suppress output, only return the exit status.</li>
+        </ul>
+
+        <h2>How to Use <code>cmp</code>:</h2>
+        <ol>
+            <li>Open a terminal in your Linux system.</li>
+            <li>Navigate to the directory where the files are located using <code>cd</code>.</li>
+            <li>Run the <code>cmp</code> command with the file names as arguments.</li>
+            <li>Review the output to see if the files are identical or where they differ.</li>
+        </ol>
+    </div>
+</body>
+</html>
