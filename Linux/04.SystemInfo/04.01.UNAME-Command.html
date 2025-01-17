@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux UNAME Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>uname</code> Command</h1>
+    <p>The <code>uname</code> command in Linux is used to display basic system information, including the kernel name, machine type, and more.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>uname [OPTIONS]</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>-a</code>: Prints all available system information.</li>
+        <li><code>-s</code>: Prints the kernel name.</li>
+        <li><code>-n</code>: Prints the network hostname.</li>
+        <li><code>-r</code>: Prints the kernel release.</li>
+        <li><code>-v</code>: Prints the kernel version.</li>
+        <li><code>-m</code>: Prints the machine hardware name.</li>
+        <li><code>-p</code>: Prints the processor type (if available).</li>
+        <li><code>-i</code>: Prints the hardware platform (if available).</li>
+        <li><code>-o</code>: Prints the operating system.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Print Kernel Name:</h3>
+    <pre><code>$ uname -s
+Linux</code></pre>
+    <p><strong>Explanation:</strong> Displays the kernel name of the system.</p>
+
+    <h3>2. Print Kernel Release:</h3>
+    <pre><code>$ uname -r
+5.15.0-56-generic</code></pre>
+    <p><strong>Explanation:</strong> Displays the version of the Linux kernel currently running.</p>
+
+    <h3>3. Print All System Information:</h3>
+    <pre><code>$ uname -a
+Linux ubuntu 5.15.0-56-generic #62-Ubuntu SMP Fri Nov 25 18:24:45 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux</code></pre>
+    <p><strong>Explanation:</strong> Displays all available system information, including kernel name, hostname, kernel release, version, machine type, and more.</p>
+
+    <h3>4. Print Machine Hardware Name:</h3>
+    <pre><code>$ uname -m
+x86_64</code></pre>
+    <p><strong>Explanation:</strong> Displays the hardware architecture of the system.</p>
+
+    <h3>5. Print Operating System:</h3>
+    <pre><code>$ uname -o
+GNU/Linux</code></pre>
+    <p><strong>Explanation:</strong> Displays the operating system running on the system.</p>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>System Identification:</strong> Quickly check the kernel, machine, or OS details.</li>
+        <li><strong>Debugging:</strong> Determine the system information while troubleshooting issues.</li>
+        <li><strong>Scripting:</strong> Include system details in automated scripts for dynamic behavior.</li>
+    </ul>
+
+    <h2>Script Example:</h2>
+    <pre><code>#!/bin/bash
+# Check the kernel version and machine architecture
+KERNEL=$(uname -r)
+MACHINE=$(uname -m)
+echo "Kernel Version: $KERNEL"
+echo "Machine Architecture: $MACHINE"
+</code></pre>
+    <p><strong>Output:</strong></p>
+    <pre><code>Kernel Version: 5.15.0-56-generic
+Machine Architecture: x86_64</code></pre>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>uname</code>: Displays system information.</li>
+        <li><code>-a</code>: Prints all available details.</li>
+        <li><code>-s</code>: Prints the kernel name.</li>
+        <li><code>-r</code>: Prints the kernel release.</li>
+        <li><code>-m</code>: Prints the machine hardware name.</li>
+        <li><code>-o</code>: Prints the operating system.</li>
+    </ul>
+
+    <p><strong>Tip:</strong> Combine <code>uname</code> with other commands to gather comprehensive system details.</p>
+</body>
+</html>
