@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>parted Command: A More Advanced Partitioning Tool</title>
+</head>
+<body>
+    <h1>parted Command: A More Advanced Partitioning Tool</h1>
+    <p>The <code>parted</code> command in Linux is a powerful and advanced partitioning tool used for managing disk partitions. It supports both MBR (Master Boot Record) and GPT (GUID Partition Table) partitioning schemes and is considered a more feature-rich and flexible alternative to <code>fdisk</code>. <code>parted</code> is suitable for both older BIOS-based systems as well as modern UEFI systems using GPT.</p>
+
+    <h2>Key Features of the parted Command</h2>
+    <ul>
+        <li><strong>Supports GPT and MBR partitioning:</strong> <code>parted</code> works with both MBR (for older systems) and GPT (for newer systems with UEFI), providing flexibility across various systems.</li>
+        <li><strong>Dynamic partition resizing:</strong> Unlike <code>fdisk</code>, <code>parted</code> can resize partitions without requiring them to be unmounted.</li>
+        <li><strong>Interactive and command-line modes:</strong> <code>parted</code> can be run in an interactive shell or with individual commands directly in the terminal.</li>
+        <li><strong>Support for large disks:</strong> <code>parted</code> is capable of handling large disks (greater than 2TB), which is one of the limitations of MBR.</li>
+        <li><strong>Works with different file systems:</strong> <code>parted</code> is compatible with various file systems like ext4, ntfs, fat32, and more.</li>
+    </ul>
+
+    <h2>Basic parted Command Usage</h2>
+    <p>The basic syntax for using the <code>parted</code> command is as follows:</p>
+    <pre><code>parted [OPTION] <device></code></pre>
+    <p>Where:
+    <ul>
+        <li><code>OPTION</code>: Optional flags to modify the behavior of <code>parted</code> (e.g., <code>-l</code> to list partitions).</li>
+        <li><code>device</code>: The disk or storage device on which you want to work (e.g., <code>/dev/sda</code>, <code>/dev/nvme0n1</code>).</li>
+    </ul></p>
+
+    <h3>1. List partitions</h3>
+    <pre><code>sudo parted -l</code></pre>
+    <p>To list all partitions on all detected disks, use the <code>-l</code> option. This will display partition details such as size, file system type, and partition type (MBR or GPT).</p>
+    <p><strong>Example:</strong></p>
+    <pre><code>sudo parted -l</code></pre>
+    <p>This command will list partitions on all detected disks, displaying information such as:</p>
+    <pre><code>Model: ATA Samsung SSD 860 (scsi)
+    Disk /dev/sda: 500GB
+    Sector size (logical/physical): 512B/512B
+    Partition Table: gpt
+
+    Number  Start   End     Size    File system  Name   Flags
+     1      1049kB 500GB   500GB   ext4          primary</code></pre>
+
+    <h3>2. Start parted for a specific device</h3>
+    <pre><code>sudo parted /dev/sda</code></pre>
+    <p>To open <code>parted</code> in interactive mode for a specific device (e.g., <code>/dev/sda</code>), use the command above. This will start an interactive session where you can manage partitions for the device.</p>
+
+    <h2>Common Interactive parted Commands</h2>
+    <p>Once you run <code>parted</code> on a device (e.g., <code>sudo parted /dev/sda</code>), you will enter the interactive mode. Some common commands in the interactive mode are:</p>
+    <ul>
+        <li><strong>help</strong>: Displays a list of available commands and a brief description of each.</li>
+        <li><strong>print</strong>: Prints the partition table of the current disk, showing the partitions and their details.</li>
+        <li><strong>mklabel</strong>: Creates a new partition table (either MBR or GPT) on the disk.</li>
+        <li><strong>mkpart</strong>: Creates a new partition on the disk.</li>
+        <li><strong>rm</strong>: Deletes a partition from the disk.</li>
+        <li><strong>resizepart</strong>: Resizes an existing partition.</li>
+        <li><strong>quit</strong>: Exits the interactive mode without saving changes.</li>
+    </ul>
+
+    <h3>3. Create a new partition</h3>
+    <p>To create a new partition, use the <code>mkpart</code> command in the interactive mode:</p>
+    <pre><code>mkpart <part_type> <fs_type> <start> <end></code></pre>
+    <p>Where:
+    <ul>
+        <li><code>part_type</code>: The type of the partition (e.g., <code>primary</code>, <code>logical</code>).</li>
+        <li><code>fs_type</code>: The file system type for the partition (e.g., <code>ext4</code>, <code>fat32</code>, <code>ntfs</code>).</li>
+        <li><code>start</code>: The starting position of the partition (e.g., <code>1MB</code> or <code>500MB</code>).</li>
+        <li><code>end</code>: The ending position of the partition (e.g., <code>100GB</code> or <code>95%</code> of the disk).</li>
+    </ul></p>
+    <p><strong>Example:</strong> Create a new ext4 partition that starts at 1MB and ends at 100GB:</p>
+    <pre><code>mkpart primary ext4 1MB 100GB</code></pre>
+
+    <h3>4. Resize a partition</h3>
+    <p>If you need to resize an existing partition, use the <code>resizepart</code> command:</p>
+    <pre><code>resizepart <partition_number> <new_end_position></code></pre>
+    <p><strong>Example:</strong> Resize partition 1 to end at 150GB:</p>
+    <pre><code>resizepart 1 150GB</code></pre>
+
+    <h3>5. Delete a partition</h3>
+    <p>To delete an existing partition, use the <code>rm</code> command:</p>
+    <pre><code>rm <partition_number></code></pre>
+    <p><strong>Example:</strong> Delete partition 1:</p>
+    <pre><code>rm 1</code></pre>
+
+    <h3>6. Write changes and quit</h3>
+    <p>After making changes, use the <code>quit</code> command to exit the interactive mode. The changes will be automatically applied when you quit.</p>
+
+    <h2>Understanding GPT and MBR Partitioning</h2>
+    <p><code>parted</code> can handle both MBR and GPT partitioning schemes. Here's a quick overview of both:</p>
+    <ul>
+        <li><strong>MBR (Master Boot Record)</strong>: The traditional partitioning scheme, limited to 4 primary partitions or 3 primary partitions plus one extended partition that can hold logical partitions. MBR supports disks up to 2TB in size.</li>
+        <li><strong>GPT (GUID Partition Table)</strong>: A more modern partitioning scheme that supports a larger number of partitions (up to 128), and supports disks larger than 2TB. GPT is required for UEFI-based systems and is considered more robust than MBR.</li>
+    </ul>
+    <p><strong>Note:</strong> To switch between MBR and GPT partitioning, you can use the <code>mklabel</code> command, but this will erase all existing data on the disk.</p>
+
+    <h2>Examples of Using parted</h2>
+    <ol>
+        <li><strong>List partitions on all disks:</strong> <code>sudo parted -l</code></li>
+        <li><strong>Open parted for a specific disk:</strong> <code>sudo parted /dev/sda</code></li>
+        <li><strong>Create a new partition:</strong> <code>mkpart primary ext4 1MB 100GB</code></li>
+        <li><strong>Resize a partition:</strong> <code>resizepart 1 150GB</code></li>
+        <li><strong>Delete a partition:</strong> <code>rm 1</code></li>
+        <li><strong>Write changes and quit:</strong> <code>quit</code></li>
+    </ol>
+
+    <h2>Commonly Used Commands in Conjunction with parted</h2>
+    <ul>
+        <li><strong>mkfs</strong>: After creating partitions with <code>parted</code>, you can use the <code>mkfs</code> command to create file systems on the new partitions.</li>
+        <li><strong>lsblk</strong>: The <code>lsblk</code> command is used to list all available block devices, including partitions, file systems, and mount points, allowing you to verify changes made with <code>parted</code>.</li>
+        <li><strong>gdisk</strong>: Another tool for working with GPT partition tables, <code>gdisk</code> provides additional features for GPT disks.</li>
+    </ul>
+
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li><strong>Partition Table Corruption:</strong> Always back up data before making changes to partitions. Mistakes can lead to data loss.</li>
+        <li><strong>Unable to resize partitions:</strong> Some partitions cannot be resized while mounted or in use. Unmount them first or use live CD/USB.</li>
+        <li><strong>Partition Not Showing:</strong> After partitioning, use <code>partprobe</code> or reboot the system to ensure the kernel recognizes the new partition table.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <code>parted</code> command is a powerful and flexible partitioning tool that can handle both MBR and GPT partition schemes. It is useful for creating, resizing, deleting, and managing partitions on disks, and is essential for working with modern systems that require GPT partitioning. Always be cautious when modifying disk partitions, and ensure that you have backups of important data before proceeding.</p>
+
+    <p>If you have any further questions about using the <code>parted</code> command, feel free to ask!</p>
+</body>
+</html>
