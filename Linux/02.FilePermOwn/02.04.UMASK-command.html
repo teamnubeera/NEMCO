@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux umask Command Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; padding: 20px; background-color: #f4f4f4; }
+        h1, h2, h3 { color: #333; }
+        pre { background: #333; color: #fff; padding: 10px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Linux umask Command Guide</h1>
+    
+    <h2>1. Understanding umask</h2>
+    <p>The <code>umask</code> command in Linux is used to set default file permissions for newly created files and directories.</p>
+    
+    <h2>2. Basic Syntax</h2>
+    <pre>umask [PERMISSION]</pre>
+    
+    <h2>3. Viewing Current umask Value</h2>
+    <p>To check the current umask value, use:</p>
+    <pre>umask</pre>
+    
+    <h2>4. Setting umask Value</h2>
+    <p>To change the default file permission mask:</p>
+    <pre>umask 022</pre>
+    
+    <h2>5. Understanding umask Values</h2>
+    <table>
+        <tr>
+            <th>umask Value</th><th>File Default Permissions</th><th>Directory Default Permissions</th>
+        </tr>
+        <tr>
+            <td>000</td><td>666 (-rw-rw-rw-)</td><td>777 (rwxrwxrwx)</td>
+        </tr>
+        <tr>
+            <td>022</td><td>644 (-rw-r--r--)</td><td>755 (rwxr-xr-x)</td>
+        </tr>
+        <tr>
+            <td>077</td><td>600 (-rw-------)</td><td>700 (rwx------)</td>
+        </tr>
+    </table>
+    
+    <h2>6. Applying umask Permanently</h2>
+    <p>To make umask changes permanent, add the command to:</p>
+    <pre>~/.bashrc or ~/.profile</pre>
+    
+    <h2>7. Common umask Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th><th>Description</th>
+        </tr>
+        <tr>
+            <td>umask 022</td><td>Default for most systems, allows read access for others</td>
+        </tr>
+        <tr>
+            <td>umask 077</td><td>Restricts access to owner only</td>
+        </tr>
+        <tr>
+            <td>umask 002</td><td>Allows group members to modify files</td>
+        </tr>
+    </table>
+</body>
+</html>
