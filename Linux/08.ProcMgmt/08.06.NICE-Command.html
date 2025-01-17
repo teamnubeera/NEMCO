@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nice Command: Set the Priority of a Process</title>
+</head>
+<body>
+    <h1>nice Command: Set the Priority of a Process</h1>
+    <p>The <code>nice</code> command in Linux is used to set the priority of a process. In Unix-like systems, processes have a priority level known as "niceness," which determines the amount of CPU time they receive. By adjusting the niceness of a process, you can make it run with a higher or lower priority relative to other processes.</p>
+
+    <h2>Key Features of the nice Command</h2>
+    <ul>
+        <li><strong>Adjust process priority</strong>: The primary function of the <code>nice</code> command is to adjust the priority (niceness) of a process, either to increase its priority (make it "nicer") or decrease it (make it "less nice").</li>
+        <li><strong>Priority range</strong>: Niceness values range from -20 (highest priority) to +19 (lowest priority), with 0 being the default priority.</li>
+        <li><strong>Modify CPU usage</strong>: By adjusting the priority, you control how much CPU time a process gets compared to others. Higher priority processes are allocated more CPU time, while lower priority ones get less.</li>
+    </ul>
+
+    <h2>Basic nice Command Usage</h2>
+    <p>Here’s the basic syntax of the <code>nice</code> command:</p>
+    <pre><code>nice [OPTION] [COMMAND [ARGUMENTS]]</code></pre>
+    <p>The <code>nice</code> command is typically followed by the command you want to execute with the adjusted priority. If no priority is specified, it will use the default niceness of 10.</p>
+
+    <h3>1. Set a specific niceness value for a process</h3>
+    <pre><code>nice -n &lt;niceness_value&gt; &lt;command&gt;</code></pre>
+    <p>The <code>-n</code> option allows you to specify the niceness value for the process. The value can be between -20 and +19, where lower values (closer to -20) mean higher priority, and higher values (closer to +19) mean lower priority.</p>
+    <p><strong>Example:</strong> To run a command with higher priority:</p>
+    <pre><code>nice -n -10 command_name</code></pre>
+    <p>This will run <code>command_name</code> with a priority of -10 (higher priority than the default).</p>
+
+    <h3>2. Use nice to run a command with default priority</h3>
+    <pre><code>nice command_name</code></pre>
+    <p>If you don't specify a priority, <code>nice</code> will run the command with the default priority of 10.</p>
+    <p><strong>Example:</strong> Running a command with the default priority of 10:</p>
+    <pre><code>nice command_name</code></pre>
+
+    <h3>3. Run a command with the highest priority</h3>
+    <pre><code>nice -n -20 command_name</code></pre>
+    <p>The <code>-20</code> value represents the highest possible priority. This command will run the specified command with the highest priority, meaning it will receive the maximum available CPU time.</p>
+    <p><strong>Example:</strong> Running a command with the highest priority:</p>
+    <pre><code>nice -n -20 command_name</code></pre>
+
+    <h2>How niceness Affects Process Priority</h2>
+    <p>In Linux, the niceness value is used to adjust the priority of a process. By default, processes are assigned a niceness of 0. The lower the niceness value (toward -20), the higher the priority, and the more CPU time the process will get. Conversely, the higher the niceness value (toward +19), the lower the priority, meaning the process will get less CPU time.</p>
+
+    <ul>
+        <li><strong>Niceness -20</strong>: Highest priority (maximum CPU time).</li>
+        <li><strong>Niceness 0</strong>: Default priority (standard CPU time allocation).</li>
+        <li><strong>Niceness +19</strong>: Lowest priority (minimal CPU time).</li>
+    </ul>
+
+    <p>Processes with higher priority (lower niceness values) are given more CPU time by the operating system, while processes with lower priority (higher niceness values) may be delayed or given less CPU time, depending on the system load.</p>
+
+    <h2>Examples of Using nice</h2>
+    <ol>
+        <li><strong>Run a command with default priority (niceness 10):</strong> <code>nice command_name</code></li>
+        <li><strong>Run a command with higher priority (niceness -10):</strong> <code>nice -n -10 command_name</code></li>
+        <li><strong>Run a command with the highest priority (niceness -20):</strong> <code>nice -n -20 command_name</code></li>
+        <li><strong>Run a command with lower priority (niceness +10):</strong> <code>nice -n +10 command_name</code></li>
+    </ol>
+
+    <h2>Commonly Used Commands in Conjunction with nice</h2>
+    <ul>
+        <li><strong>renice</strong>: The <code>renice</code> command is used to change the priority (niceness) of an already running process. It allows you to adjust the priority of an active process rather than setting it when the process is started.</li>
+        <li><strong>ps</strong>: The <code>ps</code> command can be used to view information about running processes, including their PID and priority (niceness). For example, <code>ps aux</code> lists all processes with their niceness values.</li>
+        <li><strong>top</strong>: The <code>top</code> command displays an interactive list of running processes, including their priority and CPU usage. This is useful for monitoring the resource usage of processes in real-time.</li>
+    </ul>
+
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li><strong>Permission Issues:</strong> The <code>nice</code> command allows users to run commands with a lower niceness value (lower priority), but only privileged users (e.g., root) can set a niceness value of less than 0. Regular users can only increase the niceness (make the process lower priority).</li>
+        <li><strong>High Priority Processes Not Responding:</strong> If you set a process to run with a very high priority, it might consume too much CPU time, which could result in other processes being delayed. Make sure to monitor the system load and adjust priorities as needed.</li>
+        <li><strong>Process Not Starting with Desired Priority:</strong> Double-check that you are using the correct syntax and that the priority level falls within the allowed range of -20 to +19.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <code>nice</code> command is a powerful tool for adjusting the priority of processes in Linux. By manipulating the niceness of a process, you can ensure that important tasks get the CPU time they need, while less critical tasks run with lower priority. It is commonly used in high-performance computing or when running resource-intensive tasks that need to be balanced with other processes.</p>
+
+    <p>If you have more questions about using the <code>nice</code> command or need further clarification, feel free to ask!</p>
+</body>
+</html>
