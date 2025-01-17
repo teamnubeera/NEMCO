@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux PS Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>ps</code> Command</h1>
+    <p>The <code>ps</code> command in Linux is used to display information about active processes. It provides a snapshot of current processes, their IDs, and their statuses at a specific moment in time.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>ps [OPTIONS]</code></pre>
+
+    <p><strong>Common Options:</strong></p>
+    <ul>
+        <li><code>-e</code>: Displays all processes.</li>
+        <li><code>-f</code>: Provides a full-format listing with detailed information.</li>
+        <li><code>-u &lt;user&gt;</code>: Displays processes owned by a specific user.</li>
+        <li><code>-p &lt;PID&gt;</code>: Displays information for specific process IDs.</li>
+        <li><code>-x</code>: Shows processes without a controlling terminal.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Display All Processes:</h3>
+    <pre><code>$ ps -e</code></pre>
+    <p><strong>Explanation:</strong> Lists all active processes in the system.</p>
+
+    <h3>2. Display Processes in Full Format:</h3>
+    <pre><code>$ ps -f</code></pre>
+    <p><strong>Explanation:</strong> Displays detailed information, including PID, PPID, CPU time, and the command.</p>
+
+    <h3>3. Show Processes for a Specific User:</h3>
+    <pre><code>$ ps -u john</code></pre>
+    <p><strong>Explanation:</strong> Displays processes owned by the user <code>john</code>.</p>
+
+    <h3>4. Display Information for Specific PIDs:</h3>
+    <pre><code>$ ps -p 1234,5678</code></pre>
+    <p><strong>Explanation:</strong> Shows details for processes with PIDs 1234 and 5678.</p>
+
+    <h3>5. Display Processes Without a Controlling Terminal:</h3>
+    <pre><code>$ ps -x</code></pre>
+    <p><strong>Explanation:</strong> Lists processes that are not associated with any terminal.</p>
+
+    <h2>Output Breakdown:</h2>
+    <ul>
+        <li><strong>PID:</strong> Process ID.</li>
+        <li><strong>TTY:</strong> Terminal associated with the process.</li>
+        <li><strong>TIME:</strong> CPU time consumed by the process.</li>
+        <li><strong>CMD:</strong> Command that started the process.</li>
+    </ul>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>System Monitoring:</strong> Check running processes and their resource usage.</li>
+        <li><strong>Debugging:</strong> Identify processes causing system issues.</li>
+        <li><strong>User Management:</strong> Monitor processes owned by specific users.</li>
+    </ul>
+
+    <h2>Related Commands:</h2>
+    <ul>
+        <li><code>top</code>: Provides real-time process monitoring.</li>
+        <li><code>htop</code>: Interactive process viewer with more features.</li>
+        <li><code>kill</code>: Sends signals to processes to terminate or manage them.</li>
+    </ul>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>ps</code>: Displays information about active processes.</li>
+        <li><code>-e</code>: Shows all processes.</li>
+        <li><code>-f</code>: Provides a detailed view of processes.</li>
+        <li><code>-u</code>: Filters processes by user.</li>
+        <li><code>-p</code>: Displays specific processes by PID.</li>
+    </ul>
+
+    <p><strong>Tip:</strong> Combine <code>ps</code> with other commands (like <code>grep</code>) to filter and analyze processes effectively.</p>
+</body>
+</html>
