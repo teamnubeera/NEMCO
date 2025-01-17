@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YUM Command Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #333366;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>YUM Command Tutorial</h1>
+    <p><strong>YUM</strong> (Yellowdog Updater, Modified) is a package management tool used in RPM-based Linux distributions like CentOS, Red Hat Enterprise Linux (RHEL), and Fedora. It is used to install, update, remove, and manage packages from software repositories, and it resolves dependencies automatically during package management operations.</p>
+
+    <h2>Overview of YUM:</h2>
+    <p><code>yum</code> is an advanced front-end package management tool for RPM-based distributions. It works with package repositories and uses metadata to automatically resolve and install dependencies. YUM simplifies package management by automating updates, installations, and removals.</p>
+
+    <h2>Basic Commands:</h2>
+
+    <h3>1. Installing Packages</h3>
+    <p>To install a package, use the <code>install</code> command followed by the package name:</p>
+    <pre><code>sudo yum install &lt;package_name&gt;</code></pre>
+    <p>For example, to install <code>vim</code>:</p>
+    <pre><code>sudo yum install vim</code></pre>
+    <p>This command will automatically resolve dependencies and install the package.</p>
+
+    <h3>2. Removing Packages</h3>
+    <p>To remove a package from your system, use the <code>remove</code> command:</p>
+    <pre><code>sudo yum remove &lt;package_name&gt;</code></pre>
+    <p>For example, to remove <code>vim</code>:</p>
+    <pre><code>sudo yum remove vim</code></pre>
+    <p>This will uninstall the package and its dependencies if they are no longer required by any other installed packages.</p>
+
+    <h3>3. Updating Packages</h3>
+    <p>To update all installed packages to their latest available versions, use the <code>update</code> command:</p>
+    <pre><code>sudo yum update</code></pre>
+    <p>To update a specific package, specify the package name:</p>
+    <pre><code>sudo yum update &lt;package_name&gt;</code></pre>
+    <p>For example, to update <code>vim</code>:</p>
+    <pre><code>sudo yum update vim</code></pre>
+    <p>YUM will check the repositories for newer versions of the specified package and install them if available.</p>
+
+    <h3>4. Searching for Packages</h3>
+    <p>To search for a package, use the <code>search</code> command:</p>
+    <pre><code>yum search &lt;package_name&gt;</code></pre>
+    <p>For example, to search for a package related to <code>vim</code>:</p>
+    <pre><code>yum search vim</code></pre>
+    <p>This command will return a list of packages that match the search term along with brief descriptions.</p>
+
+    <h3>5. Listing Installed Packages</h3>
+    <p>To list all installed packages, use the <code>list installed</code> command:</p>
+    <pre><code>yum list installed</code></pre>
+    <p>This will show all packages that are currently installed on the system.</p>
+
+    <h3>6. Displaying Package Information</h3>
+    <p>To display detailed information about an installed package, use the <code>info</code> command:</p>
+    <pre><code>yum info &lt;package_name&gt;</code></pre>
+    <p>For example, to get information about the <code>vim</code> package:</p>
+    <pre><code>yum info vim</code></pre>
+    <p>This will display information such as the package description, version, size, and repository details.</p>
+
+    <h3>7. Viewing Available Package Updates</h3>
+    <p>If you want to check if there are any updates available for installed packages, use:</p>
+    <pre><code>yum check-update</code></pre>
+    <p>This command will list packages with available updates from the repositories without actually installing them.</p>
+
+    <h3>8. Cleaning Up YUM Cache</h3>
+    <p>Over time, YUM’s cache may accumulate a lot of unnecessary data. You can clean the cache using the <code>clean</code> command:</p>
+    <pre><code>sudo yum clean all</code></pre>
+    <p>This will remove all cached files, which can help free up disk space.</p>
+
+    <h2>How YUM Works</h2>
+    <p><code>yum</code> works with repositories that contain RPM packages. When you run a command like <code>yum install</code>, it queries the repositories for the latest metadata about available packages and their dependencies. YUM then checks if the package is already installed and resolves any dependencies before installing the package.</p>
+    
+    <p>YUM automatically installs dependencies, and if a package is removed, YUM can also remove unneeded dependencies (if no other installed package requires them). This makes YUM a convenient tool for managing system packages and updates.</p>
+
+    <h2>Common Use Cases for YUM</h2>
+
+    <h3>1. Installing Software from Repositories</h3>
+    <p>YUM is primarily used for installing packages from configured repositories. It’s useful when you need to quickly install software with automatic dependency resolution:</p>
+    <pre><code>sudo yum install &lt;package_name&gt;</code></pre>
+
+    <h3>2. Updating the System</h3>
+    <p>YUM is ideal for keeping the system up to date by running <code>yum update</code>. This ensures that you have the latest versions of software with bug fixes and security patches:</p>
+    <pre><code>sudo yum update</code></pre>
+
+    <h3>3. Searching and Managing Packages</h3>
+    <p>YUM makes it easy to search for packages and view detailed information. You can also list installed packages, check for updates, and even clean up your cache:</p>
+    <pre><code>yum search &lt;package_name&gt;</code></pre>
+    <pre><code>yum list installed</code></pre>
+    <pre><code>yum check-update</code></pre>
+
+    <h3>4. Removing Unwanted Packages</h3>
+    <p>If you want to uninstall packages that are no longer needed, YUM provides an easy way to remove them while resolving dependencies:</p>
+    <pre><code>sudo yum remove &lt;package_name&gt;</code></pre>
+
+    <h2>Additional YUM Features</h2>
+
+    <h3>1. Managing YUM Repositories</h3>
+    <p>You can manage your YUM repositories through configuration files located in <code>/etc/yum.repos.d/</code>. These files contain the repository URLs and other settings. To list all enabled repositories:</p>
+    <pre><code>yum repolist</code></pre>
+
+    <h3>2. Installing from a Local RPM File</h3>
+    <p>If you have a local RPM file, you can use YUM to install it (although <code>rpm</code> is the more direct method). The command is:</p>
+    <pre><code>sudo yum localinstall &lt;package_file.rpm&gt;</code></pre>
+    <p>This will automatically handle any dependencies that the RPM package requires.</p>
+
+    <h3>3. Disabling a Repository Temporarily</h3>
+    <p>If you need to disable a repository temporarily while running a YUM command, you can use the <code>--disablerepo</code> option:</p>
+    <pre><code>yum --disablerepo=&lt;repo_name&gt; install &lt;package_name&gt;</code></pre>
+
+    <h2>Summary of Key `yum` Commands:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>sudo yum install &lt;package_name&gt;</code></td>
+                <td>Install a package and resolve dependencies automatically.</td>
+            </tr>
+            <tr>
+                <td><code>sudo yum remove &lt;package_name&gt;</code></td>
+                <td>Remove a package from your system.</td>
+            </tr>
+            <tr>
+                <td><code>sudo yum update</code></td>
+                <td>Update all installed packages to the latest version.</td>
+            </tr>
+            <tr>
+                <td><code>yum search &lt;package_name&gt;</code></td>
+                <td>Search for a package in the enabled repositories.</td>
+            </tr>
+            <tr>
+                <td><code>yum list installed</code></td>
+                <td>List all installed packages.</td>
+            </tr>
+            <tr>
+                <td><code>yum info &lt;package_name&gt;</code></td>
+                <td>Display detailed information about a package.</td>
+            </tr>
+            <tr>
+                <td><code>yum check-update</code></td>
+                <td>Check for available package updates.</td>
+            </tr>
+            <tr>
+                <td><code>sudo yum clean all</code></td>
+                <td>Clean up the YUM cache.</td>
+            </tr>
+            <tr>
+                <td><code>yum repolist</code></td>
+                <td>List all enabled repositories.</td>
+            </tr>
+            <tr>
+                <td><code>sudo yum localinstall &lt;package_file.rpm&gt;</code></td>
+                <td>Install a local RPM package and resolve dependencies.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
