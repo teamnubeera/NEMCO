@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SS Command Guide</title>
+</head>
+<body>
+    <h1>SS Command: Display Socket Statistics (Replacement for Netstat)</h1>
+    <p>The <code>ss</code> command in Linux is used to display detailed socket statistics and is considered a faster alternative to <code>netstat</code>.</p>
+    <h2>Basic Usage</h2>
+    <ul>
+        <li><code>ss -a</code> - Show all sockets.</li>
+        <li><code>ss -t</code> - Display TCP sockets.</li>
+        <li><code>ss -u</code> - Display UDP sockets.</li>
+        <li><code>ss -l</code> - Show listening sockets.</li>
+    </ul>
+    <h2>Displaying Connection Details</h2>
+    <ul>
+        <li><code>ss -s</code> - Display summary statistics.</li>
+        <li><code>ss -tn</code> - Show TCP sockets numerically.</li>
+        <li><code>ss -p</code> - Show process using the sockets.</li>
+    </ul>
+    <h2>Filtering Connections</h2>
+    <ul>
+        <li><code>ss -t state established</code> - Show established TCP connections.</li>
+        <li><code>ss -u state connected</code> - Show active UDP connections.</li>
+    </ul>
+</body>
+</html>
