@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux vmstat Command Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            font-size: 14px;
+        }
+        .example {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding the Linux <code>vmstat</code> Command</h1>
+
+    <p>The <code>vmstat</code> (Virtual Memory Statistics) command in Linux provides an overview of various system performance metrics, including virtual memory, processes, paging, block I/O, traps, and CPU activity.</p>
+
+    <h2>Basic Syntax</h2>
+    <pre><code>vmstat [OPTION] [SECONDS] [COUNT]</code></pre>
+    <ul>
+        <li><strong>OPTION</strong>: A specific option that alters the output format (e.g., <code>-s</code> for a summary).</li>
+        <li><strong>SECONDS</strong>: The interval (in seconds) between updates of the statistics.</li>
+        <li><strong>COUNT</strong>: The number of updates to display.</li>
+    </ul>
+
+    <h2>Common Output Columns</h2>
+    <p>Here’s the typical output of the <code>vmstat</code> command:</p>
+    <pre><code>procs -----------memory------------ ---swap-- -----io---- --system-- -----cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in    cs us sy id wa st
+ 1  0      0  112284  41236  79688    0    0     2     4  1024   456  5  2 93  0  0
+</code></pre>
+    <ul>
+        <li><strong>r:</strong> The number of processes waiting for run time (ready to run).</li>
+        <li><strong>b:</strong> The number of processes in uninterruptible sleep (waiting for I/O).</li>
+        <li><strong>swpd:</strong> The amount of virtual memory used (in KB).</li>
+        <li><strong>free:</strong> The amount of idle memory (in KB).</li>
+        <li><strong>buff:</strong> The amount of memory used as buffers (in KB).</li>
+        <li><strong>cache:</strong> The amount of memory used as cache (in KB).</li>
+        <li><strong>si:</strong> The amount of memory swapped in from disk (in KB).</li>
+        <li><strong>so:</strong> The amount of memory swapped out to disk (in KB).</li>
+        <li><strong>bi:</strong> The number of blocks received from a block device (in KB).</li>
+        <li><strong>bo:</strong> The number of blocks sent to a block device (in KB).</li>
+        <li><strong>in:</strong> The number of interrupts per second.</li>
+        <li><strong>cs:</strong> The number of context switches per second.</li>
+        <li><strong>us:</strong> The percentage of CPU time spent on user processes.</li>
+        <li><strong>sy:</strong> The percentage of CPU time spent on system processes.</li>
+        <li><strong>id:</strong> The percentage of CPU time spent idle.</li>
+        <li><strong>wa:</strong> The percentage of CPU time spent waiting for I/O.</li>
+        <li><strong>st:</strong> The percentage of CPU time stolen from a virtual machine.</li>
+    </ul>
+
+    <h2>Commonly Used Options with <code>vmstat</code></h2>
+
+    <ul>
+        <li><code>-s</code> (summary): Display a summary of the system’s memory, paging, block I/O, and CPU statistics.
+            <pre><code>vmstat -s</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>      4096 K total memory
+      1024 K used memory
+      2048 K active memory
+      512 K inactive memory
+      1024 K free memory
+      2048 K buffer memory
+      2048 K swap cache
+      4096 K total swap
+      0 K used swap
+      4096 K free swap</code></pre>
+        </div>
+
+        <li><code>-d</code> (disk statistics): Display disk statistics, including I/O statistics for each block device.
+            <pre><code>vmstat -d</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>disk0-reads  disk0-writes
+            100          200
+            500          300</code></pre>
+        </div>
+
+        <li><code>-t</code> (timestamp): Display a timestamp with each report.
+            <pre><code>vmstat -t</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>Wed Jan 17 14:56:03  procs -----------memory------------ ---swap-- -----io---- --system-- -----cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in    cs us sy id wa st
+ 1  0      0  112284  41236  79688    0    0     2     4  1024   456  5  2 93  0  0</code></pre>
+        </div>
+
+        <li><code>SECONDS</code>: Specify an interval in seconds to refresh the stats repeatedly at that interval.
+            <pre><code>vmstat 5</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>procs -----------memory------------ ---swap-- -----io---- --system-- -----cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in    cs us sy id wa st
+ 1  0      0  112284  41236  79688    0    0     2     4  1024   456  5  2 93  0  0
+ 1  0      0  112284  41236  79688    0    0     2     4  1024   456  5  2 93  0  0</code></pre>
+        </div>
+    </ul>
+
+    <h2>Example of <code>vmstat</code> Output Explained</h2>
+    <pre><code>procs -----------memory------------ ---swap-- -----io---- --system-- -----cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in    cs us sy id wa st
+ 1  0      0  112284  41236  79688    0    0     2     4  1024   456  5  2 93  0  0
+</code></pre>
+    <ul>
+        <li><strong>r:</strong> 1 process is waiting for CPU time.</li>
+        <li><strong>b:</strong> No process is in uninterruptible sleep.</li>
+        <li><strong>swpd:</strong> No swap memory is in use.</li>
+        <li><strong>free:</strong> 112,284 KB of free memory.</li>
+        <li><strong>buff:</strong> 41,236 KB of memory used as buffers.</li>
+        <li><strong>cache:</strong> 79,688 KB of memory used as cache.</li>
+        <li><strong>si:</strong> No memory is being swapped in from disk.</li>
+        <li><strong>so:</strong> No memory is being swapped out to disk.</li>
+        <li><strong>bi:</strong> 2 KB read from disk.</li>
+        <li><strong>bo:</strong> 4 KB written to disk.</li>
+        <li><strong>in:</strong> 1,024 interrupts per second.</li>
+        <li><strong>cs:</strong> 456 context switches per second.</li>
+        <li><strong>us:</strong> 5% of CPU time spent on user processes.</li>
+        <li><strong>sy:</strong> 2% of CPU time spent on system processes.</li>
+        <li><strong>id:</strong> 93% of CPU time is idle.</li>
+        <li><strong>wa:</strong> 0% of CPU time is spent waiting for I/O.</li>
+        <li><strong>st:</strong> 0% of CPU time is stolen from a virtual machine.</li>
+    </ul>
+
+    <h2>Additional Notes</h2>
+    <ul>
+        <li><code>vmstat</code> is helpful for analyzing system performance, particularly memory and CPU utilization.</li>
+        <li>When used with a specified interval and count, <code>vmstat</code> can provide continuous performance monitoring.</li>
+        <li>It's particularly useful for troubleshooting performance bottlenecks or analyzing resource consumption.</li>
+    </ul>
+
+</body>
+</html>
