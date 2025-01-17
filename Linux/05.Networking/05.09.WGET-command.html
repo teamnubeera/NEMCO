@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wget Command Guide</title>
+</head>
+<body>
+    <h1>Wget Command: Non-Interactive Download Utility (HTTP, FTP, etc.)</h1>
+    <p>The <code>wget</code> command in Linux is used to download files from the web in a non-interactive way, supporting HTTP, HTTPS, and FTP protocols.</p>
+    <h2>Basic Usage</h2>
+    <ul>
+        <li><code>wget http://example.com/file.zip</code> - Download a file from a URL.</li>
+        <li><code>wget -O newname.zip http://example.com/file.zip</code> - Save the file with a different name.</li>
+    </ul>
+    <h2>Downloading Multiple Files</h2>
+    <ul>
+        <li><code>wget -i urls.txt</code> - Download multiple URLs listed in a file.</li>
+    </ul>
+    <h2>Resuming Downloads</h2>
+    <ul>
+        <li><code>wget -c http://example.com/file.zip</code> - Resume an interrupted download.</li>
+    </ul>
+    <h2>Downloading in the Background</h2>
+    <ul>
+        <li><code>wget -b http://example.com/file.zip</code> - Run download in the background.</li>
+    </ul>
+    <h2>Limiting Download Speed</h2>
+    <ul>
+        <li><code>wget --limit-rate=200k http://example.com/file.zip</code> - Limit speed to 200KB/s.</li>
+    </ul>
+    <h2>Mirroring a Website</h2>
+    <ul>
+        <li><code>wget --mirror -p --convert-links -P ./localdir http://example.com/</code> - Mirror a website locally.</li>
+    </ul>
+</body>
+</html>
