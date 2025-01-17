@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux chown Command Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; padding: 20px; background-color: #f4f4f4; }
+        h1, h2, h3 { color: #333; }
+        pre { background: #333; color: #fff; padding: 10px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Linux chown Command Guide</h1>
+    
+    <h2>1. Understanding chown</h2>
+    <p>The <code>chown</code> command in Linux is used to change the ownership of files and directories.</p>
+    
+    <h2>2. Basic Syntax</h2>
+    <pre>chown [OPTIONS] USER:GROUP FILE</pre>
+    
+    <h2>3. Viewing File Ownership</h2>
+    <p>To check file ownership, use:</p>
+    <pre>ls -l filename</pre>
+    
+    <h2>4. Changing Ownership</h2>
+    <h3>Change Owner Only</h3>
+    <pre>chown username filename</pre>
+    
+    <h3>Change Owner and Group</h3>
+    <pre>chown username:groupname filename</pre>
+    
+    <h2>5. Changing Ownership Recursively</h2>
+    <p>Apply ownership change to all files in a directory:</p>
+    <pre>chown -R username:groupname directory/</pre>
+    
+    <h2>6. Using chown with Symbolic References</h2>
+    <pre>chown --reference=existingfile newfile</pre>
+    
+    <h2>7. Common chown Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th><th>Description</th>
+        </tr>
+        <tr>
+            <td>chown user file</td><td>Change file owner</td>
+        </tr>
+        <tr>
+            <td>chown user:group file</td><td>Change owner and group</td>
+        </tr>
+        <tr>
+            <td>chown -R user:group folder</td><td>Recursively change ownership</td>
+        </tr>
+    </table>
+</body>
+</html>
