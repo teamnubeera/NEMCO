@@ -1,0 +1,55 @@
+import difflib
+
+def compare_files(file1, file2):
+    # Open the two files
+    with open(file1, 'r') as f1, open(file2, 'r') as f2:
+        # Read the contents of the files
+        file1_lines = f1.readlines()
+        file2_lines = f2.readlines()
+
+    # Use difflib to compare the lines
+    diff = difflib.unified_diff(file1_lines, file2_lines, fromfile=file1, tofile=file2, lineterm='')
+
+    # Create the HTML structure
+    html_content = """
+    <html>
+    <head>
+        <title>File Comparison</title>
+        <style>
+            .added { background-color: #a8f8a8; }
+            .removed { background-color: #f8a8a8; }
+            .unchanged { background-color: #f0f0f0; }
+            pre { font-family: monospace; }
+        </style>
+    </head>
+    <body>
+        <h1>File Comparison</h1>
+        <pre>
+    """
+
+    # Process the diff and build the HTML output
+    for line in diff:
+        if line.startswith('+'):
+            html_content += f'<span class="added">{line}</span>\n'
+        elif line.startswith('-'):
+            html_content += f'<span class="removed">{line}</span>\n'
+        else:
+            html_content += f'<span class="unchanged">{line}</span>\n'
+
+    # Close the HTML tags
+    html_content += """
+        </pre>
+    </body>
+    </html>
+    """
+
+    # Write the HTML content to a file
+    with open('file_comparison.html', 'w') as output_file:
+        output_file.write(html_content)
+
+    print("Comparison result has been saved as 'file_comparison.html'.")
+
+# Example usage:
+file1 = 'file1.txt'
+file2 = 'file2.txt'
+compare_files(file1, file2)
