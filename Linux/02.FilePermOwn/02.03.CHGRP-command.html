@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux chgrp Command Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; padding: 20px; background-color: #f4f4f4; }
+        h1, h2, h3 { color: #333; }
+        pre { background: #333; color: #fff; padding: 10px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Linux chgrp Command Guide</h1>
+    
+    <h2>1. Understanding chgrp</h2>
+    <p>The <code>chgrp</code> command in Linux is used to change the group ownership of files and directories.</p>
+    
+    <h2>2. Basic Syntax</h2>
+    <pre>chgrp [OPTIONS] GROUP FILE</pre>
+    
+    <h2>3. Viewing File Group Ownership</h2>
+    <p>To check file group ownership, use:</p>
+    <pre>ls -l filename</pre>
+    
+    <h2>4. Changing Group Ownership</h2>
+    <pre>chgrp groupname filename</pre>
+    
+    <h2>5. Changing Group Ownership Recursively</h2>
+    <p>Apply group ownership change to all files in a directory:</p>
+    <pre>chgrp -R groupname directory/</pre>
+    
+    <h2>6. Using chgrp with Symbolic References</h2>
+    <pre>chgrp --reference=existingfile newfile</pre>
+    
+    <h2>7. Common chgrp Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th><th>Description</th>
+        </tr>
+        <tr>
+            <td>chgrp group file</td><td>Change group ownership</td>
+        </tr>
+        <tr>
+            <td>chgrp -R group folder</td><td>Recursively change group ownership</td>
+        </tr>
+        <tr>
+            <td>chgrp --reference=ref_file target_file</td><td>Change group to match reference file</td>
+        </tr>
+    </table>
+</body>
+</html>
