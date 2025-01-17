@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>groups: Show Which Groups a User Belongs To</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>groups: Show Which Groups a User Belongs To</h1>
+
+    <p>The <strong>groups</strong> command in Linux is used to display the groups that a particular user belongs to. It helps to quickly identify a user's group memberships, which are important for managing user permissions and system security.</p>
+
+    <h2>Basic groups Syntax</h2>
+    <p>The basic syntax of the <code>groups</code> command is:</p>
+
+    <pre>
+groups [username]
+    </pre>
+
+    <p>Where:</p>
+    <ul>
+        <li><code>[username]</code> is the optional name of a user for whom you want to display group membership information. If no username is provided, it shows the groups of the current user.</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <h3>Show Groups for the Current User</h3>
+    <p>To display the groups that the currently logged-in user belongs to, simply run:</p>
+
+    <pre>
+groups
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+john : john sudo
+    </pre>
+
+    <p>This means the user <code>john</code> is a member of two groups: <code>john</code> (the user's primary group) and <code>sudo</code> (a group typically associated with administrative privileges).</p>
+
+    <h3>Show Groups for a Specific User</h3>
+    <p>To display the groups for a specific user (e.g., <code>alice</code>), run the following:</p>
+
+    <pre>
+groups alice
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+alice : alice docker staff
+    </pre>
+
+    <p>This indicates that the user <code>alice</code> belongs to the <code>alice</code>, <code>docker</code>, and <code>staff</code> groups.</p>
+
+    <h3>Show Groups with Group Names Only</h3>
+    <p>By default, the <code>groups</code> command displays the username along with their group memberships. If you want to display only the group names, you can use the <code>-n</code> option:</p>
+
+    <pre>
+groups -n alice
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+alice docker staff
+    </pre>
+
+    <h2>Useful groups Options</h2>
+    <ul>
+        <li><code>-n</code>: Show only the group names without the username.</li>
+        <li><code>[username]</code>: Specify a username to show the groups of that user. If no username is provided, the command shows the groups for the current user.</li>
+        <li><code>-h</code>: Display help information for the <code>groups</code> command.</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>The <code>groups</code> command reveals the group memberships of users. Since groups play a significant role in managing user permissions and access control, knowing which groups a user belongs to can be useful for security auditing. However, this information should be carefully managed, especially in environments with sensitive user data or permissions.</p>
+
+    <div class="note">
+        <strong>Note:</strong> The <code>groups</code> command does not require root access to view the group memberships of the current user, but it can be used with elevated privileges (e.g., by a root user) to check the group memberships of any user on the system.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The <code>groups</code> command is a straightforward and essential tool for quickly viewing a user's group memberships on a Linux system. Understanding group memberships is vital for system administrators to manage user permissions and security effectively. It is a quick way to verify access levels or troubleshoot permission-related issues.</p>
+
+    <p>For more advanced usage and additional options, refer to the official <a href="https://man7.org/linux/man-pages/man1/groups.1.html" target="_blank">groups manual page</a>.</p>
+
+</body>
+</html>
