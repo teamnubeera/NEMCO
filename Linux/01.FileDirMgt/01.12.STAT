@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stat Command - File or File System Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #0078D4;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 1.1em;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>stat - Display File or File System Status</h1>
+        <p>The <code>stat</code> command provides detailed information about a file or directory, including permissions, size, and timestamps.</p>
+
+        <h2>Purpose:</h2>
+        <p>To display comprehensive metadata about a file or file system.</p>
+
+        <h2>Usage:</h2>
+        <pre><code>stat file.txt</code></pre>
+        <p>This command displays detailed information about the file named <code>file.txt</code>.</p>
+
+        <h2>Example Output:</h2>
+        <pre>
+  File: file.txt
+  Size: 1234       Blocks: 8          IO Block: 4096   regular file
+Device: 802h/2050d   Inode: 1234567     Links: 1
+Access: 2025-01-17 12:34:56.000000000 +0000
+Modify: 2025-01-15 09:15:42.000000000 +0000
+Change: 2025-01-15 09:15:42.000000000 +0000
+        </pre>
+
+        <h2>Key Fields in the Output:</h2>
+        <ul>
+            <li><strong>File:</strong> The name of the file or directory.</li>
+            <li><strong>Size:</strong> The size of the file in bytes.</li>
+            <li><strong>Blocks:</strong> The number of blocks allocated to the file.</li>
+            <li><strong>IO Block:</strong> The size of each block for I/O operations.</li>
+            <li><strong>Device:</strong> The device number where the file resides.</li>
+            <li><strong>Inode:</strong> The inode number of the file.</li>
+            <li><strong>Links:</strong> The number of hard links to the file.</li>
+            <li><strong>Access:</strong> The last access timestamp.</li>
+            <li><strong>Modify:</strong> The last modification timestamp.</li>
+            <li><strong>Change:</strong> The last status change timestamp.</li>
+        </ul>
+
+        <h2>Notes:</h2>
+        <p>The <code>stat</code> command is particularly useful for troubleshooting file issues and understanding detailed file metadata.</p>
+
+    </div>
+</body>
+</html>
