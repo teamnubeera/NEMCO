@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>passwd: Change User Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>passwd: Change User Password</h1>
+
+    <p>The <strong>passwd</strong> command in Linux is used to change a user's password. This is a vital command for both system administrators and users, as it allows password management to ensure security and privacy.</p>
+
+    <h2>Basic passwd Syntax</h2>
+    <p>The basic syntax of the <code>passwd</code> command is:</p>
+
+    <pre>
+passwd [options] [username]
+    </pre>
+
+    <p>Where:</p>
+    <ul>
+        <li><code>[options]</code> are optional flags that modify the behavior of the command.</li>
+        <li><code>[username]</code> is the name of the user whose password you want to change. If no username is specified, the password for the current user is changed.</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <h3>Change the Password for the Current User</h3>
+    <p>To change the password for the currently logged-in user, run the following command:</p>
+
+    <pre>
+passwd
+    </pre>
+
+    <p>This will prompt you to enter a new password. You will be asked to confirm the password by typing it again.</p>
+
+    <h3>Change the Password for Another User</h3>
+    <p>To change the password of a specific user (as the root user or using <code>sudo</code>), specify the username:</p>
+
+    <pre>
+sudo passwd username
+    </pre>
+
+    <p>For example, to change the password for the user <code>john</code>:</p>
+
+    <pre>
+sudo passwd john
+    </pre>
+
+    <p>This will prompt you to enter and confirm the new password for the user <code>john</code>.</p>
+
+    <h3>Force a User to Change Password at Next Login</h3>
+    <p>To force a user to change their password the next time they log in, use the <code>-e</code> option:</p>
+
+    <pre>
+sudo passwd -e username
+    </pre>
+
+    <p>For example, to force the user <code>alice</code> to change their password at the next login:</p>
+
+    <pre>
+sudo passwd -e alice
+    </pre>
+
+    <p>This will expire the password immediately, prompting the user to set a new password upon their next login.</p>
+
+    <h2>Useful passwd Options</h2>
+    <ul>
+        <li><code>-d</code>: Delete the user's password, effectively locking the account. This should only be used carefully in specific scenarios.</li>
+        <li><code>-e</code>: Expire the user's password immediately, forcing a password change on the next login.</li>
+        <li><code>-l</code>: Lock the user's password, preventing them from logging in without deleting the password. This is useful for disabling an account temporarily.</li>
+        <li><code>-u</code>: Unlock a user's password if it was previously locked.</li>
+        <li><code>-h</code>: Display help information for the <code>passwd</code> command.</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>When using the <code>passwd</code> command, consider the following:</p>
+    <ul>
+        <li>Choosing a strong and unique password is essential for security. Ensure your password contains a mix of upper and lowercase letters, numbers, and special characters.</li>
+        <li>If you change the password for another user, make sure you have the proper authorization, as this can affect their access to the system.</li>
+        <li>It's good practice to force users to change their passwords periodically to maintain account security, especially for sensitive accounts.</li>
+    </ul>
+
+    <div class="note">
+        <strong>Note:</strong> The <code>passwd</code> command requires elevated privileges (e.g., using <code>sudo</code>) to change the password of other users.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The <code>passwd</code> command is an essential tool for managing user passwords in Linux. Whether you're changing your own password or managing passwords for other users, this command plays a critical role in maintaining system security.</p>
+
+    <p>For more advanced usage and additional options, refer to the official <a href="https://man7.org/linux/man-pages/man1/passwd.1.html" target="_blank">passwd manual page</a>.</p>
+
+</body>
+</html>
