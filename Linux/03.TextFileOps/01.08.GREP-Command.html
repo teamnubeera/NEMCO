@@ -3,11 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Page</title>
+    <title>Grep Command Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #file-container {
+            width: 100%;
+            height: 80vh;
+            overflow-y: scroll;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-family: "Courier New", Courier, monospace;
+            white-space: pre-wrap; /* To preserve formatting */
+        }
+        .controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .controls input, .controls button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a sample paragraph.</p>
-    <a href="https://www.example.com">Visit Example</a>
+
+    <h1 style="text-align: center; color: #333;">Grep Command Simulation</h1>
+
+    <div class="controls">
+        <label for="search-pattern">Enter pattern (Regex): </label>
+        <input type="text" id="search-pattern" placeholder="e.g., apple|orange" />
+        <button id="search-button">Search</button>
+    </div>
+
+    <div id="file-container"></div>
+
+    <script>
+        // Example file content (replace this with actual file content)
+        const fileContent = `apple,orange,banana,grape
+dog,cat,mouse,horse
+red,blue,green,yellow
+apple,pineapple,peach,mango`;
+
+        // Function to display the file content
+        function displayContent(content) {
+            document.getElementById('file-container').textContent = content;
+        }
+
+        // Function to search the content using regular expression
+        function grepContent(pattern) {
+            const lines = fileContent.split("\n");
+            const regex = new RegExp(pattern, "gi"); // Create a global, case-insensitive regex
+            let matchedLines = lines.filter(line => regex.test(line)).join("\n");
+            return matchedLines;
+        }
+
+        // Event listener for the search button
+        document.getElementById('search-button').addEventListener('click', () => {
+            const searchPattern = document.getElementById('search-pattern').value;
+
+            if (!searchPattern) {
+                alert("Please enter a search pattern.");
+                return;
+            }
+
+            try {
+                // Get the grep content and display it
+                const matchedContent = grepContent(searchPattern);
+                if (matchedContent) {
+                    displayContent(matchedContent);
+                } else {
+                    displayContent("No matches found.");
+                }
+            } catch (error) {
+                alert("Invalid regular expression.");
+            }
+        });
+
+        // Initial display of the file content
+        displayContent(fileContent);
+    </script>
+
 </body>
 </html>
