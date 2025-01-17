@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>who: Show Who is Logged into the System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>who: Show Who is Logged into the System</h1>
+
+    <p>The <strong>who</strong> command in Linux is used to display information about users who are currently logged into the system. It provides details such as the username, terminal, login time, and the originating IP address or hostname for each user session.</p>
+
+    <h2>Basic who Syntax</h2>
+    <p>The basic syntax of the <code>who</code> command is:</p>
+
+    <pre>
+who [options]
+    </pre>
+
+    <p>Where:</p>
+    <ul>
+        <li><code>[options]</code> are optional flags to modify the behavior of the command.</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <h3>Show All Logged-in Users</h3>
+    <p>To display a list of all users currently logged into the system, simply run:</p>
+
+    <pre>
+who
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+john     pts/0        2025-01-17 08:30 (:0)
+alice    pts/1        2025-01-17 09:00 (:1)
+    </pre>
+
+    <p>This will show the username, terminal, login time, and originating IP/hostname (if applicable).</p>
+
+    <h3>Show Detailed Information with <code>-a</code> Option</h3>
+    <p>The <code>-a</code> option displays additional information about each user, including the idle time, process ID, and more:</p>
+
+    <pre>
+who -a
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+john     pts/0        2025-01-17 08:30 (:0)  00:10  1234  (192.168.1.100)
+alice    pts/1        2025-01-17 09:00 (:1)  00:05  5678  (192.168.1.101)
+    </pre>
+
+    <h3>Show Logged-in Users for a Specific Terminal</h3>
+    <p>To show who is logged into a specific terminal (e.g., <code>pts/0</code>), use the following syntax:</p>
+
+    <pre>
+who pts/0
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+john     pts/0        2025-01-17 08:30 (:0)
+    </pre>
+
+    <h3>Show Information for a Specific User</h3>
+    <p>To see information about a specific user (e.g., <code>john</code>), you can specify the username:</p>
+
+    <pre>
+who john
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+john     pts/0        2025-01-17 08:30 (:0)
+    </pre>
+
+    <h3>Show the Current System Time with <code>-b</code> Option</h3>
+    <p>The <code>-b</code> option displays the system's last boot time:</p>
+
+    <pre>
+who -b
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+         system boot  2025-01-16 17:30
+    </pre>
+
+    <h2>Useful who Options</h2>
+    <ul>
+        <li><code>-a</code>: Show all available information, including idle time, process ID, and more.</li>
+        <li><code>-b</code>: Display the system's last boot time.</li>
+        <li><code>-d</code>: Show only users with a current, active session.</li>
+        <li><code>-q</code>: Display only the usernames of logged-in users, one per line.</li>
+        <li><code>-u</code>: Show the idle time of each user.</li>
+        <li><code>-h</code>: Display help information for the <code>who</code> command.</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>While the <code>who</code> command provides important information about logged-in users, be cautious when sharing this data, especially on multi-user systems. Sensitive data could be exposed, such as which users are currently logged in and where they are logged in from.</p>
+
+    <div class="note">
+        <strong>Note:</strong> The <code>who</code> command shows publicly available information about logged-in users and does not require elevated privileges (root access) to run.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The <code>who</code> command is a useful tool for checking who is logged into a Linux system and viewing various details about their sessions. Whether you need to monitor user activity or troubleshoot, <code>who</code> is an essential command for system administrators and power users alike.</p>
+
+    <p>For more advanced usage and additional options, refer to the official <a href="https://man7.org/linux/man-pages/man1/who.1.html" target="_blank">who manual page</a>.</p>
+
+</body>
+</html>
