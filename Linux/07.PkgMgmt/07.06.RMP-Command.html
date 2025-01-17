@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPM Command Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #333366;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>RPM Command Tutorial</h1>
+    <p><strong>RPM</strong> (Red Hat Package Manager) is a package management system used by many Linux distributions, especially those based on the Red Hat package format (e.g., Fedora, CentOS, RHEL, and openSUSE). RPM allows users to install, update, remove, and query individual packages, providing a powerful way to manage software packages on these systems.</p>
+
+    <h2>Overview of RPM:</h2>
+    <p><code>rpm</code> is the low-level tool for managing RPM packages, and it works directly with the package files (.rpm). Unlike higher-level package managers like YUM or DNF, which handle dependencies and interact with repositories, RPM focuses on managing individual RPM packages on the system. It’s especially useful for installing, querying, verifying, and removing packages directly from RPM files.</p>
+
+    <h2>Basic Commands:</h2>
+
+    <h3>1. Installing Packages</h3>
+    <p>To install a package using RPM, you can use the <code>-i</code> (install) option, followed by the path to the RPM file:</p>
+    <pre><code>sudo rpm -i &lt;package_file.rpm&gt;</code></pre>
+    <p>For example, to install an RPM package named <code>vim.rpm</code>:</p>
+    <pre><code>sudo rpm -i vim.rpm</code></pre>
+    <p>This will install the package on your system, but RPM does not handle dependencies automatically. If the package has unmet dependencies, you’ll need to resolve them manually or use a higher-level package manager like YUM or DNF.</p>
+
+    <h3>2. Removing Packages</h3>
+    <p>To remove a package from your system, use the <code>-e</code> (erase) option followed by the package name:</p>
+    <pre><code>sudo rpm -e &lt;package_name&gt;</code></pre>
+    <p>For example, to remove the <code>vim</code> package:</p>
+    <pre><code>sudo rpm -e vim</code></pre>
+    <p>This will remove the package, but it will not automatically remove any dependencies that were installed with the package.</p>
+
+    <h3>3. Querying Installed Packages</h3>
+    <p>To query information about an installed package, use the <code>-q</code> (query) option:</p>
+    <pre><code>rpm -q &lt;package_name&gt;</code></pre>
+    <p>For example, to query information about the <code>vim</code> package:</p>
+    <pre><code>rpm -q vim</code></pre>
+    <p>This will return the version and architecture of the installed package. You can also use the <code>-qi</code> option for more detailed information:</p>
+    <pre><code>rpm -qi vim</code></pre>
+
+    <h3>4. Listing Files in an RPM Package</h3>
+    <p>If you want to list the files contained in an installed RPM package, use the <code>-ql</code> (query list) option:</p>
+    <pre><code>rpm -ql &lt;package_name&gt;</code></pre>
+    <p>For example, to list the files in the <code>vim</code> package:</p>
+    <pre><code>rpm -ql vim</code></pre>
+
+    <h3>5. Verifying Installed Packages</h3>
+    <p>To verify the integrity of an installed package, use the <code>-V</code> (verify) option:</p>
+    <pre><code>rpm -V &lt;package_name&gt;</code></pre>
+    <p>For example, to verify the integrity of the <code>vim</code> package:</p>
+    <pre><code>rpm -V vim</code></pre>
+    <p>This checks whether files from the package have been altered or are missing and reports any issues.</p>
+
+    <h3>6. Checking Dependencies of an RPM Package</h3>
+    <p>To check the dependencies of an RPM package, use the <code>--requires</code> option:</p>
+    <pre><code>rpm -q --requires &lt;package_name&gt;</code></pre>
+    <p>For example, to see the dependencies of the <code>vim</code> package:</p>
+    <pre><code>rpm -q --requires vim</code></pre>
+    <p>This will show you the libraries and other packages that the package depends on.</p>
+
+    <h3>7. Checking What Files Belong to a Package</h3>
+    <p>If you want to check which installed package owns a specific file, use the <code>-qf</code> (query file) option:</p>
+    <pre><code>rpm -qf &lt;file_path&gt;</code></pre>
+    <p>For example, to check which package provides the <code>/usr/bin/vim</code> file:</p>
+    <pre><code>rpm -qf /usr/bin/vim</code></pre>
+    <p>This will return the name of the package that installed the file.</p>
+
+    <h3>8. Listing All Installed Packages</h3>
+    <p>To list all installed packages on your system, use the <code>-qa</code> (query all) option:</p>
+    <pre><code>rpm -qa</code></pre>
+    <p>This will display a list of all packages currently installed on the system.</p>
+
+    <h2>How RPM Works</h2>
+    <p><code>rpm</code> is a low-level package management tool that works directly with the RPM package files (.rpm). RPM does not manage dependencies or handle repositories, so it is typically used in combination with higher-level package managers like YUM or DNF, which automate the installation, update, and removal of packages while resolving dependencies automatically.</p>
+
+    <p>RPM provides several options for managing packages, including installing, querying, verifying, and removing packages. It can also be used to check for file ownership and dependencies, which is helpful for advanced system administration tasks.</p>
+
+    <h2>Common Use Cases for RPM</h2>
+
+    <h3>1. Installing a Package from a Local RPM File</h3>
+    <p>RPM is ideal for installing individual packages from local .rpm files. This is useful when downloading RPMs from third-party sources or when manually managing packages:</p>
+    <pre><code>sudo rpm -i &lt;package_file.rpm&gt;</code></pre>
+
+    <h3>2. Querying Information About Installed Packages</h3>
+    <p>Use RPM to check which version of a package is installed, or to list the files contained within a package:</p>
+    <pre><code>rpm -qi &lt;package_name&gt;</code></pre>
+    <pre><code>rpm -ql &lt;package_name&gt;</code></pre>
+
+    <h3>3. Verifying Package Integrity</h3>
+    <p>RPM’s <code>-V</code> option is helpful for system administrators who want to check if files from a package have been modified or tampered with:</p>
+    <pre><code>rpm -V &lt;package_name&gt;</code></pre>
+
+    <h3>4. Removing an Installed Package</h3>
+    <p>RPM can be used to remove a package from the system with the <code>-e</code> option. However, it does not automatically remove dependencies that were installed with the package:</p>
+    <pre><code>sudo rpm -e &lt;package_name&gt;</code></pre>
+
+    <h2>Additional RPM Features</h2>
+
+    <h3>1. Querying Package Metadata</h3>
+    <p>Besides querying installed packages, you can also query metadata in a package file using the <code>-qpi</code> option:</p>
+    <pre><code>rpm -qpi &lt;package_file.rpm&gt;</code></pre>
+    <p>This will show information about the package without installing it.</p>
+
+    <h3>2. Installing RPM Packages with Dependencies</h3>
+    <p>Although RPM does not handle dependencies on its own, you can use the <code>--nodeps</code> option to install a package without checking dependencies (use with caution):</p>
+    <pre><code>sudo rpm -i --nodeps &lt;package_file.rpm&gt;</code></pre>
+
+    <h3>3. Upgrading an Installed Package</h3>
+    <p>If you have a newer version of a package and wish to upgrade the installed version, you can use the <code>-U</code> (upgrade) option:</p>
+    <pre><code>sudo rpm -U &lt;package_file.rpm&gt;</code></pre>
+
+    <h2>Summary of Key `rpm` Commands:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>sudo rpm -i &lt;package_file.rpm&gt;</code></td>
+                <td>Install an RPM package from a local file.</td>
+            </tr>
+            <tr>
+                <td><code>sudo rpm -e &lt;package_name&gt;</code></td>
+                <td>Remove an installed package from your system.</td>
+            </tr>
+            <tr>
+                <td><code>rpm -q &lt;package_name&gt;</code></td>
+                <td>Query an installed package to check its version.</td>
+            </tr>
+            <tr>
+                <td><code>rpm -ql &lt;package_name&gt;</code></td>
+                <td>List all files installed by a package.</td>
+            </tr>
+            <tr>
+                <td><code>rpm -qi &lt;package_name&gt;</code></td>
+                <td>Show detailed information about an installed package.</td>
+            </tr>
+            <tr>
+                <td><code>rpm -V &lt;package_name&gt;</code></td>
+                <td>Verify the integrity of an installed package.</td>
+            </tr>
+            <tr>
+                <td><code>rpm -qa</code></td>
+                <td>List all installed packages.</
+
+                  
