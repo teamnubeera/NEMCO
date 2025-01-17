@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>usermod: Modify a User Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>usermod: Modify a User Account</h1>
+
+    <p>The <strong>usermod</strong> command is used in Linux to modify an existing user account. This allows system administrators to make changes to user details such as username, home directory, shell, and group memberships.</p>
+
+    <h2>Basic usermod Syntax</h2>
+    <p>The basic syntax of the <code>usermod</code> command is:</p>
+
+    <pre>
+usermod [options] [username]
+    </pre>
+
+    <p>Where:</p>
+    <ul>
+        <li><code>[options]</code> are flags that specify the modifications you want to apply to the user account.</li>
+        <li><code>[username]</code> is the name of the user whose account you want to modify.</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <h3>Change the Username</h3>
+    <p>To change the username of an existing user, use the <code>-l</code> option:</p>
+
+    <pre>
+usermod -l new_username old_username
+    </pre>
+
+    <p>For example, to change the username of user <code>john</code> to <code>johnny</code>:</p>
+
+    <pre>
+usermod -l johnny john
+    </pre>
+
+    <p>This will rename the user <code>john</code> to <code>johnny</code>, but it won't change the user's home directory name. You may want to rename the home directory as well using the <code>-d</code> option.</p>
+
+    <h3>Change the User's Home Directory</h3>
+    <p>To change the home directory of a user, use the <code>-d</code> option. You can also use the <code>-m</code> option to move the user's existing files to the new directory:</p>
+
+    <pre>
+usermod -d /new/home/directory -m username
+    </pre>
+
+    <p>For example, to move the home directory of user <code>alice</code> to <code>/home/alice_new</code>:</p>
+
+    <pre>
+usermod -d /home/alice_new -m alice
+    </pre>
+
+    <h3>Change the User's Login Shell</h3>
+    <p>If you want to change the login shell for the user, use the <code>-s</code> option followed by the path to the new shell:</p>
+
+    <pre>
+usermod -s /bin/bash username
+    </pre>
+
+    <p>For example, to change the login shell for user <code>bob</code> to <code>/bin/zsh</code>:</p>
+
+    <pre>
+usermod -s /bin/zsh bob
+    </pre>
+
+    <h3>Add the User to a New Group</h3>
+    <p>You can add the user to a new group using the <code>-G</code> option. This will add the user to the supplementary group(s) without affecting their primary group:</p>
+
+    <pre>
+usermod -G new_group username
+    </pre>
+
+    <p>For example, to add the user <code>charlie</code> to the <code>developers</code> group:</p>
+
+    <pre>
+usermod -G developers charlie
+    </pre>
+
+    <h3>Change the User's Primary Group</h3>
+    <p>To change the primary group of a user, use the <code>-g</code> option:</p>
+
+    <pre>
+usermod -g new_primary_group username
+    </pre>
+
+    <p>For example, to change the primary group for user <code>diana</code> to <code>admin</code>:</p>
+
+    <pre>
+usermod -g admin diana
+    </pre>
+
+    <h3>Lock or Unlock the User Account</h3>
+    <p>You can lock a user account to prevent login by using the <code>-L</code> option. To unlock the account, use the <code>-U</code> option:</p>
+
+    <pre>
+usermod -L username   <!-- Lock the account -->
+usermod -U username   <!-- Unlock the account -->
+    </pre>
+
+    <p>For example, to lock the account for user <code>eve</code>:</p>
+
+    <pre>
+usermod -L eve
+    </pre>
+
+    <h2>Useful usermod Options</h2>
+    <ul>
+        <li><code>-l</code>: Change the username.</li>
+        <li><code>-d</code>: Change the user's home directory.</li>
+        <li><code>-m</code>: Move the user's files to the new home directory.</li>
+        <li><code>-s</code>: Change the user's login shell.</li>
+        <li><code>-g</code>: Change the user's primary group.</li>
+        <li><code>-G</code>: Add the user to supplementary groups.</li>
+        <li><code>-a</code>: Append the user to supplementary groups (use with <code>-G</code>).</li>
+        <li><code>-L</code>: Lock the user account (disables login).</li>
+        <li><code>-U</code>: Unlock the user account (enables login).</li>
+        <li><code>-e</code>: Set the account expiration date.</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>The <code>usermod</code> command is a powerful tool for modifying user accounts. However, be cautious when modifying users, especially when changing home directories, login shells, or group memberships. Ensure that the user has the appropriate permissions and access rights to perform their tasks.</p>
+
+    <div class="note">
+        <strong>Note:</strong> The <code>usermod</code> command typically requires elevated privileges (e.g., using <code>sudo</code>) to modify user accounts.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The <code>usermod</code> command is essential for system administrators when managing user accounts. It provides a flexible way to modify users' settings such as username, home directory, login shell, group memberships, and more. Understanding how to properly use the <code>usermod</code> command is crucial for maintaining a secure and well-managed system.</p>
+
+    <p>For more advanced usage and additional options, refer to the official <a href="https://man7.org/linux/man-pages/man8/usermod.8.html" target="_blank">usermod manual page</a>.</p>
+
+</body>
+</html>
