@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using the <code>uniq</code> Command in Linux</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            background-color: #e1e1e1;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+        ul {
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux: Using the <code>uniq</code> Command to Report or Omit Repeated Lines</h1>
+
+    <p>The <code>uniq</code> command in Linux is used to filter out or report repeated lines from a sorted input. It is particularly useful for eliminating duplicate lines in text files or input streams.</p>
+
+    <h2>Basic Command Usage</h2>
+    <pre><code>uniq [options] filename</code></pre>
+    <p>This command removes or reports repeated lines from the file <code>filename</code>. By default, it only removes adjacent duplicate lines, so input must be sorted first for proper functionality.</p>
+
+    <h2>Commonly Used Options with <code>uniq</code></h2>
+    <ul>
+        <li><strong><code>-c</code></strong>: Prefixes lines with the number of occurrences of each line.</li>
+        <li><strong><code>-d</code></strong>: Prints only lines that are repeated.</li>
+        <li><strong><code>-u</code></strong>: Prints only lines that are unique (not repeated).</li>
+        <li><strong><code>-i</code></strong>: Ignores case when comparing lines.</li>
+        <li><strong><code>-f NUM</code></strong>: Skips the first <code>NUM</code> fields when comparing lines.</li>
+        <li><strong><code>-s NUM</code></strong>: Skips the first <code>NUM</code> characters when comparing lines.</li>
+        <li><strong><code>-w NUM</code></strong>: Compares up to <code>NUM</code> characters per line.</li>
+    </ul>
+
+    <h2>Example Usage</h2>
+
+    <h3>1. Remove Duplicate Lines</h3>
+    <pre><code>uniq file.txt</code></pre>
+    <p>This command removes consecutive duplicate lines from <code>file.txt</code> and prints only unique lines.</p>
+
+    <h3>2. Show Number of Occurrences of Each Line</h3>
+    <pre><code>uniq -c file.txt</code></pre>
+    <p>This command prefixes each line with the number of occurrences of that line in <code>file.txt</code>.</p>
+
+    <h3>3. Print Only Duplicate Lines</h3>
+    <pre><code>uniq -d file.txt</code></pre>
+    <p>This command prints only the lines that are repeated in <code>file.txt</code>.</p>
+
+    <h3>4. Print Only Unique Lines</h3>
+    <pre><code>uniq -u file.txt</code></pre>
+    <p>This command prints only the lines that are unique in <code>file.txt</code>, omitting any duplicates.</p>
+
+    <h3>5. Ignore Case When Comparing Lines</h3>
+    <pre><code>uniq -i file.txt</code></pre>
+    <p>This command treats lines as identical, even if they differ only in case (uppercase vs. lowercase).</p>
+
+    <h3>6. Skip Fields When Comparing Lines</h3>
+    <pre><code>uniq -f 2 file.txt</code></pre>
+    <p>This command skips the first two fields (columns) when comparing lines in <code>file.txt</code>.</p>
+
+    <h3>7. Skip Characters When Comparing Lines</h3>
+    <pre><code>uniq -s 3 file.txt</code></pre>
+    <p>This command skips the first three characters when comparing lines in <code>file.txt</code>.</p>
+
+    <h3>8. Compare Only a Specific Number of Characters</h3>
+    <pre><code>uniq -w 5 file.txt</code></pre>
+    <p>This command compares only the first 5 characters of each line in <code>file.txt</code>.</p>
+
+    <h2>Conclusion</h2>
+    <p>The <code>uniq</code> command is a useful tool for filtering out or reporting duplicate lines in sorted input. It can be customized with various options to display line counts, show only duplicates or unique lines, and ignore case or specific fields/characters. By mastering these options, you can efficiently handle text data in Linux files and streams.</p>
+
+</body>
+</html>
