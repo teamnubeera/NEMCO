@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTP: File Transfer Protocol Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>FTP: File Transfer Protocol Client</h1>
+
+    <p><strong>FTP</strong> (File Transfer Protocol) is one of the oldest and most widely used methods for transferring files over a network. FTP allows you to upload and download files from remote servers using a client application. In this guide, we'll explore how to use an FTP client to transfer files securely and efficiently.</p>
+
+    <h2>Basic FTP Syntax</h2>
+    <p>The basic syntax for the <code>ftp</code> command is:</p>
+
+    <pre>
+ftp [hostname]
+    </pre>
+
+    <p>Where <code>[hostname]</code> is the domain name or IP address of the FTP server you want to connect to. Once connected, you will enter interactive mode, where you can issue FTP commands.</p>
+
+    <h2>FTP Commands</h2>
+
+    <h3>Connecting to an FTP Server</h3>
+    <p>To connect to an FTP server, use the following command:</p>
+
+    <pre>
+ftp [hostname]
+    </pre>
+
+    <p>For example:</p>
+
+    <pre>
+ftp ftp.example.com
+    </pre>
+
+    <p>You will be prompted to enter your username and password to log in to the FTP server.</p>
+
+    <h3>Listing Files on the FTP Server</h3>
+    <p>Once logged in, you can list the files and directories on the remote server using the <code>ls</code> or <code>dir</code> command:</p>
+
+    <pre>
+ls
+    </pre>
+
+    <p>or</p>
+
+    <pre>
+dir
+    </pre>
+
+    <h3>Downloading Files from the FTP Server</h3>
+    <p>To download a file from the FTP server to your local machine, use the <code>get</code> command:</p>
+
+    <pre>
+get [remote-file] [local-file]
+    </pre>
+
+    <p>For example, to download a file called <code>example.txt</code>:</p>
+
+    <pre>
+get example.txt
+    </pre>
+
+    <h3>Uploading Files to the FTP Server</h3>
+    <p>To upload a file from your local machine to the FTP server, use the <code>put</code> command:</p>
+
+    <pre>
+put [local-file] [remote-file]
+    </pre>
+
+    <p>For example, to upload a file called <code>myfile.txt</code>:</p>
+
+    <pre>
+put myfile.txt
+    </pre>
+
+    <h3>Transferring Multiple Files</h3>
+    <p>If you want to upload or download multiple files at once, use the <code>mget</code> or <code>mput</code> commands:</p>
+
+    <pre>
+mget *.txt
+    </pre>
+
+    <p>This will download all files with a <code>.txt</code> extension from the FTP server. Similarly, to upload multiple files:</p>
+
+    <pre>
+mput *.txt
+    </pre>
+
+    <h3>Changing Directories</h3>
+    <p>To change the current directory on the FTP server, use the <code>cd</code> command:</p>
+
+    <pre>
+cd [directory-name]
+    </pre>
+
+    <p>For example:</p>
+
+    <pre>
+cd /path/to/directory
+    </pre>
+
+    <h3>Exiting FTP</h3>
+    <p>Once you're done, you can exit the FTP session by typing:</p>
+
+    <pre>
+bye
+    </pre>
+
+    <h2>Useful FTP Options</h2>
+    <ul>
+        <li><code>-i</code>: Turn off interactive mode (useful for batch transfers).</li>
+        <li><code>-n</code>: Skip automatic login (useful when scripting).</li>
+        <li><code>-v</code>: Verbose mode, shows more detailed information during the transfer.</li>
+        <li><code>-g</code>: Disable filename globbing (wildcards) on FTP commands.</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>FTP transmits data in an unencrypted form, meaning that both your login credentials and data can be intercepted. To ensure security, consider using <strong>FTPS</strong> (FTP Secure) or <strong>SFTP</strong> (SSH File Transfer Protocol), both of which encrypt the connection.</p>
+
+    <div class="note">
+        <strong>Note:</strong> If you're working with sensitive data, it is recommended to use FTPS or SFTP instead of the traditional FTP.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>FTP is a simple and powerful tool for transferring files between systems. However, due to its lack of encryption, it is best suited for non-sensitive data or in trusted network environments. For secure file transfer, FTPS or SFTP is highly recommended.</p>
+
+    <p>For more detailed documentation and additional commands, you can refer to the official <a href="https://man7.org/linux/man-pages/man1/ftp.1.html" target="_blank">FTP manual page</a>.</p>
+
+</body>
+</html>
