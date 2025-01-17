@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unxz Command: Decompress Files Compressed with xz</title>
+</head>
+<body>
+    <h1>unxz Command: Decompress Files Compressed with xz</h1>
+    <p>The <code>unxz</code> command in Linux is used to decompress files that have been compressed using the <code>xz</code> compression utility. The <code>xz</code> command compresses files using the LZMA algorithm, and <code>unxz</code> is the corresponding utility that restores these compressed files to their original form.</p>
+
+    <h2>Key Features of the unxz Command</h2>
+    <ul>
+        <li><strong>Decompression:</strong> <code>unxz</code> is specifically designed to decompress files that were previously compressed with <code>xz</code>.</li>
+        <li><strong>Restoring original files:</strong> It restores compressed files to their original state by removing the <code>.xz</code> extension and decompressing the file content.</li>
+        <li><strong>Support for .xz format:</strong> The <code>unxz</code> command works exclusively with files that have been compressed in the <code>.xz</code> format, produced by the <code>xz</code> utility.</li>
+        <li><strong>Simple and efficient:</strong> The command offers a straightforward way to reverse the compression done by <code>xz</code>.</li>
+    </ul>
+
+    <h2>Basic unxz Command Usage</h2>
+    <p>The basic syntax for using the <code>unxz</code> command is:</p>
+    <pre><code>unxz [OPTIONS] file.xz</code></pre>
+    <p>Where:
+    <ul>
+        <li><code>OPTIONS</code>: Flags that modify the behavior of the command (e.g., <code>-k</code> to keep the original compressed file).</li>
+        <li><code>file.xz</code>: The file you want to decompress, which must have been compressed using the <code>xz</code> format.</li>
+    </ul></p>
+
+    <h3>1. Decompress a file</h3>
+    <p>To decompress a file compressed with <code>xz</code>, simply run the following command:</p>
+    <pre><code>unxz file.txt.xz</code></pre>
+    <p>This will decompress <code>file.txt.xz</code> and restore the original file, <code>file.txt</code>, by removing the <code>.xz</code> extension. The original compressed file (<code>file.txt.xz</code>) will be deleted after decompression.</p>
+
+    <h3>2. Decompress a file and keep the original compressed file</h3>
+    <p>If you want to keep the original compressed file after decompression, use the <code>-k</code> option:</p>
+    <pre><code>unxz -k file.txt.xz</code></pre>
+    <p>This will decompress <code>file.txt.xz</code> to <code>file.txt</code>, but the compressed file <code>file.txt.xz</code> will remain unchanged.</p>
+
+    <h3>3. Decompress multiple files</h3>
+    <p>You can decompress multiple <code>.xz</code> files at once by listing them:</p>
+    <pre><code>unxz file1.txt.xz file2.txt.xz file3.txt.xz</code></pre>
+    <p>This will decompress all the specified files, resulting in <code>file1.txt</code>, <code>file2.txt</code>, and <code>file3.txt</code>.</p>
+
+    <h3>4. Decompress a .xz file to standard output</h3>
+    <p>If you want to decompress the file and send the output directly to standard output (stdout) rather than a file, use the <code>-c</code> option:</p>
+    <pre><code>unxz -c file.txt.xz</code></pre>
+    <p>This will decompress <code>file.txt.xz</code> and display its contents on the terminal (stdout), without creating a new file.</p>
+
+    <h2>Common unxz Options</h2>
+    <p>Here are some commonly used options with the <code>unxz</code> command:</p>
+    <ul>
+        <li><strong>-k</strong>: Keep the original compressed file after decompression.</li>
+        <li><strong>-c</strong>: Write the decompressed data to standard output (stdout) rather than creating a new file.</li>
+        <li><strong>-v</strong>: Enable verbose mode, showing detailed information during decompression.</li>
+        <li><strong>-f</strong>: Force decompression even if the destination file exists. It will overwrite existing files without prompting.</li>
+        <li><strong>-t</strong>: Test the integrity of the compressed file without decompressing it. This checks if the file is valid and not corrupted.</li>
+    </ul>
+
+    <h3>5. Verbose decompression</h3>
+    <p>If you want to see more detailed information about the decompression process, such as the file names and the decompression rate, use the <code>-v</code> option:</p>
+    <pre><code>unxz -v file.txt.xz</code></pre>
+    <p>This will display additional information during the decompression of the file.</p>
+
+    <h3>6. Test the integrity of a compressed file</h3>
+    <p>If you want to verify the integrity of a compressed <code>.xz</code> file before decompressing it, use the <code>-t</code> option:</p>
+    <pre><code>unxz -t file.txt.xz</code></pre>
+    <p>This command will test the file's integrity without decompressing it. It will inform you if the file is valid or corrupted.</p>
+
+    <h2>Use Case Scenarios for unxz</h2>
+    <ul>
+        <li><strong>Decompressing software packages:</strong> <code>unxz</code> is commonly used to decompress software or source code that has been distributed as compressed <code>.xz</code> files.</li>
+        <li><strong>Restoring compressed backups:</strong> When decompressing backups that were compressed using <code>xz</code>, <code>unxz</code> helps restore the original files.</li>
+        <li><strong>File transfer:</strong> If you receive compressed <code>.xz</code> files over the network, <code>unxz</code> is used to decompress them for use.</li>
+        <li><strong>Accessing compressed logs:</strong> <code>unxz</code> can be used to decompress log files that have been archived and compressed for storage or transfer.</li>
+    </ul>
+
+    <h2>Common Issues and Troubleshooting</h2>
+    <ul>
+        <li><strong>File not found:</strong> Ensure that the file you want to decompress exists in the current directory, and check the file name and path.</li>
+        <li><strong>Permission issues:</strong> If you do not have permission to read or write the files, use <code>sudo</code> to run <code>unxz</code> with elevated privileges.</li>
+        <li><strong>Corrupted compressed file:</strong> If you encounter errors when decompressing, the <code>.xz</code> file may be corrupted. Try to obtain a new copy of the file.</li>
+        <li><strong>Out of disk space:</strong> If you run out of disk space during decompression, free up some space or specify a different directory to store the decompressed file.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <code>unxz</code> command is a straightforward and efficient tool for decompressing files that have been compressed using the <code>xz</code> compression algorithm. Whether you're decompressing software packages, backups, or other files, <code>unxz</code> makes it easy to restore the original data. By using the various options, you can control the decompression behavior to meet your needs, including keeping the original compressed file or writing the output to standard output.</p>
+
+    <p>If you have any further questions or need more assistance with the <code>unxz</code> command, feel free to ask!</p>
+</body>
+</html>
