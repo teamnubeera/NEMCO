@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux HTOP Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>htop</code> Command</h1>
+    <p>The <code>htop</code> command in Linux is an interactive and user-friendly alternative to the <code>top</code> command. It provides a detailed and colorful interface to monitor system performance, including CPU, memory, and process usage.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>htop [OPTIONS]</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>-d &lt;delay&gt;</code>: Sets the delay between updates in tenths of a second (e.g., <code>-d 10</code> for 1 second).</li>
+        <li><code>-u &lt;username&gt;</code>: Shows processes owned by a specific user.</li>
+        <li><code>-p &lt;PIDs&gt;</code>: Monitors specific process IDs.</li>
+        <li><code>-s &lt;column&gt;</code>: Sorts by a specified column (e.g., <code>-s PERCENT_CPU</code>).</li>
+        <li><code>-C</code>: Starts htop in monochrome mode (disables colors).</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Launch <code>htop</code>:</h3>
+    <pre><code>$ htop</code></pre>
+    <p><strong>Explanation:</strong> Displays an interactive interface showing real-time process and system information.</p>
+
+    <h3>2. Monitor Processes of a Specific User:</h3>
+    <pre><code>$ htop -u john</code></pre>
+    <p><strong>Explanation:</strong> Displays only the processes owned by the user <code>john</code>.</p>
+
+    <h3>3. Sort Processes by Memory Usage:</h3>
+    <pre><code>$ htop -s PERCENT_MEM</code></pre>
+    <p><strong>Explanation:</strong> Sorts processes by memory usage in descending order.</p>
+
+    <h3>4. Monitor Specific Processes:</h3>
+    <pre><code>$ htop -p 1234,5678</code></pre>
+    <p><strong>Explanation:</strong> Shows details of the processes with PIDs 1234 and 5678.</p>
+
+    <h3>5. Disable Colors:</h3>
+    <pre><code>$ htop -C</code></pre>
+    <p><strong>Explanation:</strong> Runs <code>htop</code> in monochrome mode without colors.</p>
+
+    <h2>Output Breakdown:</h2>
+    <ul>
+        <li><strong>CPU Usage:</strong> Displays CPU usage for each core.</li>
+        <li><strong>Memory and Swap:</strong> Shows real-time memory and swap usage.</li>
+        <li><strong>Process Table:</strong> Lists processes with details such as PID, user, CPU%, memory%, and command.</li>
+        <li><strong>Menu:</strong> Provides options for filtering, sorting, and process management.</li>
+    </ul>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>System Monitoring:</strong> Keep track of system resources in real-time.</li>
+        <li><strong>Process Management:</strong> Identify and terminate resource-heavy processes.</li>
+        <li><strong>Customization:</strong> Use sorting and filtering to focus on specific details.</li>
+    </ul>
+
+    <h2>Keyboard Shortcuts:</h2>
+    <ul>
+        <li><code>F1</code>: Help.</li>
+        <li><code>F2</code>: Setup (customize display options).</li>
+        <li><code>F3</code>: Search for a process by name.</li>
+        <li><code>F4</code>: Filter processes.</li>
+        <li><code>F5</code>: Tree view of processes.</li>
+        <li><code>F6</code>: Sort processes by column.</li>
+        <li><code>F9</code>: Kill a process.</li>
+        <li><code>F10</code>: Exit <code>htop</code>.</li>
+    </ul>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>htop</code>: Provides an interactive and user-friendly way to monitor system and process performance.</li>
+        <li><code>-u</code>: Filters processes by user.</li>
+        <li><code>-s</code>: Sorts processes by a specific column.</li>
+        <li><code>-p</code>: Monitors specific PIDs.</li>
+        <li><code>-d</code>: Sets the update delay.</li>
+    </ul>
+
+    <p><strong>Tip:</strong> Use <code>htop</code> for a more visually appealing and customizable interface compared to <code>top</code>.</p>
+</body>
+</html>
