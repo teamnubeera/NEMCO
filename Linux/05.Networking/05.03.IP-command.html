@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Command Guide</title>
+</head>
+<body>
+    <h1>IP Command: Show/Manipulate Routing, Devices, and Tunnels</h1>
+    <p>The <code>ip</code> command in Linux is used to show and manipulate routing, network devices, and tunnels.</p>
+    <h2>Basic Usage</h2>
+    <ul>
+        <li><code>ip addr show</code> - Display IP addresses assigned to all interfaces.</li>
+        <li><code>ip link show</code> - Show details of network interfaces.</li>
+        <li><code>ip route show</code> - Display the routing table.</li>
+    </ul>
+    <h2>Manipulating Network Interfaces</h2>
+    <ul>
+        <li><code>ip link set eth0 up</code> - Enable the eth0 interface.</li>
+        <li><code>ip link set eth0 down</code> - Disable the eth0 interface.</li>
+        <li><code>ip addr add 192.168.1.100/24 dev eth0</code> - Assign an IP address to eth0.</li>
+    </ul>
+    <h2>Routing</h2>
+    <ul>
+        <li><code>ip route add default via 192.168.1.1</code> - Set default gateway.</li>
+        <li><code>ip route del 192.168.1.0/24</code> - Remove a specific route.</li>
+    </ul>
+</body>
+</html>
