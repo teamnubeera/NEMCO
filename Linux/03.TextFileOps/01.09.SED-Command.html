@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using the <code>sed</code> Command in Linux</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            background-color: #e1e1e1;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+        ul {
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux: Using the <code>sed</code> Command for Filtering and Transforming Text</h1>
+
+    <p>The <code>sed</code> command is a stream editor used to filter and transform text in Linux. It allows you to perform text manipulation, such as substitutions, deletions, and insertions, on files or input streams.</p>
+
+    <h2>Basic Command Usage</h2>
+    <pre><code>sed 's/pattern/replacement/' filename</code></pre>
+    <p>This command replaces the first occurrence of <code>pattern</code> with <code>replacement</code> in the <code>filename</code>. By default, it only replaces the first occurrence on each line.</p>
+
+    <h2>Commonly Used Options with <code>sed</code></h2>
+    <ul>
+        <li><strong><code>-i</code></strong>: Edit the file in place (without this option, <code>sed</code> outputs the result to the terminal).</li>
+        <li><strong><code>-n</code></strong>: Suppresses automatic printing of the pattern space (use with <code>p</code> to print specific lines).</li>
+        <li><strong><code>s</code></strong>: Substitute a pattern with a replacement.</li>
+        <li><strong><code>d</code></strong>: Delete lines that match a pattern.</li>
+        <li><strong><code>a</code></strong>: Append text after a line.</li>
+        <li><strong><code>i</code></strong>: Insert text before a line.</li>
+    </ul>
+
+    <h2>Example Usage</h2>
+
+    <h3>1. Substitute Text</h3>
+    <pre><code>sed 's/old/new/' file.txt</code></pre>
+    <p>This command replaces the first occurrence of <code>old</code> with <code>new</code> in each line of <code>file.txt</code>.</p>
+
+    <h3>2. Replace All Occurrences</h3>
+    <pre><code>sed 's/old/new/g' file.txt</code></pre>
+    <p>The <code>g</code> flag makes the substitution global, replacing all occurrences of <code>old</code> with <code>new</code> in each line.</p>
+
+    <h3>3. Edit File In Place</h3>
+    <pre><code>sed -i 's/old/new/g' file.txt</code></pre>
+    <p>This command performs the replacement and updates <code>file.txt</code> directly without needing to redirect the output.</p>
+
+    <h3>4. Delete Lines Matching a Pattern</h3>
+    <pre><code>sed '/pattern/d' file.txt</code></pre>
+    <p>This command deletes all lines containing <code>pattern</code> from <code>file.txt</code>.</p>
+
+    <h3>5. Print Specific Lines</h3>
+    <pre><code>sed -n '1,3p' file.txt</code></pre>
+    <p>This command prints only lines 1 through 3 from <code>file.txt</code>.</p>
+
+    <h3>6. Append Text After a Line</h3>
+    <pre><code>sed '/pattern/a\New text' file.txt</code></pre>
+    <p>This command appends the text <code>New text</code> after every line that contains <code>pattern</code>.</p>
+
+    <h3>7. Insert Text Before a Line</h3>
+    <pre><code>sed '/pattern/i\New text' file.txt</code></pre>
+    <p>This command inserts the text <code>New text</code> before every line that contains <code>pattern</code>.</p>
+
+    <h2>Conclusion</h2>
+    <p>The <code>sed</code> command is a powerful tool for text processing in Linux. With its wide range of functions and options, you can automate and streamline text editing tasks. Practice using these commands to filter and transform text files according to your needs.</p>
+
+</body>
+</html>
