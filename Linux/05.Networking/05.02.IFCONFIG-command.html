@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux ifconfig Command Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; padding: 20px; background-color: #f4f4f4; }
+        h1, h2, h3 { color: #333; }
+        pre { background: #333; color: #fff; padding: 10px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Linux ifconfig Command Guide</h1>
+    
+    <h2>1. Understanding ifconfig</h2>
+    <p>The <code>ifconfig</code> command in Linux is used to display and configure network interfaces. It is part of the <code>net-tools</code> package and is mostly replaced by <code>ip</code> command in modern distributions.</p>
+    
+    <h2>2. Basic Syntax</h2>
+    <pre>ifconfig [INTERFACE] [OPTIONS]</pre>
+    
+    <h2>3. Viewing Network Interfaces</h2>
+    <p>To display all active network interfaces:</p>
+    <pre>ifconfig</pre>
+    
+    <h2>4. Enabling or Disabling an Interface</h2>
+    <p>To enable a network interface:</p>
+    <pre>ifconfig eth0 up</pre>
+    <p>To disable a network interface:</p>
+    <pre>ifconfig eth0 down</pre>
+    
+    <h2>5. Assigning an IP Address</h2>
+    <pre>ifconfig eth0 192.168.1.100 netmask 255.255.255.0</pre>
+    
+    <h2>6. Common ifconfig Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th><th>Description</th>
+        </tr>
+        <tr>
+            <td>ifconfig</td><td>Display active network interfaces</td>
+        </tr>
+        <tr>
+            <td>ifconfig eth0 up</td><td>Enable network interface eth0</td>
+        </tr>
+        <tr>
+            <td>ifconfig eth0 down</td><td>Disable network interface eth0</td>
+        </tr>
+        <tr>
+            <td>ifconfig eth0 192.168.1.100</td><td>Assign IP address to eth0</td>
+        </tr>
+        <tr>
+            <td>ifconfig eth0 mtu 1500</td><td>Set MTU size for eth0</td>
+        </tr>
+    </table>
+</body>
+</html>
