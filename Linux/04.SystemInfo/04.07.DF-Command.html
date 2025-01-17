@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux df Command Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            font-size: 14px;
+        }
+        .example {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding the Linux <code>df</code> Command</h1>
+
+    <p>The <code>df</code> (Disk Free) command in Linux is used to display the amount of disk space used and available on file systems. It reports the disk space usage for all mounted file systems, which includes the file system name, total size, used space, available space, and mount point.</p>
+
+    <h2>Basic Syntax</h2>
+    <pre><code>df [OPTION]... [FILE]...</code></pre>
+    <ul>
+        <li>If no file or directory is specified, <code>df</code> reports the disk usage for all file systems.</li>
+        <li>If a specific file or directory is provided, <code>df</code> reports the disk space for the file system where that file or directory resides.</li>
+    </ul>
+
+    <h2>Common Output Columns</h2>
+    <p>Here’s the typical output of the <code>df</code> command:</p>
+    <pre><code>Filesystem     1K-blocks     Used Available Use% Mounted on
+/dev/sda1       20474812  10234240  10240572  50% /
+tmpfs            1024000        456   1023544   1% /dev/shm
+/dev/sdb1       30720000   4096000  26624000  15% /mnt
+</code></pre>
+    <ul>
+        <li><strong>Filesystem:</strong> The name of the file system (e.g., <code>/dev/sda1</code>, <code>tmpfs</code>, etc.). It represents the device or virtual file system.</li>
+        <li><strong>1K-blocks:</strong> The total size of the file system in kilobytes (KB), measured in 1,024-byte blocks.</li>
+        <li><strong>Used:</strong> The amount of space used in the file system (in KB).</li>
+        <li><strong>Available:</strong> The amount of free space still available for use (in KB).</li>
+        <li><strong>Use%:</strong> The percentage of used space in the file system. This value helps you quickly understand how full the file system is.</li>
+        <li><strong>Mounted on:</strong> The directory where the file system is mounted. This shows the location where the system can access the file system’s contents.</li>
+    </ul>
+
+    <h2>Commonly Used Options with <code>df</code></h2>
+
+    <ul>
+        <li><code>-h</code> (human-readable): Display sizes in a human-readable format, i.e., automatically using KB, MB, GB, etc., rather than just bytes.
+            <pre><code>df -h</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        20G  10G  10G  50% /
+tmpfs            1000M  500K  999M   1% /dev/shm</code></pre>
+        </div>
+
+        <li><code>-T</code> (file system type): Shows the file system type (e.g., <code>ext4</code>, <code>xfs</code>, etc.).
+            <pre><code>df -T</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>Filesystem     Type 1K-blocks     Used Available Use% Mounted on
+/dev/sda1      ext4  20474812  10234240  10240572  50% /
+tmpfs           tmpfs  1024000        456   1023544   1% /dev/shm</code></pre>
+        </div>
+
+        <li><code>-i</code> (inode information): Displays inode usage instead of block usage. This is useful for understanding how many files and directories are used versus available in the file system.
+            <pre><code>df -i</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>Filesystem      Inodes  IUsed   IFree IUse% Mounted on
+/dev/sda1       1310720  500000  810000  38% /
+tmpfs            256000     100  255900   1% /dev/shm</code></pre>
+        </div>
+    </ul>
+
+    <h2>Example of <code>df -h</code> Output Explained</h2>
+    <pre><code>Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        50G   30G   15G  70% /
+tmpfs            1.0G  500M  500M  50% /dev/shm
+/dev/sdb1        100G  10G   85G  10% /mnt</code></pre>
+    <ul>
+        <li><strong>/dev/sda1:</strong> A 50 GB partition, with 30 GB used, 15 GB free, and 70% used, mounted on the root (<code>/</code>) directory.</li>
+        <li><strong>tmpfs:</strong> A temporary filesystem mounted on <code>/dev/shm</code> (often used for shared memory). It has 1 GB total space, with 500 MB used and 500 MB available.</li>
+        <li><strong>/dev/sdb1:</strong> A 100 GB partition mounted on <code>/mnt</code>, with 10 GB used and 85 GB available, only 10% used.</li>
+    </ul>
+
+    <h2>Additional Notes</h2>
+    <ul>
+        <li><code>df</code> works on file systems that are mounted and doesn't show information for file systems that are not currently mounted.</li>
+        <li>It doesn't show space usage on a specific directory unless you specify the directory, as in <code>df /home</code>.</li>
+    </ul>
+
+</body>
+</html>
