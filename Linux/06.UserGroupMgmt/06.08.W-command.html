@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>w: Show Who is Logged in and Their Activities</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>w: Show Who is Logged in and Their Activities</h1>
+
+    <p>The <strong>w</strong> command in Linux displays information about users who are currently logged in and their activities. This includes details such as the username, the terminal they are logged into, their login time, idle time, and the processes they are running. This command is particularly useful for system administrators to monitor user activity on the system.</p>
+
+    <h2>Basic w Syntax</h2>
+    <p>The basic syntax of the <code>w</code> command is:</p>
+
+    <pre>
+w [options] [username]
+    </pre>
+
+    <p>Where:</p>
+    <ul>
+        <li><code>[options]</code> are optional flags that modify the behavior of the command.</li>
+        <li><code>[username]</code> is the name of a specific user to show information for (optional).</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <h3>Show Information About All Logged-in Users</h3>
+    <p>To display a list of all users currently logged into the system along with their activities, simply run:</p>
+
+    <pre>
+w
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+ 12:34:56 up 10 days,  4:25,  3 users,  load average: 0.15, 0.20, 0.30
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU  WHAT
+john     pts/0    :0               08:30    1.00s  0.05s  0.00s  w
+alice    pts/1    192.168.1.100    09:15    3.00s  0.10s  0.01s  bash
+bob      pts/2    192.168.1.101    10:00    5.00s  0.15s  0.05s  vim
+    </pre>
+
+    <p>This output provides details such as:</p>
+    <ul>
+        <li><strong>USER</strong>: The username of the logged-in user.</li>
+        <li><strong>TTY</strong>: The terminal (e.g., <code>pts/0</code>) the user is using.</li>
+        <li><strong>FROM</strong>: The IP address or hostname of the user's machine.</li>
+        <li><strong>LOGIN@</strong>: The time at which the user logged in.</li>
+        <li><strong>IDLE</strong>: The amount of time the user has been idle.</li>
+        <li><strong>JCPU</strong>: The total time used by all processes attached to the terminal.</li>
+        <li><strong>PCPU</strong>: The time used by the current process.</li>
+        <li><strong>WHAT</strong>: The command or process the user is currently running.</li>
+    </ul>
+
+    <h3>Show Information for a Specific User</h3>
+    <p>To display information for a specific user (e.g., <code>john</code>), use the following command:</p>
+
+    <pre>
+w john
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+ 12:34:56 up 10 days,  4:25,  3 users,  load average: 0.15, 0.20, 0.30
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU  WHAT
+john     pts/0    :0               08:30    1.00s  0.05s  0.00s  w
+    </pre>
+
+    <h3>Show Information with Additional Options</h3>
+    <p>The <code>w</code> command also provides various options to customize the output.</p>
+
+    <h4>Show System Uptime</h4>
+    <p>The <code>-u</code> option displays system uptime (this is often shown by default):</p>
+
+    <pre>
+w -u
+    </pre>
+
+    <h4>Show Output for a Specific Terminal</h4>
+    <p>To show information for a specific terminal, use the terminal identifier (e.g., <code>pts/0</code>):</p>
+
+    <pre>
+w pts/0
+    </pre>
+
+    <h4>Show Information in Short Format</h4>
+    <p>The <code>-h</code> option hides the header row, showing only the information about users:</p>
+
+    <pre>
+w -h
+    </pre>
+
+    <h2>Useful w Options</h2>
+    <ul>
+        <li><code>-h</code>: Omit the header from the output.</li>
+        <li><code>-u</code>: Show system uptime (this is often displayed by default).</li>
+        <li><code>-s</code>: Show short output (less detailed than the default).</li>
+        <li><code>-f</code>: Show the full login information (including the user's hostname).</li>
+        <li><code>-i</code>: Display idle time in minutes instead of seconds.</li>
+        <li><code>-V</code>: Show version information for the <code>w</code> command.</li>
+        <li><code>-h</code>: Display help information about the <code>w</code> command.</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>While the <code>w</code> command provides useful information about logged-in users and their activities, it can reveal sensitive details about system usage. Ensure that access to this information is restricted to trusted users, especially on multi-user systems.</p>
+
+    <div class="note">
+        <strong>Note:</strong> The <code>w</code> command does not require root access to run, but users with elevated privileges can see more detailed information, such as which users are running specific processes.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The <code>w</code> command is an invaluable tool for administrators and users to track who is logged in and what activities they are performing on a Linux system. Whether you want to monitor user behavior or troubleshoot issues, <code>w</code> provides a detailed, real-time overview of user activity.</p>
+
+    <p>For more advanced usage and additional options, refer to the official <a href="https://man7.org/linux/man-pages/man1/w.1.html" target="_blank">w manual page</a>.</p>
+
+</body>
+</html>
