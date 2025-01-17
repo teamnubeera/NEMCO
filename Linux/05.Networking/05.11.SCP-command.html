@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCP: Secure Copy Files Between Hosts Over SSH</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SCP: Secure Copy Files Between Hosts Over SSH</h1>
+
+    <p>The <strong>scp</strong> (secure copy) command is a method to securely transfer files between two computers over an SSH connection. It is commonly used in Unix-like systems such as Linux, macOS, and other Unix-based OSes.</p>
+
+    <h2>Basic SCP Syntax</h2>
+    <p>The basic syntax for the <code>scp</code> command is:</p>
+
+    <pre>
+scp [options] [source] [destination]
+    </pre>
+
+    <p>Where:</p>
+    <ul>
+        <li><code>[options]</code> are optional flags (e.g., <code>-r</code> for recursive copying of directories).</li>
+        <li><code>[source]</code> is the path to the file or directory you want to copy. It can be on your local system or remote host.</li>
+        <li><code>[destination]</code> is the path where you want to copy the file or directory to, which can also be local or remote.</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <h3>Copy a File from Local to Remote</h3>
+    <p>To copy a file from your local machine to a remote machine, you would use:</p>
+
+    <pre>
+scp /path/to/local/file username@remote_host:/path/to/remote/directory
+    </pre>
+
+    <p>For example:</p>
+
+    <pre>
+scp ~/Documents/myfile.txt user@192.168.1.10:/home/user/Documents/
+    </pre>
+
+    <h3>Copy a File from Remote to Local</h3>
+    <p>To copy a file from a remote server to your local system, you would reverse the source and destination:</p>
+
+    <pre>
+scp username@remote_host:/path/to/remote/file /path/to/local/directory
+    </pre>
+
+    <p>For example:</p>
+
+    <pre>
+scp user@192.168.1.10:/home/user/Documents/myfile.txt ~/Downloads/
+    </pre>
+
+    <h3>Copy a Directory Recursively</h3>
+    <p>If you want to copy an entire directory (including subdirectories and files), use the <code>-r</code> flag to copy recursively:</p>
+
+    <pre>
+scp -r /path/to/local/directory username@remote_host:/path/to/remote/directory
+    </pre>
+
+    <h3>Using a Specific Port</h3>
+    <p>If the SSH service is running on a non-default port, use the <code>-P</code> option to specify the port number:</p>
+
+    <pre>
+scp -P 2222 /path/to/local/file username@remote_host:/path/to/remote/directory
+    </pre>
+
+    <h2>Useful SCP Options</h2>
+    <ul>
+        <li><code>-r</code>: Copy directories recursively.</li>
+        <li><code>-P</code>: Specify a non-default port number for SSH.</li>
+        <li><code>-v</code>: Verbose mode, for debugging.</li>
+        <li><code>-C</code>: Enable compressi
