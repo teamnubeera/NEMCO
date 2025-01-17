@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux UPTIME Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>uptime</code> Command</h1>
+    <p>The <code>uptime</code> command in Linux is used to display how long the system has been running, along with the current time, number of logged-in users, and system load averages.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>uptime [OPTIONS]</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>--help</code>: Displays help information about the command.</li>
+        <li><code>--version</code>: Shows the version of the <code>uptime</code> command.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Display System Uptime:</h3>
+    <pre><code>$ uptime
+ 10:30:45 up 3 days,  4:22,  2 users,  load average: 0.25, 0.30, 0.28</code></pre>
+    <p><strong>Explanation:</strong> Displays the current time, how long the system has been running, the number of logged-in users, and the system load averages over the last 1, 5, and 15 minutes.</p>
+
+    <h3>2. Check Command Version:</h3>
+    <pre><code>$ uptime --version
+uptime from procps-ng 3.3.12</code></pre>
+    <p><strong>Explanation:</strong> Displays the version of the <code>uptime</code> command.</p>
+
+    <h2>Output Breakdown:</h2>
+    <ul>
+        <li><strong>Current Time:</strong> The time when the command was run.</li>
+        <li><strong>Uptime:</strong> The duration for which the system has been running since the last reboot.</li>
+        <li><strong>Logged-in Users:</strong> The number of users currently logged into the system.</li>
+        <li><strong>Load Average:</strong> The average number of processes that are either in a runnable or uninterruptable state over the last 1, 5, and 15 minutes.</li>
+    </ul>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>System Monitoring:</strong> Quickly check how long the system has been running.</li>
+        <li><strong>Performance Analysis:</strong> Monitor the system's load averages to ensure it is not overloaded.</li>
+        <li><strong>User Activity:</strong> Verify the number of active users on the system.</li>
+    </ul>
+
+    <h2>Script Example:</h2>
+    <pre><code>#!/bin/bash
+# Check system uptime and load averages
+UPTIME=$(uptime)
+echo "System Uptime and Load:"
+echo "$UPTIME"
+</code></pre>
+    <p><strong>Output:</strong></p>
+    <pre><code>System Uptime and Load:
+ 10:30:45 up 3 days,  4:22,  2 users,  load average: 0.25, 0.30, 0.28</code></pre>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>uptime</code>: Displays the system's uptime and load averages.</li>
+        <li><code>--help</code>: Provides usage information.</li>
+        <li><code>--version</code>: Displays the command's version.</li>
+    </ul>
+
+    <p><strong>Tip:</strong> Combine <code>uptime</code> with other monitoring tools for comprehensive system analysis.</p>
+</body>
+</html>
