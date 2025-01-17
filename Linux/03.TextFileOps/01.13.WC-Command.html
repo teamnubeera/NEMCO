@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wc Command - Word, Line, and Byte Count</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>The `wc` Command</h1>
+    <p>The `wc` (word count) command in Linux is used to display the number of lines, words, and bytes in a file. The syntax for using the `wc` command is as follows:</p>
+    <pre>
+        wc [OPTION] [FILE...]
+    </pre>
+
+    <h2>Options:</h2>
+    <ul>
+        <li><strong>-l</strong>: Counts the number of lines in the file.</li>
+        <li><strong>-w</strong>: Counts the number of words in the file.</li>
+        <li><strong>-c</strong>: Counts the number of bytes in the file.</li>
+        <li><strong>-m</strong>: Counts the number of characters in the file.</li>
+        <li><strong>-L</strong>: Shows the length of the longest line.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+    <p>Counting the lines in a file:</p>
+    <pre>
+        wc -l filename.txt
+    </pre>
+    <p>Counting the words in a file:</p>
+    <pre>
+        wc -w filename.txt
+    </pre>
+    <p>Counting the bytes in a file:</p>
+    <pre>
+        wc -c filename.txt
+    </pre>
+
+    <h2>Output:</h2>
+    <p>The `wc` command will display the count of lines, words, and bytes. For example:</p>
+    <pre>
+        3  15  120 filename.txt
+    </pre>
+    <p>This output means that the file contains 3 lines, 15 words, and 120 bytes.</p>
+</body>
+</html>
