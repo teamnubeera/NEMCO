@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux du Command Explanation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            font-size: 14px;
+        }
+        .example {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-left: 5px solid #3498db;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Understanding the Linux <code>du</code> Command</h1>
+
+    <p>The <code>du</code> (Disk Usage) command in Linux is used to estimate file space usage for directories and files. It summarizes the disk usage of each directory and its contents.</p>
+
+    <h2>Basic Syntax</h2>
+    <pre><code>du [OPTION]... [FILE]...</code></pre>
+    <ul>
+        <li>If no file or directory is specified, <code>du</code> reports the disk usage of the current directory and its subdirectories.</li>
+        <li>If a specific file or directory is provided, <code>du</code> reports the disk usage for that file or directory.</li>
+    </ul>
+
+    <h2>Common Output Columns</h2>
+    <p>Here’s the typical output of the <code>du</code> command:</p>
+    <pre><code>8   ./dir1
+4   ./dir1/subdir1
+4   ./dir1/subdir2
+16  .
+</code></pre>
+    <ul>
+        <li><strong>8:</strong> The disk usage of the directory or file (in kilobytes, by default).</li>
+        <li><strong>./dir1:</strong> The relative path of the directory or file.</li>
+        <li><strong>16:</strong> The total disk usage of the current directory (including subdirectories).</li>
+    </ul>
+
+    <h2>Commonly Used Options with <code>du</code></h2>
+
+    <ul>
+        <li><code>-h</code> (human-readable): Display sizes in a human-readable format, i.e., automatically using KB, MB, GB, etc., rather than just bytes.
+            <pre><code>du -h</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>8.0K    ./dir1
+4.0K    ./dir1/subdir1
+4.0K    ./dir1/subdir2
+16K     .
+</code></pre>
+        </div>
+
+        <li><code>-s</code> (summarize): Show only the total size of the specified directory or file (no subdirectories).
+            <pre><code>du -s</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>16    .
+</code></pre>
+        </div>
+
+        <li><code>-a</code> (all files): Display the disk usage of all files, not just directories.
+            <pre><code>du -a</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>8   ./dir1
+4   ./dir1/subdir1
+4   ./dir1/subdir2
+4   ./dir1/file1
+16  .
+</code></pre>
+        </div>
+
+        <li><code>-c</code> (total): Display a total at the end of the output.
+            <pre><code>du -c</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>8   ./dir1
+4   ./dir1/subdir1
+4   ./dir1/subdir2
+16  .
+16  total
+</code></pre>
+        </div>
+
+        <li><code>-d <i>N</i></code> (depth): Limit the depth of directory traversal to <i>N</i> levels.
+            <pre><code>du -d 2</code></pre>
+        </li>
+        <div class="example">
+            <pre><code>8   ./dir1
+4   ./dir1/subdir1
+4   ./dir1/subdir2
+16  ./dir1
+16  .
+</code></pre>
+        </div>
+    </ul>
+
+    <h2>Example of <code>du -h</code> Output Explained</h2>
+    <pre><code>8.0K    ./dir1
+4.0K    ./dir1/subdir1
+4.0K    ./dir1/subdir2
+16K     .
+</code></pre>
+    <ul>
+        <li><strong>8.0K:</strong> The disk usage of <code>./dir1</code> (8 KB).</li>
+        <li><strong>4.0K:</strong> The disk usage of <code>./dir1/subdir1</code> (4 KB).</li>
+        <li><strong>4.0K:</strong> The disk usage of <code>./dir1/subdir2</code> (4 KB).</li>
+        <li><strong>16K:</strong> The total disk usage of the current directory (including all subdirectories).</li>
+    </ul>
+
+    <h2>Additional Notes</h2>
+    <ul>
+        <li><code>du</code> measures disk usage based on the number of disk blocks used by a file or directory. This may vary depending on the filesystem type.</li>
+        <li>The command reports disk usage for the file system where the directory resides, not the disk usage of any mounted file systems.</li>
+        <li>When you run <code>du</code> in a directory with a lot of files and subdirectories, it can take a while to complete.</li>
+    </ul>
+
+</body>
+</html>
