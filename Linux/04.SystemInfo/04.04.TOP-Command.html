@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux TOP Command</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: Consolas, monospace;
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux <code>top</code> Command</h1>
+    <p>The <code>top</code> command in Linux is a powerful tool for monitoring system performance. It displays real-time information about running processes, CPU and memory usage, and other system statistics.</p>
+
+    <h2>Basic Syntax:</h2>
+    <pre><code>top [OPTIONS]</code></pre>
+
+    <p><strong>Options:</strong></p>
+    <ul>
+        <li><code>-d &lt;seconds&gt;</code>: Sets the delay between updates (default is 3 seconds).</li>
+        <li><code>-p &lt;PID&gt;</code>: Monitors a specific process by its PID.</li>
+        <li><code>-n &lt;iterations&gt;</code>: Limits the number of iterations before <code>top</code> exits.</li>
+        <li><code>-b</code>: Runs <code>top</code> in batch mode for logging or scripting purposes.</li>
+    </ul>
+
+    <h2>Examples:</h2>
+
+    <h3>1. Display Real-Time Process Information:</h3>
+    <pre><code>$ top</code></pre>
+    <p><strong>Explanation:</strong> Displays an interactive interface with details about running processes, CPU, and memory usage.</p>
+
+    <h3>2. Monitor a Specific Process:</h3>
+    <pre><code>$ top -p 1234</code></pre>
+    <p><strong>Explanation:</strong> Shows information about the process with PID 1234.</p>
+
+    <h3>3. Batch Mode Output:</h3>
+    <pre><code>$ top -b -n 1</code></pre>
+    <p><strong>Explanation:</strong> Displays a snapshot of the current process information and exits after one iteration.</p>
+
+    <h3>4. Set Custom Update Interval:</h3>
+    <pre><code>$ top -d 5</code></pre>
+    <p><strong>Explanation:</strong> Updates the display every 5 seconds instead of the default 3 seconds.</p>
+
+    <h2>Output Breakdown:</h2>
+    <ul>
+        <li><strong>Tasks:</strong> Total number of processes (running, sleeping, stopped, zombie).</li>
+        <li><strong>CPU Usage:</strong> Percentage of CPU time spent in different states (user, system, idle).</li>
+        <li><strong>Memory:</strong> Total, used, and free memory statistics.</li>
+        <li><strong>Swap:</strong> Information about swap memory usage.</li>
+        <li><strong>Process List:</strong> Details of running processes (PID, user, CPU%, memory%, command, etc.).</li>
+    </ul>
+
+    <h2>Practical Uses:</h2>
+    <ul>
+        <li><strong>System Monitoring:</strong> Track CPU and memory usage in real-time.</li>
+        <li><strong>Process Management:</strong> Identify resource-intensive processes.</li>
+        <li><strong>Performance Tuning:</strong> Analyze system performance under different loads.</li>
+    </ul>
+
+    <h2>Script Example:</h2>
+    <pre><code>#!/bin/bash
+# Save a snapshot of system performance
+OUTPUT="system_snapshot.txt"
+top -b -n 1 > $OUTPUT
+echo "System performance snapshot saved to $OUTPUT"
+</code></pre>
+    <p><strong>Output:</strong></p>
+    <pre><code>System performance snapshot saved to system_snapshot.txt</code></pre>
+
+    <h2>Summary:</h2>
+    <ul>
+        <li><code>top</code>: Provides real-time system and process monitoring.</li>
+        <li><code>-d</code>: Sets update interval.</li>
+        <li><code>-p</code>: Focuses on a specific process.</li>
+        <li><code>-n</code>: Limits the number of iterations.</li>
+        <li><code>-b</code>: Enables batch mode for logging or scripting.</li>
+    </ul>
+
+    <p><strong>Tip:</strong> Use <code>htop</code>, an alternative to <code>top</code>, for a more user-friendly interface.</p>
+</body>
+</html>
