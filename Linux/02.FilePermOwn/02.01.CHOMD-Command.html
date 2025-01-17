@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux chmod Command Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; padding: 20px; background-color: #f4f4f4; }
+        h1, h2, h3 { color: #333; }
+        pre { background: #333; color: #fff; padding: 10px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Linux chmod Command Guide</h1>
+    
+    <h2>1. File Permissions in Linux</h2>
+    <p>Every file and directory has three types of permissions for three types of users:</p>
+    <table>
+        <tr>
+            <th>User Type</th><th>Symbol</th><th>Description</th>
+        </tr>
+        <tr>
+            <td>Owner</td><td>u</td><td>The user who owns the file</td>
+        </tr>
+        <tr>
+            <td>Group</td><td>g</td><td>The group that owns the file</td>
+        </tr>
+        <tr>
+            <td>Others</td><td>o</td><td>All other users</td>
+        </tr>
+    </table>
+    
+    <h2>2. Viewing File Permissions</h2>
+    <p>To check file permissions, use:</p>
+    <pre>ls -l filename</pre>
+    <p>Example output:</p>
+    <pre>-rwxr-xr-- 1 user group 1234 Jan 17 10:00 myfile.sh</pre>
+    
+    <h2>3. Changing File Permissions Using chmod</h2>
+    <h3>Numeric Mode (Octal Representation)</h3>
+    <pre>chmod 754 myfile.sh</pre>
+    
+    <h3>Symbolic Mode</h3>
+    <pre>chmod u+rwx,go-rwx myfile.sh</pre>
+    
+    <h2>4. Changing Permissions Recursively</h2>
+    <pre>chmod -R 755 myfolder/</pre>
+    
+    <h2>5. Special Permissions</h2>
+    <h3>SetUID</h3>
+    <pre>chmod u+s myfile</pre>
+    
+    <h3>Sticky Bit</h3>
+    <pre>chmod +t /tmp</pre>
+    
+    <h2>6. Common chmod Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th><th>Description</th>
+        </tr>
+        <tr>
+            <td>chmod 777 file</td><td>Everyone has full access</td>
+        </tr>
+        <tr>
+            <td>chmod 755 file</td><td>Owner: rwx, Others: r-x</td>
+        </tr>
+        <tr>
+            <td>chmod 644 file</td><td>Owner: rw-, Others: r--</td>
+        </tr>
+        <tr>
+            <td>chmod 700 file</td><td>Only owner has full access</td>
+        </tr>
+    </table>
+    
+    <h2>7. Difference Between chmod and chown</h2>
+    <p>chmod changes permissions, while chown changes ownership.</p>
+    <pre>chown user:group myfile</pre>
+</body>
+</html>
