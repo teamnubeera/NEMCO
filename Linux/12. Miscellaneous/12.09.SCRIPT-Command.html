@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>script Command: Record a Terminal Session</title>
+</head>
+<body>
+    <h1>script Command: Record a Terminal Session</h1>
+    <p>The <code>script</code> command in Linux is used to record a terminal session. It records everything that is typed and displayed on the terminal, saving it to a file. This can be useful for documenting processes, creating logs, or reviewing terminal work later. The command creates a typescript file that can be replayed or reviewed for later reference.</p>
+
+    <h2>Key Features of the script Command</h2>
+    <ul>
+        <li><strong>Record terminal activity:</strong> The <code>script</code> command captures all output, including text and commands, to a file.</li>
+        <li><strong>Create a log file:</strong> You can specify a file name to save the session, and all activities during that session are logged into this file.</li>
+        <li><strong>Useful for documentation:</strong> It helps in documenting the exact terminal output for reports, tutorials, or troubleshooting.</li>
+    </ul>
+
+    <h2>Basic script Command Usage</h2>
+    <p>The basic syntax for using the <code>script</code> command is:</p>
+    <pre><code>script [file]</code></pre>
+    <p>Where:
+    <ul>
+        <li><code>[file]</code>: The name of the file where the session will be saved. If no file is specified, the default file name <code>typescript</code> will be used.</li>
+    </ul></p>
+
+    <h3>1. Record a Terminal Session</h3>
+    <p>To start recording a session, simply run:</p>
+    <pre><code>script</code></pre>
+    <p>Everything that happens in the terminal (commands, outputs, errors, etc.) will be saved to a file named <code>typescript</code> by default.</p>
+
+    <h3>2. Record and Specify the File Name</h3>
+    <p>If you want to specify a custom file name to store the session, provide the name of the file:</p>
+    <pre><code>script mysession.log</code></pre>
+    <p>This will start recording the terminal session and save it to <code>mysession.log</code> in the current directory.</p>
+
+    <h2>Common script Options</h2>
+    <p>Here are some of the most frequently used options with the <code>script</code> command:</p>
+    <ul>
+        <li><strong>-a</strong>: Append to an existing file instead of overwriting it. For example: <code>script -a mysession.log</code></li>
+        <li><strong>-f</strong>: Flush the output after every write, ensuring that the file is updated in real-time. Example: <code>script -f mysession.log</code></li>
+        <li><strong>-q</strong>: Run the command in "quiet" mode, which suppresses the introductory message when starting the session. Example: <code>script -q mysession.log</code></li>
+        <li><strong>-t</strong>: Record the timestamp of each command executed. This is useful for tracking the time taken for each command. Example: <code>script -t 2> timing.log mysession.log</code></li>
+    </ul>
+
+    <h3>Examples with Options</h3>
+    <p>1. To record a session and save it to a file, appending to an existing file if needed:</p>
+    <pre><code>script -a mysession.log</code></pre>
+    <p>2. To run the script in quiet mode, suppressing the start message:</p>
+    <pre><code>script -q mysession.log</code></pre>
+    <p>3. To record the session with timestamps of each command:</p>
+    <pre><code>script -t 2> timing.log mysession.log</code></pre>
+
+    <h2>Recording Output to Separate Files</h2>
+    <p>By default, the <code>script</code> command records both the terminal output and any timing information into a single file. However, you can record the timing information separately. Use the <code>-t</code> option to store the timing data in one file and the session output in another, like this:</p>
+    <pre><code>script -t 2> timing.log mysession.log</code></pre>
+    <p>This will save the terminal output to <code>mysession.log</code> and the timing data to <code>timing.log</code>.</p>
+
+    <h2>Stopping the Recording</h2>
+    <p>To stop recording the session, simply type <code>exit</code> or press <code>Ctrl + D</code>. This will terminate the session and save the file.</p>
+
+    <h2>Use Case Scenarios for script</h2>
+    <ul>
+        <li><strong>Documentation:</strong> Record a terminal session to create documentation or tutorials. You can later play back the session to explain each step in the process.</li>
+        <li><strong>Bug reporting:</strong> Capture the exact terminal output when encountering an issue so that it can be reviewed later or shared with others (e.g., developers or support teams).</li>
+        <li><strong>Learning:</strong> Record your work while learning or experimenting with commands. This allows you to review your actions and outputs after the session ends.</li>
+        <li><strong>Training:</strong> Use the <code>script</code> command to record a demo or training session for colleagues or trainees to review later.</li>
+    </ul>
+
+    <h2>Common Issues and Troubleshooting</h2>
+    <ul>
+        <li><strong>File permissions:</strong> Make sure you have write permissions in the directory where you want to save the session file. If you get a "Permission Denied" error, use <code>chmod</code> or choose a different directory where you have write access.</li>
+        <li><strong>Session not stopping:</strong> If you’re unable to stop the recording, check if there’s a process or command that’s still running in the background. Otherwise, <code>Ctrl + D</code> or <code>exit</code> should stop the session.</li>
+        <li><strong>Long sessions causing large files:</strong> Long terminal sessions can generate large files. Consider using the <code>-f</code> option for real-time output flushing or breaking the session into smaller segments.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <code>script</code> command is an incredibly useful tool for recording terminal sessions in Linux. Whether you're documenting your work, creating a tutorial, or tracking a bug, it provides an easy way to log terminal activity for future reference. Its simplicity and flexibility make it an essential tool for system administrators, developers, and anyone working in the terminal environment.</p>
+
+    <p>If you have any further questions or need more assistance with the <code>script</code> command, feel free to ask!</p>
+</body>
+</html>
