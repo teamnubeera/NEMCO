@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tree Command Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 1.1em;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .example {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>tree - List Directories and Files in a Tree-like Format</h1>
+
+    <p><strong>Purpose:</strong> Displays files and directories in a hierarchical tree format.</p>
+
+    <h2>Usage</h2>
+    <ul>
+        <li><code>tree</code> - Lists files and directories in the current directory in a tree structure.</li>
+        <li><code>tree /path/to/directory</code> - Lists files in the specified directory in tree format.</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <div class="example">
+        <h3>Example 1: Basic Usage</h3>
+        <pre>
+$ tree
+.
+├── file1.txt
+├── file2.txt
+└── folder1
+    ├── file3.txt
+    └── file4.txt
+        </pre>
+    </div>
+
+    <div class="example">
+        <h3>Example 2: Specifying a Directory</h3>
+        <pre>
+$ tree /home/user/documents
+/home/user/documents
+├── report.docx
+├── data
+│   ├── data1.csv
+│   └── data2.csv
+└── images
+    ├── image1.png
+    └── image2.png
+        </pre>
+    </div>
+
+    <h2>Notes</h2>
+    <ul>
+        <li>The <code>tree</code> command may not be installed by default on all systems. Install it using your package manager, e.g., <code>sudo apt install tree</code> on Debian-based systems.</li>
+        <li>Use <code>tree -L N</code> to limit the depth of the tree to <code>N</code> levels.</li>
+        <li>Use <code>tree -d</code> to display only directories.</li>
+    </ul>
+</body>
+</html>
