@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC2 Key Concepts and Terminologies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>EC2 Key Concepts and Terminologies</h1>
+    </header>
+
+    <section>
+        <h2>Instances</h2>
+        <p>An Amazon EC2 instance is a virtual server in Amazon's Elastic Compute Cloud (EC2) for running applications on the AWS infrastructure. EC2 instances can be launched with various configurations for CPU, memory, storage, and networking.</p>
+        <ul>
+            <li>Types of Instances: Standard, Compute Optimized, Memory Optimized, Storage Optimized, etc.</li>
+            <li>Instance States: Pending, Running, Stopped, Terminated</li>
+            <li>Launch Configurations: Choose OS, instance type, storage, and networking options.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Amazon Machine Images (AMIs)</h2>
+        <p>An Amazon Machine Image (AMI) is a pre-configured template for launching EC2 instances. AMIs include the operating system, application server, applications, and related configurations.</p>
+        <ul>
+            <li>AMI Types: Public AMIs, Custom AMIs, and Marketplace AMIs.</li>
+            <li>Region-Specific: AMIs are available in specific regions.</li>
+            <li>Creating Custom AMIs: Save the configuration of an existing instance to launch more instances with the same configuration.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Elastic Block Store (EBS)</h2>
+        <p>Amazon Elastic Block Store (EBS) provides block-level storage volumes for use with EC2 instances. EBS volumes are used for storing data that requires frequent updates and low-latency access.</p>
+        <ul>
+            <li>Persistent Storage: EBS volumes persist beyond instance termination.</li>
+            <li>Volume Types: SSD-backed, HDD-backed, and other specialized types (e.g., io1, gp2, st1).</li>
+            <li>Snapshots: EBS snapshots allow you to back up and restore data.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Elastic IP Addresses</h2>
+        <p>Elastic IP Addresses (EIP) are static IPv4 addresses designed for dynamic cloud computing. An EIP is associated with your AWS account and can be associated with EC2 instances as needed.</p>
+        <ul>
+            <li>Static IP: Unlike regular dynamic IP addresses, EIPs do not change when you stop and start your instance.</li>
+            <li>Association: You can associate an EIP to any EC2 instance within your account.</li>
+            <li>Reallocation: EIPs can be reassigned to other EC2 instances.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Security Groups</h2>
+        <p>A security group acts as a virtual firewall for your EC2 instance to control inbound and outbound traffic. It defines which traffic is allowed to and from your instance.</p>
+        <ul>
+            <li>Stateful: Inbound and outbound rules are evaluated separately.</li>
+            <li>Allow Rules: Security groups only allow traffic based on defined rules (no deny rules).</li>
+            <li>Multiple Security Groups: EC2 instances can be associated with multiple security groups for flexible access control.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 EC2 Concepts Overview</p>
+    </footer>
+
+</body>
+</html>
