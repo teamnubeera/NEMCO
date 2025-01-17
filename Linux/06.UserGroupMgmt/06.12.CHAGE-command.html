@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chage: Change User Password Expiry Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>chage: Change User Password Expiry Information</h1>
+
+    <p>The <strong>chage</strong> command in Linux is used to modify the password expiry information for user accounts. System administrators typically use this command to configure password aging policies, such as setting maximum password age, minimum password age, and other related settings.</p>
+
+    <h2>Basic chage Syntax</h2>
+    <p>The basic syntax of the <code>chage</code> command is:</p>
+
+    <pre>
+chage [options] [username]
+    </pre>
+
+    <p>Where:</p>
+    <ul>
+        <li><code>[options]</code> are optional flags that modify the behavior of the command.</li>
+        <li><code>[username]</code> is the name of the user whose password expiry information you want to modify.</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <h3>Display the Current Password Expiry Information for a User</h3>
+    <p>To view the current password expiry settings for a user (e.g., <code>john</code>), use the following command:</p>
+
+    <pre>
+chage -l john
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+Last password change                                    : Jan 17, 2025
+Password expires                                        : Apr 17, 2025
+Password inactive                                       : May 17, 2025
+Account expires                                         : Never
+Minimum number of days between password change          : 7
+Maximum number of days between password change          : 90
+Number of days of warning before password expires       : 7
+    </pre>
+
+    <p>This output provides the following details about the user's password:</p>
+    <ul>
+        <li><strong>Last password change</strong>: The date of the last password change.</li>
+        <li><strong>Password expires</strong>: The date when the password will expire.</li>
+        <li><strong>Password inactive</strong>: The date when the account will become inactive (if applicable).</li>
+        <li><strong>Account expires</strong>: The date when the account will be disabled (if set).</li>
+        <li><strong>Minimum number of days between password change</strong>: The minimum time period that must pass before the user can change their password.</li>
+        <li><strong>Maximum number of days between password change</strong>: The maximum time period allowed before the user is required to change their password.</li>
+        <li><strong>Number of days of warning before password expires</strong>: The number of days before the password expires when the user will receive a warning to change it.</li>
+    </ul>
+
+    <h3>Change the Maximum Password Age</h3>
+    <p>To change the maximum number of days a user can keep their password before it expires (e.g., set it to 60 days for user <code>alice</code>), use the following command:</p>
+
+    <pre>
+sudo chage -M 60 alice
+    </pre>
+
+    <p>Here, the <code>-M</code> option specifies the maximum password age in days.</p>
+
+    <h3>Set the Minimum Password Age</h3>
+    <p>To set the minimum number of days before a user can change their password (e.g., set it to 5 days for <code>bob</code>), use:</p>
+
+    <pre>
+sudo chage -m 5 bob
+    </pre>
+
+    <p>Here, the <code>-m</code> option specifies the minimum number of days between password changes.</p>
+
+    <h3>Set the Password Expiry Warning Period</h3>
+    <p>To set the number of days before the password expires that the user will receive a warning (e.g., set to 10 days for <code>john</code>), run:</p>
+
+    <pre>
+sudo chage -W 10 john
+    </pre>
+
+    <p>Here, the <code>-W</code> option specifies the number of days of warning before password expiry.</p>
+
+    <h3>Disable Password Expiry</h3>
+    <p>If you want to disable password expiry for a user, you can use the <code>-I</code> option followed by <code>0</code> to set the password inactive period to never:</p>
+
+    <pre>
+sudo chage -I 0 john
+    </pre>
+
+    <p>This will disable the password inactivity feature for the user <code>john</code>.</p>
+
+    <h3>Set an Account Expiry Date</h3>
+    <p>To set an account expiry date (e.g., set to Jan 1, 2026, for <code>alice</code>), use the <code>-E</code> option:</p>
+
+    <pre>
+sudo chage -E 2026-01-01 alice
+    </pre>
+
+    <p>Here, the <code>-E</code> option specifies the date when the user account will expire and become inactive.</p>
+
+    <h2>Useful chage Options</h2>
+    <ul>
+        <li><code>-l</code>: List the current password expiry information for a user.</li>
+        <li><code>-M</code>: Set the maximum number of days between password changes.</li>
+        <li><code>-m</code>: Set the minimum number of days between password changes.</li>
+        <li><code>-W</code>: Set the number of days of warning before the password expires.</li>
+        <li><code>-I</code>: Set the number of days of inactivity before the account is disabled (set to 0 to disable the feature).</li>
+        <li><code>-E</code>: Set the account expiry date (when the user’s account will be disabled).</li>
+        <li><code>-h</code>: Display help information for the <code>chage</code> command.</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>The <code>chage</code> command is a powerful tool for managing password and account expiry policies. Password aging can improve security by forcing users to change their passwords regularly. However, it’s important to ensure that password expiration policies are not too restrictive, as this may lead to users being locked out of their accounts.</p>
+
+    <div class="note">
+        <strong>Note:</strong> The <code>chage</code> command requires superuser privileges to modify password expiry settings for other users, but it can be used without elevated privileges to check information for the current user.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The <code>chage</code> command is an essential tool for Linux system administrators to manage password expiry information. By using it, you can enforce security policies that ensure users change their passwords at regular intervals, manage inactive accounts, and set account expiry dates.</p>
+
+    <p>For more advanced usage and additional options, refer to the official <a href="https://man7.org/linux/man-pages/man8/chage.8.html" target="_blank">chage manual page</a>.</p>
+
+</body>
+</html>
