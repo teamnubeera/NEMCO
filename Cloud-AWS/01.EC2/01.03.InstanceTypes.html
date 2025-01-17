@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC2 Instance Types Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .hands-on {
+            background-color: #e8f4fc;
+            padding: 10px;
+            border: 1px solid #b0d1e8;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>EC2 Instance Types Overview</h1>
+    </header>
+
+    <section>
+        <h2>General Purpose Instances</h2>
+        <ul>
+            <li>Example Families: t3, t3a, m5, m5a, m6g</li>
+            <li>Use Cases: Web servers, app servers, small to medium databases, development and testing environments.</li>
+        </ul>
+        <div class="hands-on">
+            <h3>Hands-on Activity:</h3>
+            <p>Create a General Purpose EC2 instance using the <code>m5</code> family in AWS Console. Test hosting a simple website using Apache.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Compute Optimized Instances</h2>
+        <ul>
+            <li>Example Families: c5, c5a, c6g</li>
+            <li>Use Cases: High-performance web servers, batch processing, gaming servers, and high-performance computing (HPC) workloads.</li>
+        </ul>
+        <div class="hands-on">
+            <h3>Hands-on Activity:</h3>
+            <p>Launch a Compute Optimized EC2 instance using the <code>c5</code> family and run a benchmarking tool like <code>sysbench</code> to test CPU performance.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Memory Optimized Instances</h2>
+        <ul>
+            <li>Example Families: r5, r5a, r6g, x1e</li>
+            <li>Use Cases: In-memory databases (e.g., Redis, Memcached), real-time analytics, big data processing.</li>
+        </ul>
+        <div class="hands-on">
+            <h3>Hands-on Activity:</h3>
+            <p>Launch a Memory Optimized EC2 instance using the <code>r5</code> family and deploy an in-memory database like Redis.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Storage Optimized Instances</h2>
+        <ul>
+            <li>Example Families: i3, i3en, d2</li>
+            <li>Use Cases: NoSQL databases, data warehousing, log processing, and data mining.</li>
+        </ul>
+        <div class="hands-on">
+            <h3>Hands-on Activity:</h3>
+            <p>Launch a Storage Optimized EC2 instance using the <code>i3</code> family and deploy a high-performance database such as Apache HBase.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>GPU Instances</h2>
+        <ul>
+            <li>Example Families: p3, p4, g4dn</li>
+            <li>Use Cases: Machine learning (ML), deep learning, scientific computing, video rendering, and other GPU-intensive applications.</li>
+        </ul>
+        <div class="hands-on">
+            <h3>Hands-on Activity:</h3>
+            <p>Launch a GPU EC2 instance using the <code>p3</code> family and deploy a deep learning model using TensorFlow or PyTorch.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 EC2 Instance Types Overview</p>
+    </footer>
+
+</body>
+</html>
