@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>killall Command: Terminate Processes by Name</title>
+</head>
+<body>
+    <h1>killall Command: Terminate Processes by Name</h1>
+    <p>The <code>killall</code> command in Linux is used to terminate processes by their name, rather than their Process ID (PID). This is useful when you want to stop all processes that are running with a specific name, such as terminating all instances of a particular application.</p>
+
+    <h2>Key Features of the killall Command</h2>
+    <ul>
+        <li><strong>Terminate processes by name</strong>: Unlike the <code>kill</code> command, which requires the PID, <code>killall</code> allows you to terminate all processes by specifying their name.</li>
+        <li><strong>Send signals to processes</strong>: You can send different signals to processes (like terminate, kill, stop) using the <code>killall</code> command.</li>
+        <li><strong>Supports case-sensitive matching</strong>: By default, <code>killall</code> performs a case-sensitive search for the process name.</li>
+    </ul>
+
+    <h2>Basic killall Command Usage</h2>
+    <p>Here are some common <code>killall</code> commands for managing processes by their name:</p>
+
+    <h3>1. Terminate processes by name</h3>
+    <pre><code>killall &lt;process_name&gt;</code></pre>
+    <p>This sends the default <strong>SIGTERM</strong> signal (signal number 15) to all processes matching the given name, requesting them to terminate.</p>
+    <p><strong>Example:</strong> <code>killall firefox</code> will terminate all processes with the name "firefox".</p>
+
+    <h3>2. Forcefully terminate processes by name</h3>
+    <pre><code>killall -9 &lt;process_name&gt;</code></pre>
+    <p>This sends the <strong>SIGKILL</strong> signal (signal number 9) to forcefully terminate all processes with the specified name. The <strong>SIGKILL</strong> signal immediately terminates processes without allowing them to clean up resources.</p>
+    <p><strong>Example:</strong> <code>killall -9 firefox</code> will forcefully terminate all processes with the name "firefox".</p>
+
+    <h3>3. Send a different signal to processes</h3>
+    <pre><code>killall -&lt;signal&gt; &lt;process_name&gt;</code></pre>
+    <p>You can specify a signal to send to the processes using the <code>-<signal></code> option. Common signals include:
+        <ul>
+            <li><strong>SIGSTOP</strong> (signal number 19): Suspend the processes.</li>
+            <li><strong>SIGCONT</strong> (signal number 18): Resume suspended processes.</li>
+            <li><strong>SIGINT</strong> (signal number 2): Interrupt the processes (like pressing Ctrl+C in the terminal).</li>
+        </ul>
+    </p>
+    <p><strong>Example:</strong> <code>killall -SIGSTOP firefox</code> will suspend all processes with the name "firefox".</p>
+
+    <h3>4. Terminate processes by name with case-insensitive matching</h3>
+    <pre><code>killall -i &lt;process_name&gt;</code></pre>
+    <p>By default, <code>killall</code> is case-sensitive when matching the process name. The <code>-i</code> option allows for case-insensitive matching of the process name.</p>
+    <p><strong>Example:</strong> <code>killall -i firefox</code> will terminate processes named "Firefox", "firefox", or "FIREFOX".</p>
+
+    <h3>5. List processes that match the name (without terminating)</h3>
+    <pre><code>killall -l &lt;process_name&gt;</code></pre>
+    <p>This option lists all processes matching the name but does not terminate them. This can be useful for previewing which processes would be affected.</p>
+    <p><strong>Example:</strong> <code>killall -l firefox</code> will list all processes matching the name "firefox" without terminating them.</p>
+
+    <h2>Common Signals</h2>
+    <p>The <code>killall</code> command can send various signals to processes, here are some common ones:</p>
+    <ul>
+        <li><strong>SIGTERM (15)</strong>: Gracefully terminate the processes. This is the default signal sent by <code>killall</code>.</li>
+        <li><strong>SIGKILL (9)</strong>: Forcefully terminate the processes. This signal cannot be ignored by the process.</li>
+        <li><strong>SIGSTOP (19)</strong>: Suspend the processes (pause execution).</li>
+        <li><strong>SIGCONT (18)</strong>: Resume the suspended processes.</li>
+        <li><strong>SIGINT (2)</strong>: Interrupt the processes (equivalent to pressing Ctrl+C).</li>
+        <li><strong>SIGHUP (1)</strong>: Hang up. Often used to tell a daemon to reload its configuration.</li>
+    </ul>
+
+    <h2>Examples</h2>
+    <ol>
+        <li><strong>Gracefully terminate all processes by name:</strong> <code>killall firefox</code> (default SIGTERM signal).</li>
+        <li><strong>Forcefully terminate all processes by name:</strong> <code>killall -9 firefox</code> (SIGKILL signal).</li>
+        <li><strong>Suspend all processes by name:</strong> <code>killall -SIGSTOP firefox</code> (SIGSTOP signal).</li>
+        <li><strong>Resume all suspended processes by name:</strong> <code>killall -SIGCONT firefox</code> (SIGCONT signal).</li>
+        <li><strong>Terminate all processes with case-insensitive matching:</strong> <code>killall -i firefox</code> (case-insensitive match).</li>
+    </ol>
+
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li><strong>Permissions:</strong> Some processes may require root (administrator) permissions to terminate. In such cases, use <code>sudo killall &lt;process_name&gt;</code>.</li>
+        <li><strong>Process not terminating:</strong> If a process does not terminate with <code>killall</code>, it may be ignoring the signal. Try using <code>killall -9 &lt;process_name&gt;</code> to forcefully terminate it.</li>
+        <li><strong>Check if a process is still running:</strong> After issuing a <code>killall</code> command, check if the process is still running using <code>ps aux</code>, <code>top</code>, or <code>pgrep</code>.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <code>killall</code> command is a useful tool for terminating processes by their name, rather than by PID. It allows you to send various signals to processes, including graceful termination and forceful termination. Understanding how to use <code>killall</code> effectively can help you manage system processes and terminate unresponsive programs by name.</p>
+
+    <p>If you need more details or have any questions about using the <code>killall</code> command, feel free to ask!</p>
+</body>
+</html>
