@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rsync: Remote File and Directory Synchronization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>rsync: Remote File and Directory Synchronization</h1>
+
+    <p><strong>rsync</strong> is a fast and versatile file synchronization tool commonly used for transferring files between a local machine and a remote system, or between two remote systems. It is widely known for its ability to efficiently copy only the differences between files, which saves time and bandwidth.</p>
+
+    <h2>Basic rsync Syntax</h2>
+    <p>The basic syntax for the <code>rsync</code> command is:</p>
+
+    <pre>
+rsync [options] [source] [destination]
+    </pre>
+
+    <p>Where:</p>
+    <ul>
+        <li><code>[options]</code> are optional flags to modify the behavior of the command (e.g., <code>-r</code> for recursive copying, <code>-z</code> for compression).</li>
+        <li><code>[source]</code> is the path to the file or directory you want to copy. This can be on your local system or on a remote machine.</li>
+        <li><code>[destination]</code> is the path where you want the file or directory to be copied, either local or remote.</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <h3>Copy a File from Local to Remote</h3>
+    <p>To copy a file from your local machine to a remote system, use:</p>
+
+    <pre>
+rsync /path/to/local/file username@remote_host:/path/to/remote/directory
+    </pre>
+
+    <p>For example:</p>
+
+    <pre>
+rsync ~/Documents/myfile.txt user@192.168.1.10:/home/user/Documents/
+    </pre>
+
+    <h3>Copy a File from Remote to Local</h3>
+    <p>To copy a file from a remote server to your local machine, reverse the source and destination:</p>
+
+    <pre>
+rsync username@remote_host:/path/to/remote/file /path/to/local/directory
+    </pre>
+
+    <p>For example:</p>
+
+    <pre>
+rsync user@192.168.1.10:/home/user/Documents/myfile.txt ~/Downloads/
+    </pre>
+
+    <h3>Synchronize a Directory</h3>
+    <p>If you want to copy an entire directory (including all subdirectories and files), use the <code>-r</code> (recursive) flag:</p>
+
+    <pre>
+rsync -r /path/to/local/directory username@remote_host:/path/to/remote/directory
+    </pre>
+
+    <h3>Copy Only New or Changed Files</h3>
+    <p>rsync compares the files at both ends and only copies files that have changed. To copy only new or modified files, use:</p>
+
+    <pre>
+rsync -av /path/to/local/dir/ username@remote_host:/path/to/remote/dir/
+    </pre>
+
+    <p>Here, the <code>-a</code> flag enables archive mode (which preserves permissions, timestamps, etc.), and <code>-v</code> enables verbose output for better tracking of the transfer process.</p>
+
+    <h3>Using a Specific SSH Port</h3>
+    <p>If the SSH server on the remote host is running on a non-default port, use the <code>-e</code> option to specify the port:</p>
+
+    <pre>
+rsync -e "ssh -p 2222" /path/to/local/file username@remote_host:/path/to/remote/directory
+    </pre>
+
+    <h2>Useful rsync Options</h2>
+    <ul>
+        <li><code>-r</code>: Recursive mode to copy directories.</li>
+        <li><code>-a</code>: Archive mode, preserves permissions, timestamps, symbolic links, etc.</li>
+        <li><code>-v</code>: Verbose mode, outputs detailed information about the transfer.</li>
+        <li><code>-z</code>: Compress the data during transfer to save bandwidth.</li>
+        <li><code>-P</code>: Shows progress during transfer and allows resuming of interrupted transfers.</li>
+        <li><code>-u</code>: Skip files that are newer on the destination.</li>
+        <li><code>-e</code>: Specify a remote shell (such as SSH) to use for the connection.</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>Since rsync typically uses SSH for the data transfer, it is a secure method for synchronizing files. Make sure you are using SSH keys for authentication, or securely store your password to prevent unauthorized access.</p>
+
+    <div class="note">
+        <strong>Note:</strong> rsync will not copy hidden files (those starting with a dot) unless you include the <code>-a</code> option or explicitly specify hidden files in your source path.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>rsync is a powerful and efficient tool for syncing and transferring files between local and remote systems. Its ability to only transfer changes (via its delta algorithm) makes it particularly efficient for large or frequent synchronizations.</p>
+
+    <p>For more detailed information, consult the official <a href="https://man7.org/linux/man-pages/man1/rsync.1.html" target="_blank">rsync manual page</a>.</p>
+
+</body>
+</html>
