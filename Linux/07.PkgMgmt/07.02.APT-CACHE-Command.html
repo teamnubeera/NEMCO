@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APT-Cache Command Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #333366;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>APT-Cache Command Tutorial</h1>
+    <p><strong>APT-Cache</strong> is a command-line tool for querying the APT package database, specifically useful for searching for available packages, showing information, and performing other queries related to package management. It is often used to search for software in repositories without actually installing them.</p>
+
+    <h2>Overview of APT-Cache:</h2>
+    <p><code>apt-cache</code> is used to search and display information about packages available from the repositories configured in your system. It's useful for finding packages before installing them and for exploring package details such as dependencies and descriptions.</p>
+
+    <h2>Basic Commands:</h2>
+
+    <h3>1. Search for Packages</h3>
+    <p>To search for a package by name or description, you can use the <code>search</code> option. This will search through the package database and display a list of matching packages.</p>
+    <pre><code>apt-cache search &lt;package_name&gt;</code></pre>
+    <p>For example, to search for packages related to <code>curl</code>:</p>
+    <pre><code>apt-cache search curl</code></pre>
+    <p>This command will return a list of package names and descriptions that match "curl".</p>
+
+    <h3>2. Show Package Information</h3>
+    <p>If you want more detailed information about a specific package, such as its description, dependencies, and version, you can use the <code>show</code> command:</p>
+    <pre><code>apt-cache show &lt;package_name&gt;</code></pre>
+    <p>Example:</p>
+    <pre><code>apt-cache show curl</code></pre>
+    <p>This command will display detailed information about the <code>curl</code> package, including its size, dependencies, and description.</p>
+
+    <h3>3. Search for Package Dependencies</h3>
+    <p>You can also use <code>apt-cache</code> to search for the dependencies of a package. To find out which packages a certain package depends on, use:</p>
+    <pre><code>apt-cache depends &lt;package_name&gt;</code></pre>
+    <p>For example:</p>
+    <pre><code>apt-cache depends curl</code></pre>
+    <p>This will list all the packages that <code>curl</code> depends on.</p>
+
+    <h3>4. Search for Reverse Dependencies</h3>
+    <p>To find out which packages depend on a particular package, you can use the <code>rdepends</code> option:</p>
+    <pre><code>apt-cache rdepends &lt;package_name&gt;</code></pre>
+    <p>Example:</p>
+    <pre><code>apt-cache rdepends curl</code></pre>
+    <p>This command will list packages that depend on <code>curl</code>.</p>
+
+    <h3>5. Display Package Policy</h3>
+    <p>To view the versioning policy and preferences for a specific package, use the <code>policy</code> option:</p>
+    <pre><code>apt-cache policy &lt;package_name&gt;</code></pre>
+    <p>Example:</p>
+    <pre><code>apt-cache policy curl</code></pre>
+    <p>This will display the available versions of <code>curl</code>, along with repository information and priorities for each version.</p>
+
+    <h2>How APT-Cache Works</h2>
+    <p>APT-Cache queries the local package database that was updated when you ran <code>sudo apt-get update</code>. It retrieves package details from the package index and repositories, providing information about available packages, installed packages, dependencies, and more.</p>
+
+    <h2>Additional APT-Cache Features</h2>
+    <p>Here are some additional features and options you can use with <code>apt-cache</code>:</p>
+
+    <h3>1. Show Package Keywords</h3>
+    <p>To display all the keywords for a specific package (e.g., architecture, size, and description), use:</p>
+    <pre><code>apt-cache showpkg &lt;package_name&gt;</code></pre>
+    <p>Example:</p>
+    <pre><code>apt-cache showpkg curl</code></pre>
+
+    <h3>2. Display Available Package Versions</h3>
+    <p>If you want to see the available versions of a package from the repositories, use:</p>
+    <pre><code>apt-cache showpkg &lt;package_name&gt;</code></pre>
+    <p>Example:</p>
+    <pre><code>apt-cache showpkg curl</code></pre>
+    <p>This will show you the available versions of the package.</p>
+
+    <h3>3. Package Size</h3>
+    <p>If you want to check the size of a specific package, use the <code>show</code> option, and look for the "Size" field in the output:</p>
+    <pre><code>apt-cache show &lt;package_name&gt;</code></pre>
+    <p>Example:</p>
+    <pre><code>apt-cache show curl</code></pre>
+
+    <h2>Summary of Key `apt-cache` Commands:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>apt-cache search &lt;package_name&gt;</code></td>
+                <td>Search for a package by name or description.</td>
+            </tr>
+            <tr>
+                <td><code>apt-cache show &lt;package_name&gt;</code></td>
+                <td>Show detailed information about a package.</td>
+            </tr>
+            <tr>
+                <td><code>apt-cache depends &lt;package_name&gt;</code></td>
+                <td>Show the dependencies of a package.</td>
+            </tr>
+            <tr>
+                <td><code>apt-cache rdepends &lt;package_name&gt;</code></td>
+                <td>Show the reverse dependencies of a package.</td>
+            </tr>
+            <tr>
+                <td><code>apt-cache policy &lt;package_name&gt;</code></td>
+                <td>Show the versioning policy and preferences of a package.</td>
+            </tr>
+            <tr>
+                <td><code>apt-cache showpkg &lt;package_name&gt;</code></td>
+                <td>Show the available versions and detailed information about a package.</td>
+            </tr>
+            <tr>
+                <td><code>apt-cache showpkg &lt;package_name&gt;</code></td>
+                <td>Display available versions of a package.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
