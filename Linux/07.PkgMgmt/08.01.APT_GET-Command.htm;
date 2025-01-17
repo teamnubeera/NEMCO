@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APT-Get Command Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #333366;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>APT-Get Command Tutorial</h1>
+    <p><strong>APT (Advanced Packaging Tool)</strong> is a package management system used by Debian-based Linux distributions (such as Ubuntu, Linux Mint, etc.). The <code>apt-get</code> command is one of the most important tools for managing software packages on these systems.</p>
+
+    <h2>Overview of APT (`apt-get`):</h2>
+    <p><code>apt-get</code> is a command-line tool for handling packages. It interacts with repositories to install, update, upgrade, and remove software packages on your system. The tool automatically resolves dependencies and installs them if necessary.</p>
+
+    <h2>Basic Commands:</h2>
+
+    <h3>1. Updating Package Information</h3>
+    <p>Before installing or upgrading packages, you should update the local package database. This ensures you're getting the latest versions of software available in the repository.</p>
+    <pre><code>sudo apt-get update</code></pre>
+    <p>This command refreshes the list of available packages and their versions from the repositories.</p>
+
+    <h3>2. Upgrading Installed Packages</h3>
+    <p>To upgrade all installed packages on your system, run:</p>
+    <pre><code>sudo apt-get upgrade</code></pre>
+    <p>This will upgrade all packages that have newer versions available.</p>
+
+    <p>To upgrade all packages and also install new dependencies or remove obsolete packages:</p>
+    <pre><code>sudo apt-get dist-upgrade</code></pre>
+
+    <h3>3. Installing Packages</h3>
+    <p>To install a new package, use the following command:</p>
+    <pre><code>sudo apt-get install &lt;package_name&gt;</code></pre>
+    <p>For example, to install <code>curl</code>:</p>
+    <pre><code>sudo apt-get install curl</code></pre>
+
+    <p>You can install multiple packages at once:</p>
+    <pre><code>sudo apt-get install curl wget vim</code></pre>
+
+    <h3>4. Removing Packages</h3>
+    <p>To remove a package, use the <code>remove</code> command:</p>
+    <pre><code>sudo apt-get remove &lt;package_name&gt;</code></pre>
+    <p>For example, to remove <code>curl</code>:</p>
+    <pre><code>sudo apt-get remove curl</code></pre>
+
+    <p>To remove the package and its configuration files completely:</p>
+    <pre><code>sudo apt-get purge &lt;package_name&gt;</code></pre>
+
+    <h3>5. Autoremoving Unused Packages</h3>
+    <p>When you uninstall packages, some dependencies may no longer be needed. To clean up and remove them, use:</p>
+    <pre><code>sudo apt-get autoremove</code></pre>
+
+    <h3>6. Cleaning Up</h3>
+    <p>To remove downloaded package files from the cache (free up space):</p>
+    <pre><code>sudo apt-get clean</code></pre>
+    <p>Or, to remove only outdated package files:</p>
+    <pre><code>sudo apt-get autoclean</code></pre>
+
+    <h2>Package Search</h2>
+    <p>You can search for a specific package in the repository using <code>apt-cache</code>:</p>
+    <pre><code>apt-cache search &lt;package_name&gt;</code></pre>
+    <p>For example, to search for <code>curl</code>:</p>
+    <pre><code>apt-cache search curl</code></pre>
+
+    <h2>Additional Options for `apt-get`:</h2>
+    <p>Here are some additional useful options for the <code>apt-get</code> command:</p>
+
+    <h3>1. Show Package Information</h3>
+    <pre><code>apt-cache show &lt;package_name&gt;</code></pre>
+    <p>Example:</p>
+    <pre><code>apt-cache show curl</code></pre>
+
+    <h3>2. Upgrade a Specific Package</h3>
+    <pre><code>sudo apt-get install --only-upgrade &lt;package_name&gt;</code></pre>
+
+    <h3>3. Check for Package Updates (Dry Run)</h3>
+    <pre><code>sudo apt-get upgrade --dry-run</code></pre>
+
+    <h3>4. List Installed Packages</h3>
+    <pre><code>dpkg --get-selections</code></pre>
+    <p>To filter installed packages:</p>
+    <pre><code>dpkg --get-selections | grep &lt;package_name&gt;</code></pre>
+
+    <h2>How APT Works</h2>
+    <p>APT uses repositories defined in the <code>/etc/apt/sources.list</code> file. These repositories are remote servers that contain software packages for your system. APT automatically resolves dependencies, fetching any additional packages required during installation.</p>
+
+    <h2>Key Files in APT</h2>
+    <ul>
+        <li><code>/etc/apt/sources.list</code> – This file lists the repositories where APT can fetch software from.</li>
+        <li><code>/etc/apt/sources.list.d/</code> – This directory contains additional repository lists, typically used by third-party sources.</li>
+    </ul>
+
+    <h2>Summary of Key `apt-get` Commands:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Command</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>sudo apt-get update</code></td>
+                <td>Update the package database from repositories.</td>
+            </tr>
+            <tr>
+                <td><code>sudo apt-get upgrade</code></td>
+                <td>Upgrade all installed packages to the latest version.</td>
+            </tr>
+            <tr>
+                <td><code>sudo apt-get dist-upgrade</code></td>
+                <td>Upgrade all packages, and install/remove dependencies.</td>
+            </tr>
+            <tr>
+                <td><code>sudo apt-get install &lt;package_name&gt;</code></td>
+                <td>Install a new package.</td>
+            </tr>
+            <tr>
+                <td><code>sudo apt-get remove &lt;package_name&gt;</code></td>
+                <td>Remove a package but leave configuration files.</td>
+            </tr>
+            <tr>
+                <td><code>sudo apt-get purge &lt;package_name&gt;</code></td>
+                <td>Remove a package and its configuration files.</td>
+            </tr>
+            <tr>
+                <td><code>sudo apt-get autoremove</code></td>
+                <td>Remove unused dependencies (orphaned packages).</td>
+            </tr>
+            <tr>
+                <td><code>sudo apt-get clean</code></td>
+                <td>Clean the local package cache.</td>
+            </tr>
+            <tr>
+                <td><code>sudo apt-get autoclean</code></td>
+                <td>Remove outdated .deb files from the cache.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
