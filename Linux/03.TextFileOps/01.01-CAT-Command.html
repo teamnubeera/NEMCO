@@ -3,10 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Page</title>
+    <title>Using the <code>cat</code> Command in Linux</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            background-color: #e1e1e1;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+        ul {
+            line-height: 1.8;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, welcome to my website!</h1>
-    <p>This is a simple HTML page.</p>
+    <h1>Linux: Using the <code>cat</code> Command to Concatenate and Display File Contents</h1>
+
+    <p>The <code>cat</code> command is used to display the contents of files, concatenate multiple files together, or create new files. It's one of the most commonly used commands in Linux for file viewing and manipulation.</p>
+
+    <h2>Basic Command Usage</h2>
+    <pre><code>cat filename</code></pre>
+    <p>This will display the contents of the file <code>filename</code> directly in the terminal.</p>
+
+    <h2>Commonly Used Options with <code>cat</code></h2>
+    <ul>
+        <li><strong><code>-n</code></strong>: Number all output lines.</li>
+        <li><strong><code>-b</code></strong>: Number non-blank output lines (skips blank lines).</li>
+        <li><strong><code>-E</code></strong>: Display "$" at the end of each line to visualize line breaks.</li>
+        <li><strong><code>-T</code></strong>: Display TAB characters as ^I.</li>
+    </ul>
+
+    <h2>Example Usage</h2>
+
+    <h3>1. Display a Single File</h3>
+    <pre><code>cat index.html</code></pre>
+    <p>This command displays the contents of the <code>index.html</code> file in the terminal.</p>
+
+    <h3>2. Display Multiple Files</h3>
+    <pre><code>cat file1.txt file2.txt</code></pre>
+    <p>This concatenates <code>file1.txt</code> and <code>file2.txt</code> and displays their combined contents in the terminal.</p>
+
+    <h3>3. Number Lines in Output</h3>
+    <pre><code>cat -n index.html</code></pre>
+    <p>This command displays the contents of <code>index.html</code>, numbering each line for reference.</p>
+
+    <h3>4. Show End-of-Line Characters</h3>
+    <pre><code>cat -E index.html</code></pre>
+    <p>This command will show "$" at the end of each line to visualize the line breaks.</p>
+
+    <h3>5. Create a New File</h3>
+    <pre><code>cat > newfile.txt</code></pre>
+    <p>This command will create a new file <code>newfile.txt</code> and allow you to type text directly into it. Press <code>Ctrl + D</code> to save and exit.</p>
+
+    <h2>Conclusion</h2>
+    <p>The <code>cat</code> command is a versatile tool for working with file contents. It can be used to display, combine, create, and even manipulate files directly in the terminal. Experiment with the various options to gain more control over your file viewing tasks.</p>
+
 </body>
 </html>
