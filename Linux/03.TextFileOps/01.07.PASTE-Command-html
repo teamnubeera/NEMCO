@@ -3,32 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merge Lines of Files</title>
+    <title>Paste Command Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #file-container {
+            width: 100%;
+            height: 50vh;
+            overflow-y: scroll;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-family: "Courier New", Courier, monospace;
+            white-space: pre-wrap; /* To preserve formatting */
+        }
+        .controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .controls textarea {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            height: 100px;
+            margin: 10px 0;
+            font-family: "Courier New", Courier, monospace;
+            white-space: pre-wrap; /* To preserve formatting */
+        }
+        .controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Merge Lines of Files</h1>
-    <input type="file" id="file1" multiple />
-    <input type="file" id="file2" multiple />
-    <button onclick="mergeFiles()">Merge Files</button>
-    <pre id="output"></pre>
+
+    <h1 style="text-align: center; color: #333;">Paste Command Simulation</h1>
+
+    <div class="controls">
+        <h3>Enter content for File 1</h3>
+        <textarea id="file1" placeholder="Enter content for file 1"></textarea>
+        <h3>Enter content for File 2</h3>
+        <textarea id="file2" placeholder="Enter content for file 2"></textarea>
+        <h3>Enter content for File 3 (optional)</h3>
+        <textarea id="file3" placeholder="Enter content for file 3"></textarea>
+        <br>
+        <button id="paste-button">Paste (Merge Lines)</button>
+    </div>
+
+    <div id="file-container"></div>
 
     <script>
-        function mergeFiles() {
-            const fileInput1 = document.getElementById("file1");
-            const fileInput2 = document.getElementById("file2");
-            const outputElement = document.getElementById("output");
-            const files = [...fileInput1.files, ...fileInput2.files];
-            let mergedContent = '';
-
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    mergedContent += e.target.result + '\n'; // Add file content to mergedContent
-                    outputElement.textContent = mergedContent; // Display merged content
-                };
-                reader.readAsText(file);
-            });
+        // Function to display the merged content
+        function displayMergedContent(content) {
+            document.getElementById('file-container').textContent = content;
         }
+
+        // Function to merge the content from multiple files (lines)
+        function pasteContent(file1Content, file2Content, file3Content) {
+            const file1Lines = file1Content.split("\n");
+            const file2Lines = file2Content.split("\n");
+            const file3Lines = file3Content.split("\n");
+
+            // Get the maximum number of lines in the files
+            const maxLines = Math.max(file1Lines.length, file2Lines.length, file3Lines.length);
+
+            let mergedContent = "";
+
+            for (let i = 0; i < maxLines; i++) {
+                // Merge corresponding lines from each file (or empty string if the file doesn't have that many lines)
+                const file1Line = file1Lines[i] || "";
+                const file2Line = file2Lines[i] || "";
+                const file3Line = file3Lines[i] || "";
+                
+                mergedContent += file1Line + "\t" + file2Line + "\t" + file3Line + "\n";
+            }
+
+            return mergedContent;
+        }
+
+        // Event listener for the paste button
+        document.getElementById('paste-button').addEventListener('click', () => {
+            const file1Content = document.getElementById('file1').value;
+            const file2Content = document.getElementById('file2').value;
+            const file3Content = document.getElementById('file3').value;
+
+            // Merge content from the files and display it
+            const mergedContent = pasteContent(file1Content, file2Content, file3Content);
+            displayMergedContent(mergedContent);
+        });
     </script>
+
 </body>
 </html>
