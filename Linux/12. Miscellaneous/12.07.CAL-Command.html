@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cal Command: Display a Calendar</title>
+</head>
+<body>
+    <h1>cal Command: Display a Calendar</h1>
+    <p>The <code>cal</code> command in Linux is used to display a calendar for a specific month or year. It is a simple and useful command that helps you view dates, months, and years in a calendar format directly in the terminal.</p>
+
+    <h2>Key Features of the cal Command</h2>
+    <ul>
+        <li><strong>Display current month:</strong> By default, <code>cal</code> shows the calendar for the current month.</li>
+        <li><strong>Display specific month or year:</strong> You can specify a different month and year to view a calendar for that period.</li>
+        <li><strong>Highlight today's date:</strong> The current day is highlighted in the calendar for easy identification.</li>
+    </ul>
+
+    <h2>Basic cal Command Usage</h2>
+    <p>The basic syntax for using the <code>cal</code> command is:</p>
+    <pre><code>cal [month] [year]</code></pre>
+    <p>Where:
+    <ul>
+        <li><code>[month]</code>: The month (1-12) you want to display. If not specified, it defaults to the current month.</li>
+        <li><code>[year]</code>: The year (e.g., 2025) you want to display. If not specified, it defaults to the current year.</li>
+    </ul></p>
+
+    <h3>1. Display the Calendar for the Current Month</h3>
+    <p>Simply typing <code>cal</code> will display the calendar for the current month:</p>
+    <pre><code>cal</code></pre>
+    <p>This will print the calendar for the current month, with the current day highlighted. For example:</p>
+    <pre><code>     January 2025
+    Su Mo Tu We Th Fr Sa
+                   1  2  3  4
+     5  6  7  8  9 10 11
+    12 13 14 15 16 17 18
+    19 20 21 22 23 24 25
+    26 27 28 29 30 31
+    </code></pre>
+
+    <h3>2. Display the Calendar for a Specific Month</h3>
+    <p>You can also specify a month and year to display a calendar for that specific period. For example, to display the calendar for March 2025:</p>
+    <pre><code>cal 03 2025</code></pre>
+    <p>This will display the calendar for March 2025:</p>
+    <pre><code>     March 2025
+    Su Mo Tu We Th Fr Sa
+                   1
+     2  3  4  5  6  7  8
+     9 10 11 12 13 14 15
+    16 17 18 19 20 21 22
+    23 24 25 26 27 28 29
+    30 31
+    </code></pre>
+
+    <h3>3. Display the Calendar for an Entire Year</h3>
+    <p>To display the calendar for an entire year, simply specify the year:</p>
+    <pre><code>cal 2025</code></pre>
+    <p>This will display the entire calendar for the year 2025:</p>
+    <pre><code>                              2025
+       January               February               March
+    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa    Su Mo Tu We Th Fr Sa
+                    1  2  3  4  5               1  2  3  4  5  6  7
+     6  7  8  9 10 11 12    8  9 10 11 12 13 14    8  9 10 11 12 13 14
+    13 14 15 16 17 18 19   15 16 17 18 19 20 21   15 16 17 18 19 20 21
+    20 21 22 23 24 25 26   22 23 24 25 26 27 28   22 23 24 25 26 27 28
+    27 28 29 30 31         29 30 31               29 30 31
+    </code></pre>
+
+    <h2>Common cal Options</h2>
+    <p>Here are some of the most frequently used options with the <code>cal</code> command:</p>
+    <ul>
+        <li><strong>-3</strong>: Displays the previous, current, and next month in a single view. This is useful for comparing nearby months.</li>
+        <li><strong>-j</strong>: Displays the calendar with the Julian day numbers (i.e., the day of the year). For example, <code>cal -j</code> will show the day of the year alongside the date.</li>
+        <li><strong>-y</strong>: Displays the calendar for the entire current year, similar to specifying a year manually.</li>
+        <li><strong>-m</strong>: Displays the calendar for the current month, but allows for customization of the layout (e.g., a more condensed version).</li>
+    </ul>
+
+    <h3>Examples with Options</h3>
+    <p>1. To display the calendar for the current month and the previous and next months:</p>
+    <pre><code>cal -3</code></pre>
+    <p>2. To display the calendar with Julian days for the current month:</p>
+    <pre><code>cal -j</code></pre>
+    <p>3. To display the calendar for the entire current year:</p>
+    <pre><code>cal -y</code></pre>
+
+    <h2>Use Case Scenarios for cal</h2>
+    <ul>
+        <li><strong>Quick date reference:</strong> Use <code>cal</code> to quickly view the calendar for any given month or year.</li>
+        <li><strong>Scheduling:</strong> Use <code>cal</code> to plan or schedule events by displaying the relevant calendar periods.</li>
+        <li><strong>Script automation:</strong> In shell scripts, you can use <code>cal</code> to dynamically retrieve and format calendar data for processing or notifications.</li>
+        <li><strong>Julian calendar:</strong> Use <code>cal -j</code> for applications or systems that require the Julian calendar format.</li>
+    </ul>
+
+    <h2>Common Issues and Troubleshooting</h2>
+    <ul>
+        <li><strong>Incorrect month or year format:</strong> Ensure that the month is in the range of 1 to 12 and the year is a valid four-digit number.</li>
+        <li><strong>Calendar not showing properly:</strong> If the calendar output seems misaligned, check your terminal size or font settings, as the calendar format is dependent on terminal width.</li>
+        <li><strong>Unknown option error:</strong> If you receive an error for an option, check the version of the <code>cal</code> command on your system by running <code>man cal</code> or <code>cal --help</code> to confirm available options.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <code>cal</code> command is a simple yet powerful tool in Linux for displaying calendar information. It allows users to quickly view calendars for specific months, years, or even show the entire year at a glance. Additionally, it offers useful options like showing Julian day numbers and multiple months simultaneously. Whether you're scheduling events, planning, or simply need a quick reference, <code>cal</code> is an invaluable tool for your Linux toolkit.</p>
+
+    <p>If you have any further questions or need more assistance with the <code>cal</code> command, feel free to ask!</p>
+</body>
+</html>
