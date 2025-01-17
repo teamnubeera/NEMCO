@@ -3,10 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Page</title>
+    <title>Display Last Few Lines of File (tail)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #file-container {
+            width: 100%;
+            height: 80vh;
+            overflow-y: scroll;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-family: "Courier New", Courier, monospace;
+            white-space: pre-wrap; /* To preserve formatting */
+        }
+        .nav-buttons {
+            text-align: center;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, welcome to my website!</h1>
-    <p>This is a simple HTML page.</p>
+
+    <h1 style="text-align: center; color: #333;">Tail Command Simulation</h1>
+    <div id="file-container"></div>
+    
+    <div class="nav-buttons">
+        <button id="load-more">Load More Lines</button>
+    </div>
+
+    <script>
+        // Example file content (replace this with actual file content)
+        const fileContent = `This is an example file content.
+Line 2 of the file.
+Line 3 of the file.
+Line 4 of the file.
+Line 5 of the file.
+Line 6 of the file.
+Line 7 of the file.
+Line 8 of the file.
+Line 9 of the file.
+Line 10 of the file.
+Line 11 of the file.
+Line 12 of the file.
+Line 13 of the file.
+Line 14 of the file.
+Line 15 of the file...`;
+
+        const linesToShow = 5; // Number of lines to show initially from the end
+        let lines = fileContent.split("\n"); // Split the content into an array of lines
+        let currentLine = Math.max(0, lines.length - linesToShow); // Start from the last few lines
+
+        // Function to display the last few lines
+        function displayLines() {
+            let contentToDisplay = "";
+            for (let i = currentLine; i < lines.length; i++) {
+                contentToDisplay += lines[i] + "\n";
+            }
+            document.getElementById('file-container').textContent = contentToDisplay;
+        }
+
+        // Load more lines when the "Load More Lines" button is clicked
+        document.getElementById('load-more').addEventListener('click', () => {
+            currentLine = Math.max(0, currentLine - linesToShow);
+            displayLines();
+        });
+
+        // Initial display of the last few lines
+        displayLines();
+    </script>
+
 </body>
 </html>
