@@ -3,10 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Page</title>
+    <title>Cut Command Simulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #file-container {
+            width: 100%;
+            height: 80vh;
+            overflow-y: scroll;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            font-family: "Courier New", Courier, monospace;
+            white-space: pre-wrap; /* To preserve formatting */
+        }
+        .controls {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .controls input {
+            padding: 5px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        .controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, welcome to my website!</h1>
-    <p>This is a simple HTML page.</p>
+
+    <h1 style="text-align: center; color: #333;">Cut Command Simulation</h1>
+
+    <div class="controls">
+        <label for="cut-section">Cut section (Start,End): </label>
+        <input type="text" id="cut-section" placeholder="e.g., 0,5" />
+        <button id="cut-button">Cut</button>
+    </div>
+
+    <div id="file-container"></div>
+
+    <script>
+        // Example file content (replace this with actual file content)
+        const fileContent = `apple,orange,banana,grape
+dog,cat,mouse,horse
+red,blue,green,yellow
+apple,pineapple,peach,mango`;
+
+        // Function to display the file content
+        function displayContent(content) {
+            document.getElementById('file-container').textContent = content;
+        }
+
+        // Function to cut sections from each line
+        function cutContent(start, end) {
+            const lines = fileContent.split("\n");
+            let cutContent = lines.map(line => {
+                // Split line by commas (or another delimiter) and cut sections
+                const parts = line.split(",");
+                return parts.slice(start, end).join(","); // Join the remaining parts
+            }).join("\n");
+            
+            return cutContent;
+        }
+
+        // Event listener for the cut button
+        document.getElementById('cut-button').addEventListener('click', () => {
+            const cutSectionInput = document.getElementById('cut-section').value;
+            const [start, end] = cutSectionInput.split(",").map(Number);
+
+            if (isNaN(start) || isNaN(end) || start < 0 || end < 0) {
+                alert("Please enter valid start and end positions (e.g., 0,5).");
+                return;
+            }
+
+            // Get the cut content and display it
+            const newContent = cutContent(start, end);
+            displayContent(newContent);
+        });
+
+        // Initial display of the file content
+        displayContent(fileContent);
+    </script>
+
 </body>
 </html>
