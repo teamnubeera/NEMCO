@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jobs Command: List Active Jobs</title>
+</head>
+<body>
+    <h1>jobs Command: List Active Jobs</h1>
+    <p>The <code>jobs</code> command in Linux is used to list all active jobs running in the background or suspended in the current terminal session. It provides information about the jobs' statuses, job numbers, and the commands associated with them. This is a helpful tool for managing and controlling jobs in Linux.</p>
+
+    <h2>Key Features of the jobs Command</h2>
+    <ul>
+        <li><strong>List active jobs</strong>: The primary function of the <code>jobs</code> command is to list jobs that are currently running or suspended in the background or foreground of the terminal.</li>
+        <li><strong>Shows job status</strong>: The command displays whether a job is running, stopped, or in another state. This is important for understanding the current state of processes that are running or suspended in the terminal.</li>
+        <li><strong>Works with job numbers</strong>: The jobs command assigns a job number to each process that can be used in other job control commands such as <code>fg</code>, <code>bg</code>, and <code>kill</code>.</li>
+    </ul>
+
+    <h2>Basic jobs Command Usage</h2>
+    <p>The syntax of the <code>jobs</code> command is simple and does not require any arguments, though options can be used to modify the output.</p>
+
+    <h3>1. List all active jobs</h3>
+    <pre><code>jobs</code></pre>
+    <p>Running <code>jobs</code> without any arguments will display a list of all active jobs, including both running jobs and suspended (paused) jobs. This list includes the job number, status, and the command that initiated the job.</p>
+    <p><strong>Example:</strong> After running some background jobs, you can use <code>jobs</code> to list them:</p>
+    <pre><code>[1]   1234 Running                 sleep 1000
+[2]+  5678 Stopped                 ping google.com</code></pre>
+
+    <h3>2. Use options with the jobs command</h3>
+    <p>The <code>jobs</code> command supports several options that modify its output:</p>
+
+    <h4>-l: Show the PID of each job</h4>
+    <pre><code>jobs -l</code></pre>
+    <p>By adding the <code>-l</code> option, <code>jobs</code> will also display the process ID (PID) of each job along with the job number, status, and command. This can be useful when you need to find the PID for a specific job to send signals to it (e.g., using the <code>kill</code> command).</p>
+    <p><strong>Example:</strong></p>
+    <pre><code>[1]   1234 Running                 sleep 1000
+[2]+  5678 Stopped                 ping google.com</code></pre>
+
+    <h4>-n: Display jobs that have changed status</h4>
+    <pre><code>jobs -n</code></pre>
+    <p>The <code>-n</code> option will only display jobs that have recently changed their status. This can be helpful if you want to see which jobs have completed or been suspended after the last <code>jobs</code> command was run.</p>
+    
+    <h2>Understanding jobs Command Output</h2>
+    <pThe output of the <code>jobs</code> command typically consists of the following fields:</p>
+    <ul>
+        <li><strong>Job Number</strong>: A unique number assigned to each job (e.g., [1], [2]). This is used to refer to the job in other commands like <code>fg</code>, <code>bg</code>, or <code>kill</code>.</li>
+        <li><strong>Process ID (PID)</strong>: If you use the <code>-l</code> option, the PID of the job will be shown. This is useful for managing processes directly using commands like <code>kill</code>.</li>
+        <li><strong>Status</strong>: The status of the job, such as "Running", "Stopped", or "Done". A "+" or "-" sign next to the job number indicates the most recent job and the last job that was suspended, respectively.</li>
+        <li><strong>Command</strong>: The command that started the job. This is useful for identifying which process is associated with each job.</li>
+    </ul>
+
+    <h2>Examples of Using jobs</h2>
+    <ol>
+        <li><strong>List all active jobs:</strong> <code>jobs</code> (shows job number, status, and command).</li>
+        <li><strong>Show jobs with their PIDs:</strong> <code>jobs -l</code> (includes process IDs of each job).</li>
+        <li><strong>Show only jobs that have changed status:</strong> <code>jobs -n</code> (filters to show only updated jobs).</li>
+    </ol>
+
+    <h2>Commonly Used Commands in Conjunction with jobs</h2>
+    <ul>
+        <li><strong>fg</strong>: Brings a job to the foreground so you can interact with it directly.</li>
+        <li><strong>bg</strong>: Resumes a suspended job in the background so it continues executing while you can use the terminal for other tasks.</li>
+        <li><strong>kill</strong>: Terminates a specific job by its PID or job number.</li>
+        <li><strong>Ctrl+Z</strong>: Suspends the current foreground job and places it in the stopped state.</li>
+        <li><strong>Ctrl+C</strong>: Terminates the currently running foreground job.</li>
+    </ul>
+
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li><strong>Job not showing up:</strong> If a job does not appear when running the <code>jobs</code> command, it may have already completed or terminated. Use <code>ps aux</code> or <code>top</code> to check for running processes.</li>
+        <li><strong>No jobs listed:</strong> If you get an empty output from <code>jobs</code>, it means there are no current jobs in the session, or all jobs have finished.</li>
+        <li><strong>PID not shown:</strong> If you don't see the PID when using <code>jobs</code>, make sure you're using the <code>-l</code> option to list process IDs.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>The <code>jobs</code> command is an essential tool for managing and tracking the status of background and suspended jobs in Linux. It allows you to monitor active jobs, view their statuses, and use job numbers for job control commands like <code>fg</code>, <code>bg</code>, and <code>kill</code>. Understanding how to use <code>jobs</code> effectively can help you keep track of tasks and ensure your system is running smoothly.</p>
+
+    <p>If you have any questions about using the <code>jobs</code> command or need further clarification, feel free to ask!</p>
+</body>
+</html>
+
