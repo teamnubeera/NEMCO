@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lsblk Command Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .hands-on {
+            background-color: #e8f4fc;
+            padding: 10px;
+            border: 1px solid #b0d1e8;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>lsblk Command Overview</h1>
+    </header>
+
+    <section>
+        <h2>lsblk Command</h2>
+        <ul>
+            <li>Lists information about all available block devices (e.g., hard drives, SSDs, partitions).</li>
+            <li>Displays details like device name, size, type, and mount point.</li>
+        </ul>
+        <div class="hands-on">
+            <h3>Hands-on Activity:</h3>
+            <p>Run the <code>lsblk</code> command in your terminal to list all block devices and their details.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Common Options</h2>
+        <ul>
+            <li><code>-f</code>: Display file system information.</li>
+            <li><code>-o</code>: Specify columns to display (e.g., <code>lsblk -o NAME,SIZE,TYPE</code>).</li>
+            <li><code>-l</code>: Display devices in a list format.</li>
+            <li><code>-a</code>: Show all devices, including empty ones.</li>
+        </ul>
+        <div class="hands-on">
+            <h3>Hands-on Activity:</h3>
+            <p>Run <code>lsblk -f</code> to display block devices with file system information.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 lsblk Command Overview</p>
+    </footer>
+
+</body>
+</html>
