@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traceroute Command Guide</title>
+</head>
+<body>
+    <h1>Traceroute Command: Trace the Route Packets Take to a Network Host</h1>
+    <p>The <code>traceroute</code> command in Linux is used to trace the path packets take to reach a network destination, displaying each hop along the route.</p>
+    <h2>Basic Usage</h2>
+    <ul>
+        <li><code>traceroute example.com</code> - Trace the route to example.com.</li>
+        <li><code>traceroute -4 example.com</code> - Use IPv4 only.</li>
+        <li><code>traceroute -6 example.com</code> - Use IPv6 only.</li>
+    </ul>
+    <h2>Advanced Options</h2>
+    <ul>
+        <li><code>traceroute -m 20 example.com</code> - Set the maximum number of hops to 20.</li>
+        <li><code>traceroute -q 3 example.com</code> - Set the number of queries per hop to 3.</li>
+        <li><code>traceroute -n example.com</code> - Display numeric IP addresses instead of resolving hostnames.</li>
+    </ul>
+    <h2>Alternative Commands</h2>
+    <ul>
+        <li><code>tracepath example.com</code> - A simpler alternative to traceroute.</li>
+        <li><code>mtr example.com</code> - Combines traceroute and ping for real-time monitoring.</li>
+    </ul>
+</body>
+</html>
