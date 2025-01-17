@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using the <code>awk</code> Command in Linux</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        code {
+            background-color: #e1e1e1;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+        ul {
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Linux: Using the <code>awk</code> Command for Text Processing and Pattern Scanning</h1>
+
+    <p>The <code>awk</code> command is a powerful text processing tool used for pattern scanning and processing. It is used to manipulate text, extract data, perform calculations, and generate reports based on text patterns.</p>
+
+    <h2>Basic Command Usage</h2>
+    <pre><code>awk 'pattern { action }' filename</code></pre>
+    <p>The <code>awk</code> command operates by scanning each line of the file <code>filename</code>. When it finds a line that matches the given <code>pattern</code>, it executes the specified <code>action</code>.</p>
+
+    <h2>Commonly Used Features with <code>awk</code></h2>
+    <ul>
+        <li><strong><code>$0</code></strong>: Represents the entire current line.</li>
+        <li><strong><code>$1, $2, ...</code></strong>: Represents the first, second, and subsequent fields (columns) of the current line.</li>
+        <li><strong><code>print</code></strong>: Prints text or values, often used to display results.</li>
+        <li><strong><code>NR</code></strong>: Represents the current line number (record number).</li>
+        <li><strong><code>FS</code></strong>: Field separator variable (default is whitespace or tab).</li>
+        <li><strong><code>OFS</code></strong>: Output field separator (default is a space).</li>
+    </ul>
+
+    <h2>Example Usage</h2>
+
+    <h3>1. Print Specific Columns</h3>
+    <pre><code>awk '{print $1, $3}' file.txt</code></pre>
+    <p>This command prints the first and third columns from <code>file.txt</code>.</p>
+
+    <h3>2. Print Line Numbers with Data</h3>
+    <pre><code>awk '{print NR, $0}' file.txt</code></pre>
+    <p>This command prints the line number followed by the entire line from <code>file.txt</code>.</p>
+
+    <h3>3. Use a Pattern to Match Lines</h3>
+    <pre><code>awk '/pattern/ {print $0}' file.txt</code></pre>
+    <p>This command prints all lines from <code>file.txt</code> that contain the specified <code>pattern</code>.</p>
+
+    <h3>4. Print Columns with a Custom Field Separator</h3>
+    <pre><code>awk 'BEGIN {FS=":"} {print $1, $3}' file.txt</code></pre>
+    <p>This command sets the field separator to <code>:</code> and prints the first and third columns from <code>file.txt</code>.</p>
+
+    <h3>5. Perform Calculations</h3>
+    <pre><code>awk '{print $1 + $2}' file.txt</code></pre>
+    <p>This command adds the values in the first and second columns and prints the result.</p>
+
+    <h3>6. Using <code>NR</code> for Line Numbers</h3>
+    <pre><code>awk '{print NR, $0}' file.txt</code></pre>
+    <p>This command prints the line number and the entire content of each line in <code>file.txt</code>.</p>
+
+    <h3>7. Use <code>awk</code> to Filter and Print Specific Patterns</h3>
+    <pre><code>awk '$2 > 50 {print $1, $2}' file.txt</code></pre>
+    <p>This command prints the first and second columns where the value in the second column is greater than 50.</p>
+
+    <h2>Conclusion</h2>
+    <p>The <code>awk</code> command is a versatile tool for text processing and data extraction in Linux. Whether you are extracting columns, performing calculations, or filtering data based on patterns, <code>awk</code> can help you manipulate text effectively. Experiment with these examples to gain deeper control over text data in your files.</p>
+
+</body>
+</html>
