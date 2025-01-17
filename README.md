@@ -5,7 +5,7 @@ NubeEra Multi Cloud Ops
 ## Subjects Includes:  
  - Cloud - [AWS](Cloud-AWS)
  - Cloud - Azure
- - Core - Linux
+ - Core - [Linux](Linux)
  - Core - Python
  - Core - SQL
  - Core - Scripting(YAML, JSON, XML)
