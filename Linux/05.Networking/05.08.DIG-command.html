@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIG Command Guide</title>
+</head>
+<body>
+    <h1>DIG Command: Query DNS Information in More Detail</h1>
+    <p>The <code>dig</code> (Domain Information Groper) command in Linux is used to query DNS servers for detailed domain and IP address information.</p>
+    <h2>Basic Usage</h2>
+    <ul>
+        <li><code>dig example.com</code> - Get detailed DNS information about example.com.</li>
+        <li><code>dig +short example.com</code> - Display only the IP address.</li>
+        <li><code>dig -x 8.8.8.8</code> - Perform a reverse lookup on an IP address.</li>
+    </ul>
+    <h2>Querying Specific DNS Records</h2>
+    <ul>
+        <li><code>dig example.com A</code> - Query the A record (IPv4 address).</li>
+        <li><code>dig example.com AAAA</code> - Query the AAAA record (IPv6 address).</li>
+        <li><code>dig example.com MX</code> - Retrieve mail exchange (MX) records.</li>
+        <li><code>dig example.com NS</code> - Get the name servers for a domain.</li>
+    </ul>
+    <h2>Using a Specific DNS Server</h2>
+    <ul>
+        <li><code>dig @8.8.8.8 example.com</code> - Query example.com using Google's DNS server.</li>
+        <li><code>dig @1.1.1.1 example.com</code> - Query using Cloudflare’s DNS server.</li>
+    </ul>
+    <h2>Advanced Options</h2>
+    <ul>
+        <li><code>dig +trace example.com</code> - Trace the DNS resolution path.</li>
+        <li><code>dig +noall +answer example.com</code> - Show only the answer section.</li>
+        <li><code>dig example.com ANY</code> - Get all available DNS records for a domain.</li>
+    </ul>
+</body>
+</html>
