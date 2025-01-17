@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux ping Command Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; padding: 20px; background-color: #f4f4f4; }
+        h1, h2, h3 { color: #333; }
+        pre { background: #333; color: #fff; padding: 10px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h1>Linux ping Command Guide</h1>
+    
+    <h2>1. Understanding ping</h2>
+    <p>The <code>ping</code> command in Linux is used to send ICMP echo request packets to a network host to check connectivity and measure response time.</p>
+    
+    <h2>2. Basic Syntax</h2>
+    <pre>ping [OPTIONS] DESTINATION</pre>
+    
+    <h2>3. Checking Connectivity</h2>
+    <p>To check if a host is reachable:</p>
+    <pre>ping example.com</pre>
+    
+    <h2>4. Specifying Number of Packets</h2>
+    <p>To limit the number of packets sent:</p>
+    <pre>ping -c 4 example.com</pre>
+    
+    <h2>5. Setting Packet Size</h2>
+    <pre>ping -s 64 example.com</pre>
+    
+    <h2>6. Common ping Commands</h2>
+    <table>
+        <tr>
+            <th>Command</th><th>Description</th>
+        </tr>
+        <tr>
+            <td>ping hostname</td><td>Send continuous ping requests</td>
+        </tr>
+        <tr>
+            <td>ping -c 4 hostname</td><td>Send 4 ping requests</td>
+        </tr>
+        <tr>
+            <td>ping -i 2 hostname</td><td>Send ping requests every 2 seconds</td>
+        </tr>
+        <tr>
+            <td>ping -s 128 hostname</td><td>Set packet size to 128 bytes</td>
+        </tr>
+    </table>
+</body>
+</html>
