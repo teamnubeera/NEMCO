@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lsusb Command Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .hands-on {
+            background-color: #e8f4fc;
+            padding: 10px;
+            border: 1px solid #b0d1e8;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>lsusb Command Overview</h1>
+    </header>
+
+    <section>
+        <h2>lsusb Command</h2>
+        <ul>
+            <li>Lists all USB devices connected to the system.</li>
+            <li>Displays details like the USB device ID, device name, and manufacturer.</li>
+        </ul>
+        <div class="hands-on">
+            <h3>Hands-on Activity:</h3>
+            <p>Run the <code>lsusb</code> command in your terminal to list all USB devices currently connected to your system.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Common Options</h2>
+        <ul>
+            <li><code>-v</code>: Show verbose output (detailed information about each USB device).</li>
+            <li><code>-s <bus:device></code>: Show information for a specific device (e.g., <code>lsusb -s 002:003</code>).</li>
+            <li><code>-d <vendor:device></code>: Show information for devices with a specific vendor and device ID.</li>
+            <li><code>-t</code>: Display USB devices in a tree format.</li>
+        </ul>
+        <div class="hands-on">
+            <h3>Hands-on Activity:</h3>
+            <p>Run <code>lsusb -v</code> to view detailed information about each connected USB device.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 lsusb Command Overview</p>
+    </footer>
+
+</body>
+</html>
