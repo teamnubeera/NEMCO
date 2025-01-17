@@ -3,12 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Page</title>
+    <title>Using the more Command in Linux</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, welcome to my website!</h1>
-    <p>This is a simple HTML page.</p>
+    <h1>Linux: Using the <code>more</code> Command to View File Contents Interactively</h1>
+
+    <p>The <code>more</code> command allows you to view the contents of a file interactively, scrolling through it one screen at a time. Here's how to use it:</p>
+
+    <h2>Basic Command Usage</h2>
+    <pre><code>more filename</code></pre>
+    <p>This will open the <code>filename</code> in the terminal, and you can scroll through it interactively.</p>
+
+    <h2>Navigation Commands</h2>
+    <ul>
+        <li><strong>Spacebar</strong>: Scroll one screen forward.</li>
+        <li><strong>Enter</strong>: Scroll one line forward.</li>
+        <li><strong>b</strong>: Scroll one screen backward.</li>
+        <li><strong>/pattern</strong>: Search forward for a specific <code>pattern</code> in the file.</li>
+        <li><strong>n</strong>: Move to the next match of the search.</li>
+        <li><strong>q</strong>: Quit the <code>more</code> viewer.</li>
+    </ul>
+
+    <h2>Example</h2>
+    <p>Let's say you have a file called <code>index.html</code> and want to view it interactively. Run:</p>
+    <pre><code>more index.html</code></pre>
+    <p>You will be able to scroll through the contents using the spacebar or Enter key. You can also search within the file using <code>/</code> followed by your search term.</p>
+
+    <h2>Conclusion</h2>
+    <p>The <code>more</code> command is a simple but powerful tool for viewing large files in the terminal, especially when combined with search functionality. Try using it to navigate long log files or configuration files.</p>
 </body>
 </html>
-
--- More --
