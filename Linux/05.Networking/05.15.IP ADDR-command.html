@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ip addr: Show IP Address Information of Interfaces</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>ip addr: Show IP Address Information of Interfaces</h1>
+
+    <p>The <strong>ip addr</strong> command is used to display and manage IP address information for network interfaces in Linux-based operating systems. It is part of the <code>iproute2</code> package, which provides tools for network management.</p>
+
+    <h2>Basic ip addr Syntax</h2>
+    <p>The basic syntax for the <code>ip addr</code> command is:</p>
+
+    <pre>
+ip addr [options]
+    </pre>
+
+    <p>By default, running <code>ip addr</code> without options will show the IP addresses of all active network interfaces on the system.</p>
+
+    <h2>Examples</h2>
+
+    <h3>Show All IP Addresses</h3>
+    <p>To display the IP addresses of all network interfaces on your system, simply run:</p>
+
+    <pre>
+ip addr
+    </pre>
+
+    <p>This command will display information about each network interface, including IPv4 and IPv6 addresses, along with their status (UP or DOWN), network masks, and other details.</p>
+
+    <h3>Show Specific Interface Information</h3>
+    <p>If you want to display the IP address information for a specific interface (e.g., <code>eth0</code> or <code>wlan0</code>), you can specify the interface name:</p>
+
+    <pre>
+ip addr show dev eth0
+    </pre>
+
+    <p>For example, to view information for the <code>eth0</code> interface:</p>
+
+    <pre>
+ip addr show dev eth0
+    </pre>
+
+    <h3>Show IPv4 or IPv6 Addresses Only</h3>
+    <p>If you want to see only IPv4 or IPv6 addresses, you can use the <code>inet</code> (for IPv4) or <code>inet6</code> (for IPv6) filters:</p>
+
+    <pre>
+ip addr show | grep inet
+    </pre>
+
+    <p>This will show only IPv4 addresses. Similarly, to show IPv6 addresses:</p>
+
+    <pre>
+ip addr show | grep inet6
+    </pre>
+
+    <h3>Show Interface Status</h3>
+    <p>If you're interested in seeing whether interfaces are up or down, use the following command:</p>
+
+    <pre>
+ip addr show
+    </pre>
+
+    <p>This will include the status (e.g., <code>UP</code>, <code>DOWN</code>) of the interfaces alongside their IP addresses.</p>
+
+    <h3>Show Additional Information</h3>
+    <p>If you want to display more detailed information about each interface, including MAC addresses and interface statistics, run:</p>
+
+    <pre>
+ip addr show
+    </pre>
+
+    <p>This will show more information about each interface, including the MAC address (link/ether) and the broadcast address.</p>
+
+    <h2>Useful ip addr Options</h2>
+    <ul>
+        <li><code show="true">show</code>: Display the address information for the specified interface.</li>
+        <li><code show="true">dev [interface]</code>: Specify the network interface (e.g., <code>eth0</code>, <code>wlan0</code>) whose IP information you want to display.</li>
+        <li><code show="true">inet</code>: Filter and show IPv4 addresses only.</li>
+        <li><code show="true">inet6</code>: Filter and show IPv6 addresses only.</li>
+        <li><code show="true">up</code>: Show only interfaces that are currently active (i.e., UP).</li>
+        <li><code show="true">down</code>: Show only interfaces that are currently inactive (i.e., DOWN).</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>The <code>ip addr</code> command only displays information about network interfaces. However, be mindful that on some systems, network configurations might include sensitive information, such as IP addresses or routing details. Ensure that only authorized users have access to this information, especially in production environments.</p>
+
+    <div class="note">
+        <strong>Note:</strong> If you're working with network configurations that require elevated privileges, you may need to run <code>sudo ip addr</code> to view or modify network interface settings.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The <code>ip addr</code> command is a powerful and essential tool for managing network interfaces and viewing IP address configurations on Linux-based systems. Whether you're troubleshooting connectivity issues or configuring network interfaces, this command provides you with all the necessary details about the system's network setup.</p>
+
+    <p>For more advanced usage and options, refer to the <a href="https://man7.org/linux/man-pages/man8/ip.8.html" target="_blank">official ip command manual page</a>.</p>
+
+</body>
+</html>
