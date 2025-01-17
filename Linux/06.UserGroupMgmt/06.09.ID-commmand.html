@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>id: Show User and Group Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        pre {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .note {
+            background-color: #f9f9c5;
+            padding: 10px;
+            border-left: 5px solid #ffeb3b;
+            margin: 10px 0;
+        }
+        code {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 3px;
+        }
+        a {
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>id: Show User and Group Information</h1>
+
+    <p>The <strong>id</strong> command in Linux displays information about a user’s identity, including their user ID (UID), group ID (GID), and the groups to which they belong. This command is useful for understanding a user's access privileges and their group memberships on a system.</p>
+
+    <h2>Basic id Syntax</h2>
+    <p>The basic syntax of the <code>id</code> command is:</p>
+
+    <pre>
+id [options] [username]
+    </pre>
+
+    <p>Where:</p>
+    <ul>
+        <li><code>[options]</code> are optional flags to modify the behavior of the command.</li>
+        <li><code>[username]</code> is the name of a specific user whose information you want to view (optional).</li>
+    </ul>
+
+    <h2>Examples</h2>
+
+    <h3>Show Information for the Current User</h3>
+    <p>To display information about the currently logged-in user, simply run:</p>
+
+    <pre>
+id
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+uid=1000(john) gid=1000(john) groups=1000(john),27(sudo)
+    </pre>
+
+    <p>This output shows:</p>
+    <ul>
+        <li><strong>uid=1000</strong>: The user ID (UID) of the user <code>john</code>.</li>
+        <li><strong>gid=1000</strong>: The primary group ID (GID) of the user, which is usually the same as the UID.</li>
+        <li><strong>groups=1000(john),27(sudo)</strong>: The groups that the user belongs to. The user <code>john</code> belongs to the group <code>john</code> and the <code>sudo</code> group (which typically grants admin privileges).</li>
+    </ul>
+
+    <h3>Show Information for a Specific User</h3>
+    <p>To display information about a specific user (e.g., <code>alice</code>), use the following command:</p>
+
+    <pre>
+id alice
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+uid=1001(alice) gid=1001(alice) groups=1001(alice),30(docker),50(staff)
+    </pre>
+
+    <h3>Show Information with Additional Options</h3>
+    <p>The <code>id</code> command can display more detailed information using various options.</p>
+
+    <h4>Show Only the User ID (UID)</h4>
+    <p>The <code>-u</code> option shows only the UID of the user:</p>
+
+    <pre>
+id -u
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+1000
+    </pre>
+
+    <h4>Show Only the Group ID (GID)</h4>
+    <p>The <code>-g</code> option shows only the GID of the user:</p>
+
+    <pre>
+id -g
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+1000
+    </pre>
+
+    <h4>Show Only the Group Memberships</h4>
+    <p>The <code>-G</code> option shows only the groups that the user belongs to:</p>
+
+    <pre>
+id -G
+    </pre>
+
+    <p>Example output:</p>
+    <pre>
+1000 27
+    </pre>
+
+    <h4>Show All Information (Including Groups)</h4>
+    <pBy default, the <code>id</code> command shows the UID, GID, and group memberships. However, you can also use <code>-a</code> to ensure it shows all details:</p>
+
+    <pre>
+id -a
+    </pre>
+
+    <h2>Useful id Options</h2>
+    <ul>
+        <li><code>-u</code>: Show only the user ID (UID).</li>
+        <li><code>-g</code>: Show only the group ID (GID) of the user's primary group.</li>
+        <li><code>-G</code>: Show only the group IDs of all groups the user belongs to.</li>
+        <li><code>-n</code>: Display the names of the user and group IDs instead of numeric values.</li>
+        <li><code>-a</code>: Show all user and group information.</li>
+        <li><code>-h</code>: Display help information for the <code>id</code> command.</li>
+    </ul>
+
+    <h2>Security Considerations</h2>
+    <p>The <code>id</code> command provides detailed information about a user's identity and group memberships. Although the information is typically not sensitive, it can reveal group membership details that may be useful in auditing or security analysis. Always be mindful of who has access to user information on multi-user systems.</p>
+
+    <div class="note">
+        <strong>Note:</strong> The <code>id</code> command does not require elevated privileges to display information about the current user, but a user with sufficient privileges (e.g., root) can view information about any user on the system.
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>The <code>id</code> command is a simple yet powerful tool for displaying a user's identity, group memberships, and other related information on a Linux system. It's especially useful for administrators to quickly check group memberships and user IDs, which are important for managing permissions and security.</p>
+
+    <p>For more advanced usage and additional options, refer to the official <a href="https://man7.org/linux/man-pages/man1/id.1.html" target="_blank">id manual page</a>.</p>
+
+</body>
+</html>
